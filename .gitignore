@@ -1,0 +1,10 @@
+node_modules/
+.cache/
+public
+.DS_Store
+.vscode
+
+.env
+.env.development
+
+storybook-static/
