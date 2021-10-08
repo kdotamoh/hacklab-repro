@@ -1,10 +1,11 @@
+/** @jsxImportSource theme-ui */
 import * as React from 'react'
 
 // markup
 const IndexPage = () => {
   return (
     <main>
-      <h1>Hacklab Website</h1>
+      <p>Hacklab Website</p>
     </main>
   )
 }
