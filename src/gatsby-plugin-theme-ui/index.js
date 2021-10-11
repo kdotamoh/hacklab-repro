@@ -128,6 +128,37 @@ const theme = {
     highlight: '',
     muted: '',
   },
+  radii: {
+    sm: 4,
+    md: 8,
+    xl: 32,
+  },
+  space: {
+    gapDefault: '1.5rem',
+  },
+  sizes: {
+    container: '82%',
+  },
+
+  // Buttons
+  buttons: {
+    primary: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+    },
+    large: {
+      borderRadius: 'md',
+    },
+    rounded: {
+      color: 'neutral.black',
+      borderRadius: 'xl',
+      bg: 'neutral.white',
+      fontSize: 'caption',
+      fontWeight: 'medium',
+      px: '1rem',
+      py: '.25rem',
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
