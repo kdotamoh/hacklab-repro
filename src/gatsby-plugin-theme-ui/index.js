@@ -75,7 +75,10 @@ const hacklabColors = {
   },
 }
 
+// breakpoints
 const breakpoints = ['30rem', '48rem', '56rem']
+
+// theme
 const theme = {
   breakpoints,
   mediaQueries: {
@@ -89,6 +92,7 @@ const theme = {
   fontWeights: {
     regular: 400,
     medium: 500,
+    bold: 700,
   },
   fontSizes: {
     [constants.display1]: '4.5rem',
@@ -97,9 +101,9 @@ const theme = {
     [constants.h2]: '2rem',
     [constants.h3]: '1.5rem',
     [constants.h4]: '1.25rem',
-    [constants.subHeading]: '1.125rem',
-    [constants.paragraph1]: '1rem',
-    [constants.paragraph2]: '0.875rem',
+    [constants.subHeading]: '1.125rem', //18px
+    [constants.paragraph1]: '1rem', // 16px
+    [constants.paragraph2]: '0.875rem', // 14px
     [constants.caption]: '0.75rem',
     [constants.overline]: '0.625rem',
   },
@@ -160,12 +164,24 @@ const theme = {
     },
   },
   styles: {
+    // Global styles
     root: {
+      '*': {
+        margin: '0px',
+        padding: '0px',
+        fontFamily: 'body',
+      },
       fontFamily: 'body',
       fontWeight: 'regular',
       color: 'text',
       p: {
         fontSize: [constants.paragraph1, constants.paragraph1, constants.h4],
+      },
+      h2: {
+        fontSize: [constants.h2, constants.h2, constants.h1],
+      },
+      h4: {
+        fontSize: constants.h4,
       },
     },
   },
