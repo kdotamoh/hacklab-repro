@@ -1,12 +1,15 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 
-// markup
+import Layout from '../components/Layout'
+
 const IndexPage = () => {
   return (
-    <main>
-      <p>Hacklab Website</p>
-    </main>
+    <Layout>
+      <main>
+        <p>Hacklab Website</p>
+      </main>
+    </Layout>
   )
 }
 
