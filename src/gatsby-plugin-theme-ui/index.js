@@ -126,11 +126,10 @@ const theme = {
     // required by theme-ui spec
     text: hacklabColors.neutral.textActive,
     background: hacklabColors.neutral.white,
-    primary: hacklabColors.primary.main,
     secondary: '',
     accent: '',
     highlight: '',
-    muted: '',
+    muted: hacklabColors.neutral.border,
   },
   radii: {
     sm: 4,
@@ -139,9 +138,13 @@ const theme = {
   },
   space: {
     gapDefault: '1.5rem',
+    'gap-2x': '2rem',
   },
   sizes: {
     container: '82%',
+  },
+  borders: {
+    footer: 'solid 1px muted',
   },
 
   // Buttons
@@ -149,6 +152,8 @@ const theme = {
     primary: {
       borderRadius: 'sm',
       fontWeight: 'medium',
+      padding: '.625rem 1.125rem',
+      bg: 'primary.main',
     },
     large: {
       borderRadius: 'md',
@@ -163,6 +168,16 @@ const theme = {
       py: '.25rem',
     },
   },
+
+  // Forms
+  forms: {
+    input: {
+      borderColor: 'muted',
+      // @ts-ignore
+      // '&::placeholder': (theme) => `${theme.colors.muted}`,
+    },
+  },
+
   styles: {
     // Global styles
     root: {
@@ -180,8 +195,11 @@ const theme = {
       h2: {
         fontSize: [constants.h2, constants.h2, constants.h1],
       },
+      h3: {
+        fontSize: constants.h2,
+      },
       h4: {
-        fontSize: constants.h4,
+        fontSize: constants.h3,
       },
     },
   },

@@ -1,8 +1,8 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 
-import Announce from './Announce'
-import Footer from './Footer'
+import Announce from './layout/Announce'
+import Footer from './layout/Footer'
 
 /**
  * @typedef Props
