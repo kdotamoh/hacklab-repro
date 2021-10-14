@@ -29,76 +29,86 @@ const Reviews = (props) => {
         <div
           sx={{
             display: 'flex',
+            justifyContent: 'center',
             flexWrap: 'wrap',
             gap: 'gapDefault',
           }}
         >
           {count.map((item) => (
-            <div
-              sx={{
-                color: 'neutral.black',
-                bg: 'neutral.white',
-                p: '1.5rem',
-                borderRadius: 'sm',
-                fontSize: 'paragraph2',
-                display: 'flex',
-                flexBasis: '32%',
-                gap: 'gapDefault',
-                flexDirection: 'column',
-              }}
-              key={item}
-            >
-              <div
-                sx={{
-                  display: 'flex',
-                  gap: '1rem',
-                }}
-              >
-                <span
-                  sx={{
-                    borderRadius: '50%',
-                    width: '2.5rem',
-                    height: '2.5rem',
-                    bg: 'primary.main',
-                  }}
-                ></span>
-                <div
-                  sx={{
-                    flex: 'display',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <p
-                    sx={{
-                      fontSize: 'paragraph2',
-                      fontWeight: 'bold',
-                      pb: '.25rem',
-                    }}
-                  >
-                    Mechenzy
-                  </p>
-                  <p
-                    sx={{
-                      fontSize: 'paragraph2',
-                      color: 'neutral.textDisabled',
-                    }}
-                  >
-                    Writer
-                  </p>
-                </div>
-              </div>
-              <p
-                sx={{
-                  fontSize: 'paragraph2',
-                }}
-              >
-                The Annual Hacklab Hackathon is hosted in Ghana annually and
-                brings together 1000+ participants
-              </p>
-            </div>
+            <Review key={item} />
           ))}
         </div>
       </Container>
+    </div>
+  )
+}
+
+// /**
+//  * @param {Object} props
+//  * @param {Object} props.item
+//  */
+const Review = () => {
+  return (
+    <div
+      sx={{
+        color: 'neutral.black',
+        bg: 'neutral.white',
+        p: '1.5rem',
+        borderRadius: 'sm',
+        fontSize: 'paragraph2',
+        display: 'flex',
+        flexBasis: '30%',
+        gap: 'gapDefault',
+        flexDirection: 'column',
+      }}
+    >
+      <div
+        sx={{
+          display: 'flex',
+          gap: '1rem',
+        }}
+      >
+        <span
+          sx={{
+            borderRadius: '50%',
+            width: '2.5rem',
+            height: '2.5rem',
+            bg: 'primary.main',
+          }}
+        ></span>
+        <div
+          sx={{
+            flex: 'display',
+            flexDirection: 'column',
+          }}
+        >
+          <p
+            sx={{
+              fontSize: 'paragraph2',
+              fontWeight: 'bold',
+              pb: '.25rem',
+            }}
+          >
+            Mechenzy
+          </p>
+          <p
+            sx={{
+              fontSize: 'paragraph2',
+              color: 'neutral.textDisabled',
+            }}
+          >
+            Writer
+          </p>
+        </div>
+      </div>
+      <p
+        sx={{
+          fontSize: 'paragraph2',
+        }}
+      >
+        The Annual Hacklab Hackathon is hosted in Ghana annually and brings
+        together 1000+ participants
+      </p>
     </div>
   )
 }

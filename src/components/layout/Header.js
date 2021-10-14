@@ -19,12 +19,19 @@ const Header = (props) => {
         height: '92vh',
         backgroundImage: `url(${photo})`,
         backgroundSize: 'cover',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
       }}
     >
       <Navigation color="white" />
+
       <Container
         sx={{
-          transform: 'translateY(50%)',
+          position: 'absolute',
+          top: '50%',
+          left: '9%',
+          transform: 'translateY(-50%)',
         }}
       >
         <h1

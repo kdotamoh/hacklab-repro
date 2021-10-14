@@ -8,6 +8,7 @@ import Initiatives from '../components/layout/Initiatives'
 import Reviews from '../components/layout/Reviews'
 import Header from '../components/layout/Header'
 import Newsletter from '../components/layout/Newsletter'
+import DownloadApp from '../components/layout/DownloadApp'
 
 const IndexPage = () => {
   return (
@@ -18,6 +19,7 @@ const IndexPage = () => {
         <Partners />
         <Initiatives />
         <Reviews />
+        <DownloadApp />
         <Newsletter />
       </main>
     </Layout>
