@@ -15,3 +15,20 @@
   font-weight: 700;
   src: url('../fonts/Gotham-Medium.woff2');
 }
+
+/* MASONRY */
+.my-masonry-grid {
+  display: flex;
+  margin-left: 1.5rem; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 1.5rem; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 1.5rem;
+}

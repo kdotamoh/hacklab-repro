@@ -1,12 +1,32 @@
 /** @jsxImportSource theme-ui */
-import { Container } from '@theme-ui/components'
 import * as React from 'react'
+import { Container } from '@theme-ui/components'
+import Masonry from 'react-masonry-css'
 
 /**
  * @param {Object} props
  */
 const Reviews = (props) => {
-  const count = [1, 2, 3, 4, 5, 6]
+  const count = [
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+',
+    },
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
+    },
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants. Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
+    },
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
+    },
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
+    },
+    {
+      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
+    },
+  ]
   return (
     <div
       {...props}
@@ -26,28 +46,35 @@ const Reviews = (props) => {
         >
           Review from Participants
         </h3>
-        <div
+        {/* <div
           sx={{
             display: 'flex',
             justifyContent: 'center',
             flexWrap: 'wrap',
             gap: 'gapDefault',
           }}
+        > */}
+        <Masonry
+          breakpointCols={3}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
         >
-          {count.map((item) => (
-            <Review key={item} />
+          {count.map((item, index) => (
+            <Review key={index} {...{ item }} />
           ))}
-        </div>
+        </Masonry>
+        {/* </div> */}
       </Container>
     </div>
   )
 }
 
-// /**
-//  * @param {Object} props
-//  * @param {Object} props.item
-//  */
-const Review = () => {
+/**
+ * @param {Object} props
+ * @param {Object} props.item
+ * @param {string} props.item.text
+ */
+const Review = ({ item }) => {
   return (
     <div
       sx={{
@@ -106,8 +133,7 @@ const Review = () => {
           fontSize: 'paragraph2',
         }}
       >
-        The Annual Hacklab Hackathon is hosted in Ghana annually and brings
-        together 1000+ participants
+        {item.text}
       </p>
     </div>
   )
