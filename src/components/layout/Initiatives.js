@@ -1,7 +1,9 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
+import { Button } from 'theme-ui'
 
 import Logo from '../svg/Logo'
+import Arrow from '../svg/Arrow'
 
 /**
  * @param {Object} props
@@ -97,10 +99,15 @@ const Initiatives = (props) => {
             display: 'flex',
             marginLeft: '9%',
             mb: '6rem',
+            gap: '2rem',
           }}
         >
-          <div>Prev</div>
-          <div>Next</div>
+          <Button variant="circle">
+            <Arrow width="1.5rem" orientation="left" />
+          </Button>
+          <Button variant="circle">
+            <Arrow width="1.5rem" orientation="right" />
+          </Button>
         </div>
       </div>
     </div>

@@ -167,6 +167,18 @@ const theme = {
       px: '1rem',
       py: '.25rem',
     },
+    circle: {
+      borderRadius: '50%',
+      color: 'neutral.black',
+      bg: 'neutral.white',
+      width: '3.5rem',
+      height: '3.5rem',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // @ts-ignore
+      border: (t) => `solid 1px ${t.colors.neutral.border}`,
+    },
   },
 
   // Forms

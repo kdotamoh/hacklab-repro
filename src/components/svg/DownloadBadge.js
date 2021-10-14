@@ -12,8 +12,8 @@ import * as React from 'react'
 /**
  * @param {Props} props
  */
-const DownloadBadge = (props) => {
-  if (props.appStore === 'google')
+const DownloadBadge = ({ appStore, ...props }) => {
+  if (appStore === 'google')
     return (
       <svg
         sx={{
@@ -158,7 +158,7 @@ const DownloadBadge = (props) => {
         </defs>
       </svg>
     )
-  if (props.appStore === 'apple')
+  if (appStore === 'apple')
     return (
       <svg
         width="163"
