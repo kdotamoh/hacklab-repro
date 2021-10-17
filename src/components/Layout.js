@@ -3,16 +3,18 @@ import * as React from 'react'
 
 import Announce from './layout/Announce'
 import Footer from './layout/Footer'
+import Newsletter from './layout/Newsletter'
 
 /**
  * @typedef Props
+ * @prop {React.ReactNode} [header]
  * @prop {React.ReactNode} children
  */
 
 /**
  * @param {Props} props
  */
-const Layout = (props) => {
+const Layout = ({ header, ...props }) => {
   return (
     <div
       sx={{
@@ -23,6 +25,7 @@ const Layout = (props) => {
     >
       <header>
         <Announce />
+        {header}
       </header>
       <main
         sx={{
@@ -30,7 +33,10 @@ const Layout = (props) => {
           flex: '1 1 auto',
         }}
       >
-        {props.children}
+        <>
+          {props.children}
+          <Newsletter />
+        </>
       </main>
       <Footer />
     </div>
