@@ -1,13 +1,14 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Button, Container } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
 import Logo from '../svg/Logo'
 
 /**
  * @param {Object} props
  * @param {string} [props.color]
+ * @param {any} [props.sx]
  */
 const Navigation = (props) => {
   const { wpMenu } = useStaticQuery(graphql`
@@ -52,6 +53,7 @@ const Navigation = (props) => {
     <Container
       {...props}
       sx={{
+        ...props.sx,
         py: '1rem',
         display: 'flex',
         textAlign: 'center',
@@ -66,25 +68,30 @@ const Navigation = (props) => {
           gap: 'gap-2x',
         }}
       >
-        <Logo
-          width="7.5rem"
-          fill={props.color ? props.color : ''}
-          sx={{
-            mr: '.5rem',
-          }}
-        />
+        <Link to="/">
+          <Logo
+            width="7.5rem"
+            fill={props.color}
+            sx={{
+              mr: '.5rem',
+            }}
+          />
+        </Link>
         {
           // @ts-ignore
           wpMenu.menuItems.nodes.map((menuItem) => (
-            <p
+            <Link
               sx={{
                 fontSize: 'paragraph2',
                 fontWeight: 'medium',
+                color: props.color,
+                textDecoration: 'none',
               }}
               key={menuItem.id}
+              to={menuItem.path}
             >
               {menuItem.label}
-            </p>
+            </Link>
           ))
         }
       </div>

@@ -6,27 +6,7 @@ import Masonry from 'react-masonry-css'
 /**
  * @param {Object} props
  */
-const Reviews = (props) => {
-  const count = [
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+',
-    },
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
-    },
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants. Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
-    },
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
-    },
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
-    },
-    {
-      text: 'The Annual Hacklab Hackathon is hosted in Ghana annually and brings together 1000+ participants',
-    },
-  ]
+const Reviews = ({ heading, items, ...props }) => {
   return (
     <div
       {...props}
@@ -43,9 +23,8 @@ const Reviews = (props) => {
             textAlign: 'center',
             mb: '1.5rem',
           }}
-        >
-          Review from Participants
-        </h3>
+          dangerouslySetInnerHTML={{ __html: heading }}
+        />
         {/* <div
           sx={{
             display: 'flex',
@@ -59,7 +38,7 @@ const Reviews = (props) => {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {count.map((item, index) => (
+          {items.map((item, index) => (
             <Review key={index} {...{ item }} />
           ))}
         </Masonry>
@@ -97,7 +76,7 @@ const Review = ({ item }) => {
       >
         <span
           sx={{
-            borderRadius: '50%',
+            borderRadius: 'rounded',
             width: '2.5rem',
             height: '2.5rem',
             bg: 'primary.main',
@@ -115,26 +94,23 @@ const Review = ({ item }) => {
               fontWeight: 'bold',
               pb: '.25rem',
             }}
-          >
-            Mechenzy
-          </p>
+            dangerouslySetInnerHTML={{ __html: item.name }}
+          />
           <p
             sx={{
               fontSize: 'paragraph2',
               color: 'neutral.textDisabled',
             }}
-          >
-            Writer
-          </p>
+            dangerouslySetInnerHTML={{ __html: item.role }}
+          />
         </div>
       </div>
       <p
         sx={{
           fontSize: 'paragraph2',
         }}
-      >
-        {item.text}
-      </p>
+        dangerouslySetInnerHTML={{ __html: item.content }}
+      />
     </div>
   )
 }

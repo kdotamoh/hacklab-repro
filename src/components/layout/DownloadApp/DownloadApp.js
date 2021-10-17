@@ -1,11 +1,16 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 
-import DownloadBadge from '../svg/DownloadBadge'
-//@ts-ignore
-import phone from '../../images/iphone.png'
+import DownloadBadge from '../../svg/DownloadBadge'
 
-const DownloadApp = () => {
+const DownloadApp = ({
+  heading,
+  subtitle,
+  image,
+  appStoreLink,
+  playStoreLink,
+  ...props
+}) => {
   return (
     <div
       sx={{
@@ -28,7 +33,7 @@ const DownloadApp = () => {
             height: '130%',
             width: 'auto',
           }}
-          src={phone}
+          src={image.sourceUrl}
           alt=""
         />
       </div>
@@ -40,24 +45,26 @@ const DownloadApp = () => {
           bg: 'neutral.backgroundPressed',
         }}
       >
-        <h2>Hacklab Connect Mobile App</h2>
+        <h2 dangerouslySetInnerHTML={{ __html: heading }} />
         <p
           sx={{
             fontSize: 'paragraph2',
             py: '1.5rem',
           }}
-        >
-          Stay up to date with all Hacklab activities and events. Connect with
-          members of the community, access forums and opportunities.
-        </p>
+          dangerouslySetInnerHTML={{ __html: subtitle }}
+        />
         <div
           sx={{
             display: 'flex',
             gap: '.5rem',
           }}
         >
-          <DownloadBadge appStore="google" width="10rem" />
-          <DownloadBadge appStore="apple" width="10rem" />
+          <a href={playStoreLink} target="_blank" rel="noreferrer">
+            <DownloadBadge appStore="google" width="10rem" />
+          </a>
+          <a href={appStoreLink} target="_blank" rel="noreferrer">
+            <DownloadBadge appStore="apple" width="10rem" />
+          </a>
         </div>
       </div>
     </div>

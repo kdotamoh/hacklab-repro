@@ -161,6 +161,10 @@ const DownloadBadge = ({ appStore, ...props }) => {
   if (appStore === 'apple')
     return (
       <svg
+        sx={{
+          ...props.sx,
+        }}
+        {...props}
         width="163"
         height="48"
         viewBox="0 0 163 48"

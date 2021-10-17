@@ -4,34 +4,9 @@ import * as React from 'react'
 
 /**
  * @param {Object} props
+ * @param {Object} props.heading
  */
-const Impact = (props) => {
-  const items = [
-    {
-      icon: 'hackathon',
-      text: '10,000 People <br/> Impacted',
-    },
-    {
-      icon: 'impact',
-      text: '10,000 People <br/> Impacted',
-    },
-    {
-      icon: 'internships',
-      text: '10,000 People <br/> Impacted',
-    },
-    {
-      icon: 'jobs',
-      text: '10,000 People <br/> Impacted',
-    },
-    {
-      icon: 'projects',
-      text: '10,000 People <br/> Impacted',
-    },
-    {
-      icon: 'startups',
-      text: '10,000 People <br/> Impacted',
-    },
-  ]
+const Impact = ({ heading, items, ...props }) => {
   return (
     <div
       {...props}
@@ -46,7 +21,7 @@ const Impact = (props) => {
           mb: '2.75rem',
         }}
       >
-        Impact
+        {heading}
       </h2>
       <Container>
         <div
@@ -87,7 +62,7 @@ const ImpactItem = (props) => {
           maxWidth: '3rem',
           maxHeight: '3rem',
         }}
-        src={`/static/${props.icon}.png`}
+        src={`${props.icon.sourceUrl}`}
         alt=""
       />
       <p

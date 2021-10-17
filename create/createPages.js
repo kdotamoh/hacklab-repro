@@ -1,4 +1,26 @@
 const pageTemplate = require.resolve('../src/templates/page')
+const {
+  impactLayout,
+} = require('../src/components/layout/Impact/Impact.data.js')
+const {
+  partnersLayout,
+} = require('../src/components/layout/Partners/Partners.data.js')
+const {
+  headerLayout,
+} = require('../src/components/layout/Header/Header.data.js')
+const {
+  initiativesLayout,
+} = require('../src/components/layout/Initiatives/Initiatives.data.js')
+const {
+  reviewsLayout,
+} = require('../src/components/layout/Reviews/Reviews.data.js')
+const {
+  downloadLayout,
+} = require('../src/components/layout/DownloadApp/DownloadApp.data.js')
+const { teamLayout } = require('../src/components/layout/Team/Team.data.js')
+const {
+  textBlockLayout,
+} = require('../src/components/layout/TextBlock/TextBlock.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -7,6 +29,18 @@ const GET_PAGES = `
         title
         uri
         isFrontPage
+        pageBuilder {
+          layouts {
+            ${headerLayout}
+            ${impactLayout}
+            ${partnersLayout}
+            ${initiativesLayout}
+            ${reviewsLayout}
+            ${downloadLayout}
+            ${teamLayout}
+            ${textBlockLayout}
+          }
+        }
       }
     }
   }

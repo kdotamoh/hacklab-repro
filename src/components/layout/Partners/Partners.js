@@ -5,54 +5,7 @@ import { Container } from '@theme-ui/components'
 /**
  * @param {Object} props
  */
-const Partners = (props) => {
-  const items = [
-    {
-      icon: 'adc',
-    },
-    {
-      icon: 'certified',
-    },
-    {
-      icon: 'design_thinking',
-    },
-    {
-      icon: 'dreamoval',
-    },
-    {
-      icon: 'giz',
-    },
-    {
-      icon: 'global_shapers',
-    },
-    {
-      icon: 'hapaspace',
-    },
-    {
-      icon: 'honode',
-    },
-    {
-      icon: 'ibm',
-    },
-    {
-      icon: 'ninety3',
-    },
-    {
-      icon: 'oracle',
-    },
-    {
-      icon: 'reset',
-    },
-    {
-      icon: 'stanbic',
-    },
-    {
-      icon: 'tech_lab',
-    },
-    {
-      icon: 'vodafone',
-    },
-  ]
+const Partners = ({ heading, subtitle, partnerLogos, ...props }) => {
   return (
     <div
       {...props}
@@ -67,9 +20,9 @@ const Partners = (props) => {
           pb: '1.25rem',
         }}
       >
-        Our Partners
+        {heading}
       </h2>
-      <p>Our Proud sponsors and partners for Hacklab's Initiatives</p>
+      <p>{subtitle}</p>
       <Container>
         <div
           sx={{
@@ -82,8 +35,8 @@ const Partners = (props) => {
             justifyContent: 'center',
           }}
         >
-          {items.map((item, index) => (
-            <Item key={index} {...item} />
+          {partnerLogos?.map((item, index) => (
+            <Logo key={index} {...{ item }} />
           ))}
         </div>
       </Container>
@@ -91,12 +44,12 @@ const Partners = (props) => {
   )
 }
 
-const Item = (props) => {
+const Logo = ({ item }) => {
   return (
     <div
       sx={{
         display: 'flex',
-        flexBasis: '25%',
+        flexBasis: '20%',
         justifyContent: 'center',
       }}
     >
@@ -105,7 +58,7 @@ const Item = (props) => {
           width: '10rem',
           height: 'auto',
         }}
-        src={`/static/${props.icon}.png`}
+        src={`${item.logo.sourceUrl}`}
         alt=""
       />
     </div>
