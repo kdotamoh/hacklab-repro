@@ -135,6 +135,7 @@ const theme = {
     sm: 4,
     md: 8,
     xl: 32,
+    rounded: '50%',
   },
   space: {
     gapDefault: '1.5rem',
@@ -154,6 +155,16 @@ const theme = {
       fontWeight: 'medium',
       padding: '.625rem 1.125rem',
       bg: 'primary.main',
+      cursor: 'pointer',
+    },
+    white: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+      // @ts-ignore
+      borderColor: (t) => `solid 1px ${t.colors.neutral.border}`,
+      padding: '.625rem 1.125rem',
+      color: 'neutral.white',
+      bg: 'primary.main',
     },
     large: {
       borderRadius: 'md',
@@ -168,7 +179,7 @@ const theme = {
       py: '.25rem',
     },
     circle: {
-      borderRadius: '50%',
+      borderRadius: 'rounded',
       color: 'neutral.black',
       bg: 'neutral.white',
       width: '3.5rem',
