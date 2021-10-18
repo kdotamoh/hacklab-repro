@@ -37,7 +37,7 @@ const Header = ({
         display: 'grid',
         gridTemplateAreas: `'navigation'
                             'body'`,
-        gridTemplateRows: '5rem 1fr',
+        gridTemplateRows: 'max-content 1fr',
         position: 'relative',
       }}
     >

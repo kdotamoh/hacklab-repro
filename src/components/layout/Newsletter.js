@@ -16,13 +16,13 @@ const Newsletter = (props) => {
         pt: '6rem',
       }}
     >
-      <h2
+      <h3
         sx={{
           pb: '1.25rem',
         }}
       >
         Sign up for our newsletter
-      </h2>
+      </h3>
       <p>Be the first to know about releases and industry news and insights.</p>
       <div
         sx={{

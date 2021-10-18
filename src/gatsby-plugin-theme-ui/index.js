@@ -215,6 +215,9 @@ const theme = {
       p: {
         fontSize: [constants.paragraph1, constants.paragraph1, constants.h4],
       },
+      h1: {
+        fontSize: constants.h1,
+      },
       h2: {
         fontSize: [constants.h2, constants.h2, constants.h1],
       },
