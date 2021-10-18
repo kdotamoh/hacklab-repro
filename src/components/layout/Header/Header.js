@@ -31,9 +31,9 @@ const Header = ({
         mb: '5rem',
         ...(backgroundImage && {
           backgroundImage: `url(${backgroundImage.sourceUrl})`,
+          backgroundSize: 'cover',
         }),
         backgroundColor: backgroundColor ? backgroundColor : 'neutral.white',
-        backgroundSize: 'cover',
         display: 'grid',
         gridTemplateAreas: `'navigation'
                             'body'`,
@@ -69,21 +69,22 @@ const Header = ({
             dangerouslySetInnerHTML={{ __html: heading }}
           />
           {subtitle && <p dangerouslySetInnerHTML={{ __html: subtitle }} />}
-          <div
-            sx={{
-              display: 'flex',
-              gap: '.75rem',
-            }}
-          >
-            {buttons &&
-              buttons.map((button, index) => (
+          {buttons && (
+            <div
+              sx={{
+                display: 'flex',
+                gap: '.75rem',
+              }}
+            >
+              {buttons.map((button, index) => (
                 <Link key={index} to={button.linkUrl}>
                   <Button variant={button.buttonVariant}>
                     {button.buttonText}
                   </Button>
                 </Link>
               ))}
-          </div>
+            </div>
+          )}
         </div>
       </Container>
     </div>

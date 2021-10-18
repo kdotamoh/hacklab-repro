@@ -1,10 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Button, Container } from 'theme-ui'
-
-import Logo from '../../svg/Logo'
-import Arrow from '../../svg/Arrow'
-import { Link } from 'gatsby'
+import { Container } from 'theme-ui'
 
 /**
  * @param {Object} props
@@ -65,7 +61,7 @@ const Item = ({ item }) => {
         alignItems: 'center',
       }}
     >
-      <div
+      <img
         sx={{
           borderRadius: 'rounded',
           height: '12.5rem',
@@ -73,7 +69,9 @@ const Item = ({ item }) => {
           bg: 'primary.main',
           mb: '2rem',
         }}
-      ></div>
+        src={item.avatar?.sourceUrl}
+        alt=""
+      />
       <div>
         <p
           sx={{

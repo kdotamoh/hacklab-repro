@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
 import Logo from '../svg/Logo'
 
@@ -116,15 +116,17 @@ const Footer = (props) => {
                 }}
               >
                 {children.map((childItem) => (
-                  <p
+                  <Link
+                    to={childItem.path}
                     sx={{
                       fontSize: 'paragraph2',
                       color: 'neutral.textDisabled',
+                      textDecoration: 'none',
                     }}
                     key={children.id}
                   >
                     {childItem.label}
-                  </p>
+                  </Link>
                 ))}
               </div>
             )}
@@ -165,14 +167,17 @@ const Footer = (props) => {
           {
             // @ts-ignore
             legalMenu.menuItems.nodes.map((menuItem) => (
-              <p
+              <Link
+                to={menuItem.path}
                 sx={{
                   fontSize: 'paragraph2',
+                  textDecoration: 'none',
+                  color: 'neutral.black',
                 }}
                 key={menuItem.id}
               >
                 {menuItem.label}
-              </p>
+              </Link>
             ))
           }
         </div>

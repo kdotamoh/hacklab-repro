@@ -14,6 +14,7 @@ const TextBlock = ({ content, ...props }) => {
         },
         p: {
           py: '1rem',
+          lineHeight: 'h3',
         },
         h2: {
           pb: '2rem',
