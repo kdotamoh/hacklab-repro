@@ -21,6 +21,9 @@ const { teamLayout } = require('../src/components/layout/Team/Team.data.js')
 const {
   textBlockLayout,
 } = require('../src/components/layout/TextBlock/TextBlock.data.js')
+const {
+  contentBlockLayout,
+} = require('../src/components/layout/ContentBlock/ContentBlock.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -39,6 +42,7 @@ const GET_PAGES = `
             ${downloadLayout}
             ${teamLayout}
             ${textBlockLayout}
+            ${contentBlockLayout}
           }
         }
       }

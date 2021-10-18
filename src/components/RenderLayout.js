@@ -9,6 +9,7 @@ import Reviews from './layout/Reviews'
 import DownloadApp from './layout/DownloadApp'
 import Team from './layout/Team'
 import TextBlock from './layout/TextBlock'
+import ContentBlock from './layout/ContentBlock'
 
 /**
  *
@@ -33,6 +34,7 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_DownloadApp: DownloadApp,
     Page_Pagebuilder_Layouts_Team: Team,
     Page_Pagebuilder_Layouts_Textblock: TextBlock,
+    Page_Pagebuilder_Layouts_Contentblock: ContentBlock,
     Page_default: Default,
   }
 
