@@ -8008,6 +8008,13 @@ fuse.js@^3.6.1:
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.6.1.tgz#7de85fdd6e1b3377c23ce010892656385fd9b10c"
   integrity sha512-hT9yh/tiinkmirKrlv4KWOjztdoZo1mx9Qh4KvWqC7isoXwdUY3PNWUxceF4/qO9R6riA2C29jdTOeQOIROjgw==
 
+gatsby-awesome-pagination@^0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/gatsby-awesome-pagination/-/gatsby-awesome-pagination-0.3.8.tgz#e50f048ed9b25aecf5e2cd7269cdbd77f168301f"
+  integrity sha512-Bnf2rncqjyhQeye8w+OVK8wmgu/Y77HI8Po05oEqbCSd+fMd0uGDv6ZhKH7UU/xcTv2cbJm7ie+Px9t41ngAxg==
+  dependencies:
+    lodash "^4.17.21"
+
 gatsby-cli@^3.14.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/gatsby-cli/-/gatsby-cli-3.14.1.tgz#508515760d708b36cd8491f30f062cc451dd2252"
