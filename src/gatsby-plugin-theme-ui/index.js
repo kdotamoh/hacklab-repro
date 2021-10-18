@@ -140,6 +140,7 @@ const theme = {
   space: {
     gapDefault: '1.5rem',
     'gap-2x': '2rem',
+    flexGap: '2.17%',
   },
   sizes: {
     container: '82%',

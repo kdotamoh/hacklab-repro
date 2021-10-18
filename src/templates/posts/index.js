@@ -20,7 +20,6 @@ const AllPosts = ({
   },
 }) => {
   const width = '31.881'
-  const gap = '2.17'
 
   return (
     <Layout header={<Navigation color="neutral.black" />}>
@@ -28,7 +27,7 @@ const AllPosts = ({
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
-          gap: `${gap}%`,
+          gap: 'flexGap',
           pt: '5rem',
         }}
       >
@@ -64,8 +63,7 @@ const AllPosts = ({
                 ...(index === 0
                   ? {
                       borderBottomLeftRadius: 'sm',
-                      borderTopRightRadius: 'none',
-                      width: `calc((2 * ${width}%) + ${gap}%)`,
+                      width: `calc((2 * ${width}%) + 2.17%)`,
                       height: '100%',
                     }
                   : {
@@ -124,14 +122,16 @@ const AllPosts = ({
                   }}
                   dangerouslySetInnerHTML={{ __html: post.node.title }}
                 />
-                <p
-                  sx={{
-                    fontSize: '1rem',
-                    color: 'neutral.textPlaceholder',
-                  }}
-                >
-                  text
-                </p>
+                {index === 0 && (
+                  <p
+                    sx={{
+                      fontSize: '1rem',
+                      color: 'neutral.textPlaceholder',
+                    }}
+                  >
+                    text
+                  </p>
+                )}
               </div>
               {index === 0 && (
                 <div
