@@ -25,14 +25,6 @@ const Reviews = ({ heading, items, ...props }) => {
           }}
           dangerouslySetInnerHTML={{ __html: heading }}
         />
-        {/* <div
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: 'gapDefault',
-          }}
-        > */}
         <Masonry
           breakpointCols={3}
           className="my-masonry-grid"
@@ -42,7 +34,6 @@ const Reviews = ({ heading, items, ...props }) => {
             <Review key={index} {...{ item }} />
           ))}
         </Masonry>
-        {/* </div> */}
       </Container>
     </div>
   )

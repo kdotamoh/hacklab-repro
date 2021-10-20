@@ -11,10 +11,11 @@ import RenderLayout from '../../components/RenderLayout'
  * @param {string} props.pageContext.page.content
  * @param {string} props.pageContext.page.title
  * @param {Object} props.pageContext.page.pageBuilder
+ * @param {Object[]} props.pageContext.page.pageBuilder.layouts
  */
 const Page = ({ pageContext }) => {
   const {
-    page: { title, pageBuilder },
+    page: { pageBuilder },
   } = pageContext
 
   const layouts = pageBuilder.layouts || []

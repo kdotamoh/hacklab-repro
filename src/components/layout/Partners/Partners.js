@@ -5,7 +5,7 @@ import { Container } from '@theme-ui/components'
 /**
  * @param {Object} props
  */
-const Partners = ({ heading, subtitle, partnerLogos, ...props }) => {
+const Partners = ({ text, partnerLogos, ...props }) => {
   return (
     <div
       {...props}
@@ -15,15 +15,16 @@ const Partners = ({ heading, subtitle, partnerLogos, ...props }) => {
         mb: '10rem',
       }}
     >
-      <h2
-        sx={{
-          pb: '1.25rem',
-        }}
-      >
-        {heading}
-      </h2>
-      <p>{subtitle}</p>
       <Container>
+        <div
+          sx={{
+            p: {
+              pt: '1.5rem',
+              lineHeight: 'h3',
+            },
+          }}
+          dangerouslySetInnerHTML={{ __html: text }}
+        />
         <div
           sx={{
             display: 'flex',

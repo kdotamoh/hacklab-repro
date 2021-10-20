@@ -10,18 +10,19 @@ import { Link } from 'gatsby'
  * @param {Object} props
  */
 const Header = ({
-  heading,
-  subtitle,
   textColor,
   textAlignment,
   backgroundColor,
   backgroundImage,
   buttons,
+  headerText,
+  headerImage: { position, image },
   pageContext: {
     page: { isFrontPage },
   },
   ...props
 }) => {
+  console.log(buttons)
   return (
     <div
       {...props}
@@ -53,39 +54,90 @@ const Header = ({
           ...(isFrontPage && { transform: 'translateY(-5rem)' }),
           alignSelf: 'center',
           gridArea: 'body',
+          alignItems: 'center',
           py: '5rem',
+          display: 'grid',
+          gap: '4rem 7rem',
+          gridTemplateAreas:
+            position === 'bottom'
+              ? `"content"
+                  "image"`
+              : position === 'right'
+              ? `"content image"`
+              : ``,
         }}
       >
         <div
           sx={{
             textAlign: textAlignment,
+            gridArea: 'content',
           }}
         >
-          <h1
+          <div
             sx={{
-              pb: '1.25rem',
-              fontSize: 'display2',
+              h1: {
+                fontSize: isFrontPage ? 'display2' : 'h1',
+              },
+              p: {
+                pt: '1.5rem',
+                lineHeight: 'h3',
+              },
             }}
-            dangerouslySetInnerHTML={{ __html: heading }}
+            dangerouslySetInnerHTML={{ __html: headerText }}
           />
-          {subtitle && <p dangerouslySetInnerHTML={{ __html: subtitle }} />}
           {buttons && (
             <div
               sx={{
                 display: 'flex',
                 gap: '.75rem',
+                justifyContent: textAlignment,
+                mt: '2rem',
               }}
             >
               {buttons.map((button, index) => (
-                <Link key={index} to={button.linkUrl}>
-                  <Button variant={button.buttonVariant}>
-                    {button.buttonText}
+                <Link
+                  sx={{
+                    textDecoration: 'none',
+                  }}
+                  key={index}
+                  to={button.linkUrl}
+                >
+                  <Button
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      height: '100%',
+                    }}
+                    variant={button.buttonVariant}
+                  >
+                    {button.buttonIcon && (
+                      <img
+                        sx={{
+                          height: '1.25rem',
+                          width: '1.25rem',
+                          mr: '.5rem',
+                        }}
+                        src={button.buttonIcon.sourceUrl}
+                        alt=""
+                      />
+                    )}
+                    <span>{button.buttonText}</span>
                   </Button>
                 </Link>
               ))}
             </div>
           )}
         </div>
+        {image && (
+          <img
+            sx={{
+              width: '100%',
+              gridArea: 'image',
+            }}
+            src={image?.sourceUrl}
+            alt=""
+          />
+        )}
       </Container>
     </div>
   )

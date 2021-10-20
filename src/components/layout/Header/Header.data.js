@@ -1,11 +1,16 @@
 const headerLayout = `
     ... on WpPage_Pagebuilder_Layouts_Header {
       fieldGroupName
-      heading
-      subtitle
+      headerText
       textColor
       textAlignment
       backgroundColor
+      headerImage {
+				image {
+					sourceUrl
+        }
+        position
+      } 
       backgroundImage {
         sourceUrl
       }
@@ -13,6 +18,9 @@ const headerLayout = `
         buttonText
         buttonVariant
         linkUrl
+        buttonIcon {
+	        sourceUrl
+        }
       }
     }
   `

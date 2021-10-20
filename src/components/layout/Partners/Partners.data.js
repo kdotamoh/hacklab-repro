@@ -1,8 +1,7 @@
 const partnersLayout = `
     ... on WpPage_Pagebuilder_Layouts_Partners {
       fieldGroupName
-      heading
-      subtitle
+      text
       partnerLogos {
         logo {
           sourceUrl
