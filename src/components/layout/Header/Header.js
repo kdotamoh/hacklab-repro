@@ -56,15 +56,17 @@ const Header = ({
           gridArea: 'body',
           alignItems: 'center',
           py: '5rem',
-          display: 'grid',
-          gap: '4rem 7rem',
-          gridTemplateAreas:
-            position === 'bottom'
-              ? `"content"
-                  "image"`
-              : position === 'right'
-              ? `"content image"`
-              : ``,
+          ...(image && {
+            display: 'grid',
+            gap: '4rem 7rem',
+            gridTemplateAreas:
+              position === 'bottom'
+                ? `"content"
+                    "image"`
+                : position === 'right'
+                ? `"content image"`
+                : ``,
+          }),
         }}
       >
         <div

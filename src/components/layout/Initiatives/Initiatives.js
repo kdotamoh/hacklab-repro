@@ -77,13 +77,16 @@ const Item = ({ item }) => {
         bg: item.color,
         padding: '1.5rem',
         borderRadius: 'sm',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
       }}
     >
       <Logo
         width="52%"
         fill="white"
         sx={{
-          pb: '3.75rem',
+          mb: '2rem',
         }}
       />
 
