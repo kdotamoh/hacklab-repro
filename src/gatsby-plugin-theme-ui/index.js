@@ -63,7 +63,7 @@ const hacklabColors = {
     backgroundHover: '#F9FAFB', // 50
     backgroundPressed: '#F3F4F6', // 100
     border: '#E5E7EB', // 200
-    icondDisabled: '#D1D5DB', // 300
+    iconDisabled: '#D1D5DB', // 300
     textDisabled: '#9CA3AF', // 400
     textPlaceholder: '#6B7280', // 500
     textCaption: '#4B5563', // 600
@@ -162,13 +162,33 @@ const theme = {
       borderRadius: 'sm',
       fontWeight: 'medium',
       // @ts-ignore
-      borderColor: (t) => `solid 1px ${t.colors.neutral.border}`,
+      border: (t) => `solid 1px ${t.colors.neutral.border}`,
       padding: '.625rem 1.125rem',
-      color: 'neutral.white',
-      bg: 'primary.main',
+      color: 'neutral.black',
+      bg: 'neutral.white',
+      cursor: 'pointer',
+    },
+    transparent: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+      // @ts-ignore
+      border: (t) => `solid 1px ${t.colors.neutral.border}`,
+      padding: '.625rem 1.125rem',
+      color: 'neutral.black',
+      bg: 'transparent',
+      cursor: 'pointer',
     },
     large: {
       borderRadius: 'md',
+      cursor: 'pointer',
+    },
+    inverse: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+      padding: '.625rem 1.125rem',
+      bg: 'neutral.white',
+      color: 'primary.main',
+      cursor: 'pointer',
     },
     rounded: {
       color: 'neutral.black',
@@ -178,6 +198,7 @@ const theme = {
       fontWeight: 'medium',
       px: '1rem',
       py: '.25rem',
+      cursor: 'pointer',
     },
     circle: {
       borderRadius: 'rounded',
@@ -190,6 +211,7 @@ const theme = {
       justifyContent: 'center',
       // @ts-ignore
       border: (t) => `solid 1px ${t.colors.neutral.border}`,
+      cursor: 'pointer',
     },
   },
 
