@@ -12,7 +12,7 @@ const Reviews = ({ heading, items, ...props }) => {
       {...props}
       sx={{
         color: 'neutral.white',
-        bg: 'primary.hover',
+        bg: 'purple.hover',
         pt: '4rem',
         pb: '11.5rem',
       }}
@@ -70,7 +70,7 @@ const Review = ({ item }) => {
             borderRadius: 'rounded',
             width: '2.5rem',
             height: '2.5rem',
-            bg: 'primary.main',
+            bg: 'primary',
           }}
         ></span>
         <div

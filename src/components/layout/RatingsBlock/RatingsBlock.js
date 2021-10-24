@@ -93,7 +93,7 @@ const Rating = ({ rating }) => {
               borderRadius: 'rounded',
               width: '3.5rem',
               height: '3.5rem',
-              bg: 'primary.main',
+              bg: 'primary',
             }}
           ></img>
           <div

@@ -22,7 +22,7 @@ const constants = {
 }
 
 const hacklabColors = {
-  primary: {
+  purple: {
     [constants.focused]: '#610B70', // 25
     [constants.surface]: '#FCEFFF', // 50
     [constants.border]: '#AD3AC2', // 200
@@ -125,6 +125,7 @@ const theme = {
 
     // required by theme-ui spec
     text: hacklabColors.neutral.textActive,
+    primary: hacklabColors.purple.main,
     background: hacklabColors.neutral.white,
     secondary: '',
     accent: '',
@@ -155,7 +156,7 @@ const theme = {
       borderRadius: 'sm',
       fontWeight: 'medium',
       padding: '.625rem 1.125rem',
-      bg: 'primary.main',
+      bg: 'primary',
       cursor: 'pointer',
     },
     white: {
@@ -173,7 +174,7 @@ const theme = {
       fontWeight: 'medium',
       // @ts-ignore
       padding: '.625rem 1.125rem',
-      color: 'primary.main',
+      color: 'primary',
       bg: 'neutral.white',
       cursor: 'pointer',
     },
@@ -196,7 +197,7 @@ const theme = {
       fontWeight: 'medium',
       padding: '.625rem 1.125rem',
       bg: 'neutral.white',
-      color: 'primary.main',
+      color: 'primary',
       cursor: 'pointer',
     },
     rounded: {
@@ -234,6 +235,10 @@ const theme = {
   },
 
   styles: {
+    hr: {
+      // @ts-ignore
+      border: (t) => `solid 1px ${t.colors.neutral.border}`,
+    },
     // Global styles
     root: {
       '*': {

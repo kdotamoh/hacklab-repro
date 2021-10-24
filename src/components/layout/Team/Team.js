@@ -69,7 +69,6 @@ const Item = ({ item }) => {
           borderRadius: 'rounded',
           height: '12.5rem',
           width: '12.5rem',
-          bg: 'primary.main',
           mb: '2rem',
         }}
         src={item.avatar?.sourceUrl}

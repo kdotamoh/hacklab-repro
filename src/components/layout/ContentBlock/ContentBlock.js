@@ -48,7 +48,7 @@ const ContentBlock = ({ content, image, textPosition, buttons, ...props }) => {
                   <Link
                     sx={{
                       fontWeight: 'bold',
-                      color: 'primary.main',
+                      color: 'primary',
                       textDecoration: 'none',
                     }}
                     to="/"

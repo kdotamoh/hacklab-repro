@@ -48,7 +48,7 @@ const Post = ({ data }) => {
             sx={{
               width: '2rem',
               height: '2rem',
-              bg: 'primary.main',
+              bg: 'primary',
               borderRadius: 'rounded',
             }}
           />

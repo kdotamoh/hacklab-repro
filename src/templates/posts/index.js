@@ -100,7 +100,7 @@ const AllPosts = ({
                         color: 'neutral.textDisabled',
                       }
                     : {
-                        color: 'primary.main',
+                        color: 'primary',
                       }),
                 }}
               >
@@ -145,7 +145,7 @@ const AllPosts = ({
                       borderRadius: 'rounded',
                       width: '2.5rem',
                       height: '2.5rem',
-                      bg: 'primary.main',
+                      bg: 'primary',
                     }}
                   ></span>
                   <div
