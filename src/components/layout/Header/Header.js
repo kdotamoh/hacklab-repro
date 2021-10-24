@@ -22,7 +22,6 @@ const Header = ({
   },
   ...props
 }) => {
-  console.log(buttons)
   return (
     <div
       {...props}

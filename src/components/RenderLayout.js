@@ -10,6 +10,9 @@ import DownloadApp from './layout/DownloadApp'
 import Team from './layout/Team'
 import TextBlock from './layout/TextBlock'
 import ContentBlock from './layout/ContentBlock'
+import RatingsBlock from './layout/RatingsBlock'
+import CTABlock from './layout/CTABlock'
+import PricingPlans from './layout/PricingPlans'
 
 /**
  *
@@ -35,6 +38,9 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_Team: Team,
     Page_Pagebuilder_Layouts_Textblock: TextBlock,
     Page_Pagebuilder_Layouts_Contentblock: ContentBlock,
+    Page_Pagebuilder_Layouts_Ratingsblock: RatingsBlock,
+    Page_Pagebuilder_Layouts_Ctablock: CTABlock,
+    Page_Pagebuilder_Layouts_PricingPlans: PricingPlans,
     Page_default: Default,
   }
 

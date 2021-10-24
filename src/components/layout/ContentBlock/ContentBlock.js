@@ -20,6 +20,7 @@ const ContentBlock = ({ content, image, textPosition, buttons, ...props }) => {
       <div
         sx={{
           gridArea: 'content',
+          py: '2rem',
         }}
       >
         <div

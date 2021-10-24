@@ -24,6 +24,15 @@ const {
 const {
   contentBlockLayout,
 } = require('../src/components/layout/ContentBlock/ContentBlock.data.js')
+const {
+  ratingsLayout,
+} = require('../src/components/layout/RatingsBlock/RatingsBlock.data.js')
+const {
+  ctaLayout,
+} = require('../src/components/layout/CTABlock/CTABlock.data.js')
+const {
+  pricingLayout,
+} = require('../src/components/layout/PricingPlans/PricingPlans.data')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -43,6 +52,9 @@ const GET_PAGES = `
             ${teamLayout}
             ${textBlockLayout}
             ${contentBlockLayout}
+            ${ratingsLayout}
+            ${ctaLayout}
+            ${pricingLayout}
           }
         }
       }
