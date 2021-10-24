@@ -168,6 +168,15 @@ const theme = {
       bg: 'neutral.white',
       cursor: 'pointer',
     },
+    whitePrimary: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+      // @ts-ignore
+      padding: '.625rem 1.125rem',
+      color: 'primary.main',
+      bg: 'neutral.white',
+      cursor: 'pointer',
+    },
     transparent: {
       borderRadius: 'sm',
       fontWeight: 'medium',
