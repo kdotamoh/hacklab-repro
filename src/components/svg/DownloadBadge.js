@@ -18,6 +18,7 @@ const DownloadBadge = ({ appStore, ...props }) => {
       <svg
         sx={{
           ...props.sx,
+          cursor: 'pointer',
         }}
         {...props}
         viewBox="0 0 164 48"

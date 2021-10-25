@@ -150,7 +150,6 @@ module.exports = async ({ actions, graphql, reporter }) => {
       createPage,
       items: wpPosts,
       itemsPerPage: 10,
-      // TODO: fix 'non-determinitistic routing' error
       pathPrefix: '/blog',
       component: postsIndexTemplate,
     })

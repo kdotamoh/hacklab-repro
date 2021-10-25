@@ -237,7 +237,8 @@ const theme = {
   styles: {
     hr: {
       // @ts-ignore
-      border: (t) => `solid 1px ${t.colors.neutral.border}`,
+      borderTop: (t) => `solid 1px ${t.colors.neutral.border}`,
+      borderBottom: `none`,
     },
     // Global styles
     root: {
