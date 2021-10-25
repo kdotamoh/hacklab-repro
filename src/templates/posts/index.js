@@ -5,6 +5,8 @@ import { Container } from 'theme-ui'
 
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
+import Post from './post'
+import Arrow from '../../components/svg/Arrow'
 
 /**
  * @param {Object} props
@@ -18,8 +20,9 @@ const AllPosts = ({
   data: {
     posts: { edges },
   },
+  pageContext: { previousPagePath, nextPagePath, ...pageContext },
 }) => {
-  const width = '31.881'
+  console.log(pageContext)
 
   return (
     <Layout header={<Navigation color="neutral.black" />}>
@@ -32,164 +35,69 @@ const AllPosts = ({
         }}
       >
         {edges.map((post, index) => (
-          <Link
-            to={`/blog${post.node.uri}`}
-            sx={{
-              borderRadius: 'sm',
-              textDecoration: 'none',
-              color: 'neutral.black',
-              display: 'flex',
-              ...(index === 0
-                ? {
-                    minHeight: '27rem',
-                    flexDirection: 'row',
-                    flexBasis: '100%',
-                    mb: '5rem',
-                    bg: 'neutral.backgroundPressed',
-                  }
-                : {
-                    flexDirection: 'column',
-                    flexBasis: `${width}%`,
-                    mb: '2.5rem',
-                    bg: 'neutral.backgroundHover',
-                  }),
-            }}
-            key={index}
-          >
-            <img
+          <Post key={index} post={post} index={index} />
+        ))}
+      </Container>
+      {(previousPagePath || nextPagePath) && (
+        <Container
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            // @ts-ignore
+            borderTop: (t) => `solid 1px ${t.colors.neutral.border}`,
+            paddingTop: '2rem',
+          }}
+        >
+          {previousPagePath ? (
+            <Link
               sx={{
-                objectFit: 'cover',
-                borderTopLeftRadius: 'sm',
-                ...(index === 0
-                  ? {
-                      borderBottomLeftRadius: 'sm',
-                      width: `calc((2 * ${width}%) + 2.17%)`,
-                      height: '100%',
-                    }
-                  : {
-                      borderTopRightRadius: 'sm',
-                      width: '100%',
-                      height: '12.5rem',
-                    }),
+                fontSize: 'paragraph2',
+                fontWeight: 'medium',
+                color: '#667085',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
               }}
-              src={post.node.featuredImage?.node?.sourceUrl}
-              alt=""
-            />
-            <div
+              to={previousPagePath}
+            >
+              <Arrow width="1rem" orientation="left" />
+              <span
+                sx={{
+                  ml: '.5rem',
+                }}
+              >
+                Previous
+              </span>
+            </Link>
+          ) : null}
+          {nextPagePath ? (
+            <Link
               sx={{
-                flex: '1 1 auto',
-                ...(index === 0
-                  ? {
-                      display: 'flex',
-                      flexDirection: 'column',
-                      padding: '2.5rem',
-                    }
-                  : {
-                      padding: '1rem 1.5rem',
-                    }),
+                fontSize: 'paragraph2',
+                color: '#667085',
+                fontWeight: 'medium',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                ...(!previousPagePath && {
+                  marginLeft: 'auto',
+                }),
               }}
+              to={nextPagePath}
             >
               <span
                 sx={{
-                  textTransform: 'capitalize',
-                  fontWeight: 'bold',
-                  fontSize: 'caption',
-                  letterSpacing: '.025rem',
-                  ...(index === 0
-                    ? {
-                        color: 'neutral.textDisabled',
-                      }
-                    : {
-                        color: 'primary',
-                      }),
+                  mr: '.5rem',
                 }}
               >
-                PODCAST
+                Next
               </span>
-              <div
-                sx={{
-                  ...(index === 0 && {
-                    flex: '1 1 auto',
-                  }),
-                }}
-              >
-                <p
-                  sx={{
-                    py: '1rem',
-                    fontWeight: 'bold',
-                    lineHeight: 'h3',
-                    fontSize: 'h3',
-                  }}
-                  dangerouslySetInnerHTML={{ __html: post.node.title }}
-                />
-                {index === 0 && (
-                  <p
-                    sx={{
-                      fontSize: '1rem',
-                      color: 'neutral.textPlaceholder',
-                    }}
-                  >
-                    text
-                  </p>
-                )}
-              </div>
-              {index === 0 && (
-                <div
-                  sx={{
-                    display: 'flex',
-                    gap: '1rem',
-                  }}
-                >
-                  <span
-                    sx={{
-                      borderRadius: 'rounded',
-                      width: '2.5rem',
-                      height: '2.5rem',
-                      bg: 'primary',
-                    }}
-                  ></span>
-                  <div
-                    sx={{
-                      flex: 'display',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <p
-                      sx={{
-                        fontSize: 'paragraph2',
-                        fontWeight: 'bold',
-                        pb: '.25rem',
-                      }}
-                    >
-                      Mechenzy
-                    </p>
-                    <p
-                      sx={{
-                        fontSize: 'paragraph2',
-                        color: 'neutral.textDisabled',
-                      }}
-                    >
-                      Writer
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-            {index !== 0 && (
-              <span
-                sx={{
-                  px: '1.5rem',
-                  pb: '1.5rem',
-                  fontSize: 'paragraph2',
-                  color: 'neutral.textDisabled',
-                }}
-              >
-                Aug 09 | USA
-              </span>
-            )}
-          </Link>
-        ))}
-      </Container>
+              <Arrow width="1rem" orientation="right" />
+            </Link>
+          ) : null}
+        </Container>
+      )}
     </Layout>
   )
 }
