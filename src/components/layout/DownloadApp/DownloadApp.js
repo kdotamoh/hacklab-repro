@@ -33,7 +33,7 @@ const DownloadApp = ({
             height: '130%',
             width: 'auto',
           }}
-          src={image.sourceUrl}
+          src={image?.sourceUrl}
           alt=""
         />
       </div>

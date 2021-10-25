@@ -2,6 +2,7 @@ const contentBlockLayout = `
   ... on WpPage_Pagebuilder_Layouts_Contentblock {
     textPosition
     content
+    imageFit
     fieldGroupName
     buttons {
       buttonText

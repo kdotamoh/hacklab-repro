@@ -5,6 +5,14 @@ const headerLayout = `
       textColor
       textAlignment
       backgroundColor
+      appStoreLink
+      playStoreLink
+      fullHeight
+      navigation {
+        inHeader
+        textColor
+        themeColor
+      }
       headerImage {
 				image {
 					sourceUrl

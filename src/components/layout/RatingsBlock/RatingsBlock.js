@@ -14,6 +14,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
         gridTemplateAreas: `'rating image'`,
         alignItems: 'center',
         gap: '4rem',
+        py: '6rem',
       }}
     >
       <div
@@ -34,7 +35,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
           objectFit: 'cover',
           height: '100%',
         }}
-        src={image.sourceUrl}
+        src={image?.sourceUrl}
         alt=""
       />
     </Container>

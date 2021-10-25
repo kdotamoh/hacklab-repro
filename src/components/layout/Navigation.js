@@ -8,6 +8,7 @@ import Logo from '../svg/Logo'
 /**
  * @param {Object} props
  * @param {string} [props.color]
+ * @param {string} [props.themeColor]
  * @param {any} [props.sx]
  */
 const Navigation = (props) => {
@@ -71,7 +72,7 @@ const Navigation = (props) => {
         <Link to="/">
           <Logo
             width="7.5rem"
-            fill={props.color}
+            fill={props.themeColor ? props.themeColor : '#610B70'}
             sx={{
               mr: '.5rem',
             }}
@@ -98,6 +99,16 @@ const Navigation = (props) => {
       <Button
         sx={{
           fontSize: 'paragraph2',
+          bg:
+            props.themeColor === '#ffffff'
+              ? 'primary'
+              : props.themeColor === '#FFFFFF'
+              ? 'primary'
+              : props.themeColor === null
+              ? 'primary'
+              : props.themeColor === undefined
+              ? 'primary'
+              : props.themeColor,
         }}
       >
         Connect

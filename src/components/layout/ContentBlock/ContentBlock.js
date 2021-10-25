@@ -3,8 +3,14 @@ import * as React from 'react'
 import { Container, Button } from 'theme-ui'
 import { Link } from 'gatsby'
 
-const ContentBlock = ({ content, image, textPosition, buttons, ...props }) => {
-  console.log('buttons', buttons)
+const ContentBlock = ({
+  content,
+  image,
+  textPosition,
+  buttons,
+  imageFit,
+  ...props
+}) => {
   return (
     <Container
       sx={{
@@ -27,6 +33,9 @@ const ContentBlock = ({ content, image, textPosition, buttons, ...props }) => {
           sx={{
             mb: '2.5rem',
             h2: {
+              pb: '2.5rem',
+            },
+            h3: {
               pb: '2.5rem',
             },
             p: {
@@ -72,7 +81,7 @@ const ContentBlock = ({ content, image, textPosition, buttons, ...props }) => {
           sx={{
             gridArea: 'media',
             width: '100%',
-            objectFit: 'cover',
+            objectFit: imageFit,
             height: '100%',
             minHeight: '32.5rem',
             borderRadius: 'md',

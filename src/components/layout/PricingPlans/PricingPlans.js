@@ -1,36 +1,40 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Container, Button } from 'theme-ui'
+import { Container, Button, Divider } from 'theme-ui'
 
 const PricingPlans = ({ backgroundColor, text, plan }) => {
   console.log(plan)
   return (
-    <div
-      sx={{
-        bg: backgroundColor,
-        pt: '6rem',
-      }}
-    >
-      <Container
+    <>
+      <div
         sx={{
-          color: 'neutral.white',
-          h2: {
-            pb: '1.5rem',
-          },
-          p: {
-            lineHeight: 'h3',
-          },
+          bg: backgroundColor,
+          pt: '6rem',
+          pb: '12rem',
         }}
-        dangerouslySetInnerHTML={{ __html: text }}
-      ></Container>
+      >
+        <Container
+          sx={{
+            color: 'neutral.white',
+            h2: {
+              pb: '1.5rem',
+            },
+            p: {
+              lineHeight: 'h3',
+            },
+            px: '8rem',
+          }}
+          dangerouslySetInnerHTML={{ __html: text }}
+        ></Container>
+      </div>
       <div
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
           gap: 'flexGap',
-          justifyContent: 'center',
           width: '85%',
           margin: '0 auto',
+          marginTop: '-5rem',
         }}
       >
         <>
@@ -45,6 +49,8 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
                 textAlign: 'center',
                 padding: '2rem',
                 borderRadius: 'sm',
+                // @ts-ignore
+                border: (t) => `solid 1px ${t.colors.neutral.border}`,
               }}
             >
               <span
@@ -52,14 +58,30 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
                   borderRadius: 'xl',
                   px: '.5rem',
                   py: '.25rem',
-                  color: 'primary.hover',
+                  color: 'purple.hover',
                   fontWeight: 'medium',
-                  bg: 'primary.surface',
+                  bg: 'purple.surface',
+                  display: 'inline-block',
+                  mb: '1rem',
                 }}
                 dangerouslySetInnerHTML={{ __html: item.label }}
               />
-              <p dangerouslySetInnerHTML={{ __html: item.price }} />
-              <p dangerouslySetInnerHTML={{ __html: item.description }} />
+              <p
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: 'h2',
+                  mb: '.5rem',
+                }}
+                dangerouslySetInnerHTML={{ __html: item.price }}
+              />
+              <p
+                sx={{
+                  mb: '1rem',
+                  color: 'neutral.textPlaceholder',
+                  fontSize: 'paragraph2',
+                }}
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              />
               <Button
                 sx={{
                   width: '100%',
@@ -68,57 +90,11 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
               >
                 {item.button.buttonText}
               </Button>
-              <div>
-                {item.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    sx={{
-                      display: 'flex',
-                      gap: '.75rem',
-                      pb: '1rem',
-                    }}
-                  >
-                    <img src={feature.icon.sourceUrl} alt="" />
-                    <span>{feature.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          {plan.map((item, index) => (
-            <div
-              key={index}
-              sx={{
-                bg: 'neutral.white',
-                flexDirection: 'column',
-                flexBasis: `31%`,
-                mb: '2.5rem',
-                textAlign: 'center',
-                padding: '2rem',
-                borderRadius: 'sm',
-              }}
-            >
-              <span
+              <Divider
                 sx={{
-                  borderRadius: 'xl',
-                  px: '.5rem',
-                  py: '.25rem',
-                  color: 'primary.hover',
-                  fontWeight: 'medium',
-                  bg: 'primary.surface',
+                  my: '2rem',
                 }}
-                dangerouslySetInnerHTML={{ __html: item.label }}
               />
-              <p dangerouslySetInnerHTML={{ __html: item.price }} />
-              <p dangerouslySetInnerHTML={{ __html: item.description }} />
-              <Button
-                sx={{
-                  width: '100%',
-                }}
-                variant={item.button.buttonVariant}
-              >
-                {item.button.buttonText}
-              </Button>
               <div>
                 {item.features.map((feature, index) => (
                   <div
@@ -138,7 +114,7 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
           ))}
         </>
       </div>
-    </div>
+    </>
   )
 }
 
