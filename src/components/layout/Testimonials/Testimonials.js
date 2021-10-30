@@ -5,7 +5,11 @@ import { Container } from 'theme-ui'
 
 const Testimonials = ({ testimonials }) => {
   return (
-    <Container>
+    <Container
+      sx={{
+        width: ['92%', '92%', '82%'],
+      }}
+    >
       <div
         sx={{
           bg: 'primary',

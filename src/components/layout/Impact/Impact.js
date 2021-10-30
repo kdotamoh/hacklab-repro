@@ -23,7 +23,11 @@ const Impact = ({ heading, items, ...props }) => {
       >
         {heading}
       </h2>
-      <Container>
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
         <div
           sx={{
             display: 'flex',

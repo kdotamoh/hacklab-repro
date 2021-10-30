@@ -15,6 +15,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
         alignItems: 'center',
         gap: '4rem',
         py: '5rem',
+        width: ['92%', '92%', '82%'],
       }}
     >
       <div

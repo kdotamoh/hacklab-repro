@@ -23,6 +23,7 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
               lineHeight: 'h3',
             },
             px: '8rem',
+            width: ['92%', '92%', '82%'],
           }}
           dangerouslySetInnerHTML={{ __html: text }}
         ></Container>

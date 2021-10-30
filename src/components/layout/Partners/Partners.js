@@ -15,7 +15,11 @@ const Partners = ({ text, partnerLogos, ...props }) => {
         py: '5rem',
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
         <div
           sx={{
             p: {

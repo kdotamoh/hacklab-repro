@@ -21,6 +21,7 @@ const ContentBlock = ({
         gap: '5rem',
         alignItems: 'center',
         py: '5rem',
+        width: ['92%', '92%', '82%'],
       }}
     >
       <div

@@ -73,6 +73,7 @@ const Header = ({
             alignSelf: 'center',
             gridArea: 'body',
             alignItems: 'center',
+            width: ['92%', '92%', '82%'],
             py: '5rem',
             ...(image && {
               display: 'grid',

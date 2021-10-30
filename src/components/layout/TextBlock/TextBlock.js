@@ -19,6 +19,7 @@ const TextBlock = ({ content, ...props }) => {
         h2: {
           pb: '2rem',
         },
+        width: ['92%', '92%', '82%'],
       }}
       dangerouslySetInnerHTML={{ __html: content }}
     />

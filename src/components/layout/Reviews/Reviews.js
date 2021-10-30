@@ -17,7 +17,11 @@ const Reviews = ({ heading, items, ...props }) => {
         pb: '11.5rem',
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
         <h3
           sx={{
             textAlign: 'center',

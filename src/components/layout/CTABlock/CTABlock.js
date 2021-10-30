@@ -14,7 +14,11 @@ const CTABlock = ({ backgroundColor, text, items, button }) => {
         py: '3rem',
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
         <div
           sx={{
             mb: '3.5rem',

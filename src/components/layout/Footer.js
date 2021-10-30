@@ -78,7 +78,13 @@ const Footer = (props) => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <Container as="footer" {...props}>
+    <Container
+      sx={{
+        width: ['92%', '92%', '82%'],
+      }}
+      as="footer"
+      {...props}
+    >
       <div
         sx={{
           display: 'flex',

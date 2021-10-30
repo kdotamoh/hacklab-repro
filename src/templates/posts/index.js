@@ -32,6 +32,7 @@ const AllPosts = ({
           flexWrap: 'wrap',
           gap: 'flexGap',
           pt: '5rem',
+          width: ['92%', '92%', '82%'],
         }}
       >
         {edges.map((post, index) => (

@@ -144,7 +144,12 @@ const theme = {
     flexGap: '2.17%',
   },
   sizes: {
-    container: '82%',
+    container: '100%',
+  },
+  layout: {
+    container: {
+      mx: 'auto',
+    },
   },
   borders: {
     footer: 'solid 1px muted',

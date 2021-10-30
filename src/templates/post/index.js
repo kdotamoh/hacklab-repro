@@ -17,7 +17,11 @@ import Navigation from '../../components/layout/Navigation'
 const Post = ({ data }) => {
   return (
     <Layout header={<Navigation color="neutral.black" />}>
-      <Container>
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
         <h1
           sx={{
             pt: '5rem',

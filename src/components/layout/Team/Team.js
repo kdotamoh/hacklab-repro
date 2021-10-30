@@ -36,6 +36,7 @@ const Team = ({ heading, subtitle, items, ...props }) => {
             rowGap: '3.5rem',
             flexWrap: 'wrap',
             pt: '3.5rem',
+            width: ['92%', '92%', '82%'],
           }}
         >
           {items.map((item, index) => (

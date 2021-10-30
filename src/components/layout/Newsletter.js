@@ -1,19 +1,20 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Field, Button } from 'theme-ui'
+import { Field, Button, Container } from 'theme-ui'
 
 /**
  * @param {Object} props
  */
 const Newsletter = (props) => {
   return (
-    <div
+    <Container
       {...props}
       sx={{
         color: 'neutral.black',
         textAlign: 'center',
         mb: '10rem',
         pt: '6rem',
+        width: ['92%', '92%', '82%'],
       }}
     >
       <h3

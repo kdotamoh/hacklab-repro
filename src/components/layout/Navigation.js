@@ -60,6 +60,7 @@ const Navigation = (props) => {
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'space-between',
+        width: ['92%', '92%', '82%'],
       }}
     >
       <div
