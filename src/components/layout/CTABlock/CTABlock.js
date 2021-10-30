@@ -12,7 +12,6 @@ const CTABlock = ({ backgroundColor, text, items, button }) => {
         bg: backgroundColor,
         color: 'neutral.white',
         py: '3rem',
-        mb: '6rem',
       }}
     >
       <Container>
@@ -40,14 +39,21 @@ const CTABlock = ({ backgroundColor, text, items, button }) => {
             </div>
           ))}
         </div>
-        <Button
+        <div
           sx={{
             mt: '2rem',
+            textAlign: button.buttonAlignment,
           }}
-          variant={button.buttonVariant}
         >
-          {button.buttonText}
-        </Button>
+          <Button
+            sx={{
+              mt: '2rem',
+            }}
+            variant={button.buttonVariant}
+          >
+            {button.buttonText}
+          </Button>
+        </div>
       </Container>
     </div>
   )
