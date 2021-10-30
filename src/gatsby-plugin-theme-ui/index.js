@@ -229,8 +229,6 @@ const theme = {
   forms: {
     input: {
       borderColor: 'muted',
-      // @ts-ignore
-      // '&::placeholder': (theme) => `${theme.colors.muted}`,
     },
   },
 

@@ -9,7 +9,8 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "strict": true,
-    "jsx": "react"
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.js"],
   "exclude": ["node_modules", "./*.js"],
