@@ -44,7 +44,6 @@ const Header = ({
         sx={{
           ...(fullHeight && { height: '92vh' }),
           color: `neutral.${textColor}`,
-          mb: '5rem',
           ...(backgroundImage && {
             backgroundImage: `url(${backgroundImage.sourceUrl})`,
             backgroundSize: 'cover',
@@ -78,6 +77,8 @@ const Header = ({
             ...(image && {
               display: 'grid',
               gap: '4rem 7rem',
+              ...(image &&
+                position === 'right' && { gridTemplateColumns: '50% 1fr' }),
               gridTemplateAreas:
                 position === 'bottom'
                   ? `"content"
