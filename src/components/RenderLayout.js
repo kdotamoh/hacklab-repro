@@ -13,6 +13,9 @@ import ContentBlock from './layout/ContentBlock'
 import RatingsBlock from './layout/RatingsBlock'
 import CTABlock from './layout/CTABlock'
 import PricingPlans from './layout/PricingPlans'
+import Cards from './layout/Cards'
+import StepBlock from './layout/Stepblock'
+import Testimonials from './layout/Testimonials'
 
 /**
  *
@@ -41,6 +44,9 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_Ratingsblock: RatingsBlock,
     Page_Pagebuilder_Layouts_Ctablock: CTABlock,
     Page_Pagebuilder_Layouts_PricingPlans: PricingPlans,
+    Page_Pagebuilder_Layouts_Cards: Cards,
+    Page_Pagebuilder_Layouts_Stepblock: StepBlock,
+    Page_Pagebuilder_Layouts_Testimonialblock: Testimonials,
     Page_default: Default,
   }
 

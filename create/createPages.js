@@ -33,6 +33,13 @@ const {
 const {
   pricingLayout,
 } = require('../src/components/layout/PricingPlans/PricingPlans.data')
+const { cardsLayout } = require('../src/components/layout/Cards/Cards.data.js')
+const {
+  testimonialsLayout,
+} = require('../src/components/layout/Testimonials/Testimonials.data.js')
+const {
+  stepblockLayout,
+} = require('../src/components/layout/Stepblock/Stepblock.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -55,6 +62,9 @@ const GET_PAGES = `
             ${ratingsLayout}
             ${ctaLayout}
             ${pricingLayout}
+            ${cardsLayout}
+            ${testimonialsLayout}
+            ${stepblockLayout}
           }
         }
       }
