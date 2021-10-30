@@ -12,7 +12,7 @@ const Partners = ({ text, partnerLogos, ...props }) => {
       sx={{
         color: 'neutral.black',
         textAlign: 'center',
-        mb: '10rem',
+        py: '5rem',
       }}
     >
       <Container>

@@ -5,7 +5,11 @@ import { Container } from 'theme-ui'
 const Cards = ({ card, text }) => {
   console.log(card)
   return (
-    <div>
+    <div
+      sx={{
+        py: '5rem',
+      }}
+    >
       <div dangerouslySetInnerHTML={{ __html: text }} />
       <Container
         sx={{

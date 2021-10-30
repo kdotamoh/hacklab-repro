@@ -12,7 +12,7 @@ const Impact = ({ heading, items, ...props }) => {
       {...props}
       sx={{
         color: 'neutral.black',
-        mb: '10rem',
+        py: '5rem',
       }}
     >
       <h2

@@ -17,6 +17,7 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
+        py: '5rem',
       }}
     >
       <h2

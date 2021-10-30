@@ -9,7 +9,7 @@ const Team = ({ heading, subtitle, items, ...props }) => {
   return (
     <div
       sx={{
-        mb: '9rem',
+        py: '5rem',
       }}
       {...props}
     >

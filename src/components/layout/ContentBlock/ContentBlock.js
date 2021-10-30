@@ -20,7 +20,7 @@ const ContentBlock = ({
         gridTemplateColumns: '.5fr .5fr',
         gap: '5rem',
         alignItems: 'center',
-        mb: '10rem',
+        py: '5rem',
       }}
     >
       <div

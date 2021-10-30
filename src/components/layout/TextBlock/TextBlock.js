@@ -6,7 +6,7 @@ const TextBlock = ({ content, ...props }) => {
   return (
     <Container
       sx={{
-        mb: '6rem',
+        py: '5rem',
         li: {
           fontSize: 'h4',
           marginLeft: '1.5rem',

@@ -14,7 +14,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
         gridTemplateAreas: `'rating image'`,
         alignItems: 'center',
         gap: '4rem',
-        py: '6rem',
+        py: '5rem',
       }}
     >
       <div
