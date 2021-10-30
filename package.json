@@ -20,6 +20,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "dayjs": "^1.10.7",
     "gatsby": "^3.13.1",
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-manifest": "^3.14.0",

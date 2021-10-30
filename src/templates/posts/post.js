@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Link } from 'gatsby'
+import day from 'dayjs'
 
 const Post = ({ post, index }) => {
   const width = '31.881'
@@ -156,7 +157,7 @@ const Post = ({ post, index }) => {
             color: 'neutral.textDisabled',
           }}
         >
-          Aug 09 | USA
+          {day(post.node.date).format('MMM D')} | {post.node.tags.nodes[0].name}
         </span>
       )}
     </Link>
