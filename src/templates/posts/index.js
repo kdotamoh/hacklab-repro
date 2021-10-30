@@ -113,6 +113,21 @@ export const query = graphql`
         node {
           uri
           date
+          author {
+            node {
+              name
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
           title
           featuredImage {
             node {

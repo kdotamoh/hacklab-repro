@@ -64,7 +64,7 @@ const Post = ({ post, index }) => {
       >
         <span
           sx={{
-            textTransform: 'capitalize',
+            textTransform: 'uppercase',
             fontWeight: 'bold',
             fontSize: 'caption',
             letterSpacing: '.025rem',
@@ -77,7 +77,7 @@ const Post = ({ post, index }) => {
                 }),
           }}
         >
-          PODCAST
+          {post.node.categories.nodes[0].name}
         </span>
         <div
           sx={{
@@ -134,7 +134,7 @@ const Post = ({ post, index }) => {
                   pb: '.25rem',
                 }}
               >
-                Mechenzy
+                {post.node.author.node.name}
               </p>
               <p
                 sx={{
