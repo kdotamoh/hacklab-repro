@@ -3,7 +3,6 @@ import * as React from 'react'
 
 /**
  * @typedef Props
- * @prop {string | number} width
  * @prop {string | number} [height]
  * @prop {('google'|'apple')} appStore
  * @prop {any} [sx]

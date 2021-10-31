@@ -33,7 +33,7 @@ const Team = ({ heading, subtitle, items, ...props }) => {
           sx={{
             display: 'flex',
             gap: 'flexGap',
-            rowGap: '3.5rem',
+            rowGap: ['1.5rem', '1.5rem', '3.5rem'],
             flexWrap: 'wrap',
             pt: '3.5rem',
             width: ['92%', '92%', '82%'],
@@ -54,7 +54,7 @@ const Item = ({ item }) => {
   return (
     <div
       sx={{
-        flexBasis: `${width}%`,
+        flexBasis: ['100%', '100%', `${width}%`],
         textAlign: 'center',
         color: 'neutral.black',
         bg: 'neutral.backgroundHover',

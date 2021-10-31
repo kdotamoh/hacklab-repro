@@ -16,9 +16,23 @@ const ContentBlock = ({
       sx={{
         display: 'grid',
         gridTemplateAreas:
-          textPosition === 'left' ? `'content media'` : `'media content'`,
-        gridTemplateColumns: '.5fr .5fr',
-        gap: '5rem',
+          textPosition === 'left'
+            ? [
+                `"content"
+                 "media"`,
+                `"content"
+                 "media"`,
+                `'content media'`,
+              ]
+            : [
+                `"content"
+                 "media"`,
+                `"content"
+                 "media"`,
+                `'media content'`,
+              ],
+        gridTemplateColumns: ['100%', '100%', '50% 1fr'],
+        gap: '0 5rem',
         alignItems: 'center',
         py: '5rem',
         width: ['92%', '92%', '82%'],
@@ -83,8 +97,8 @@ const ContentBlock = ({
             gridArea: 'media',
             width: '100%',
             objectFit: imageFit,
-            height: '100%',
-            minHeight: '32.5rem',
+            height: 'auto',
+            minHeight: ['20rem', '20rem', '32.5rem'],
             borderRadius: 'md',
           }}
           src={image?.sourceUrl}

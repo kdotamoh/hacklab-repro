@@ -31,11 +31,18 @@ const Partners = ({ text, partnerLogos, ...props }) => {
         />
         <div
           sx={{
-            display: 'flex',
+            display: 'grid',
+            gridTemplateColumns: [
+              'repeat(2, 1fr)',
+              'repeat(2, 1fr)',
+              `repeat(${
+                partnerLogos.length < 6 ? partnerLogos.length : 6
+              }, 1fr)`,
+            ],
             flexWrap: 'wrap',
             rowGap: '2rem',
             mt: '3.5rem',
-            px: '2rem',
+            px: ['0', '0', '2rem'],
             gap: 'auto',
             justifyContent: 'center',
           }}

@@ -10,10 +10,16 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
     <Container
       sx={{
         display: 'grid',
-        gridTemplateColumns: '50% 50%',
-        gridTemplateAreas: `'rating image'`,
+        gridTemplateColumns: ['100%', '100%', '50% 1fr'],
+        gridTemplateAreas: [
+          `'rating'
+          'image'`,
+          `'rating'
+          'image'`,
+          `'rating image'`,
+        ],
         alignItems: 'center',
-        gap: '4rem',
+        gap: '1rem 4rem',
         py: '5rem',
         width: ['92%', '92%', '82%'],
       }}

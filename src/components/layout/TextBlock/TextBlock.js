@@ -8,9 +8,8 @@ const TextBlock = ({ content, ...props }) => {
       sx={{
         py: '5rem',
         li: {
-          fontSize: 'h4',
           marginLeft: '1.5rem',
-          py: '1rem',
+          py: ['.5rem', '.5rem', '1rem'],
         },
         p: {
           py: '1rem',

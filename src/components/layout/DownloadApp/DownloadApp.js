@@ -14,8 +14,9 @@ const DownloadApp = ({
   return (
     <div
       sx={{
-        display: 'grid',
-        gridTemplateColumns: '50% 50%',
+        display: 'flex',
+        flexDirection: ['column', 'column', 'row'],
+        // gridTemplateColumns: '50% 50%',
         pt: '12.5rem',
       }}
     >
@@ -23,6 +24,8 @@ const DownloadApp = ({
         sx={{
           bg: 'information.border',
           position: 'relative',
+          minHeight: '16rem',
+          width: ['100%', '100%', '50%'],
         }}
       >
         <img
@@ -41,8 +44,10 @@ const DownloadApp = ({
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          p: '5rem',
+          py: ['2rem', '2rem', '5rem'],
+          px: ['1rem', '1rem', '5rem'],
           bg: 'neutral.backgroundPressed',
+          width: ['100%', '100%', '50%'],
         }}
       >
         <h2 dangerouslySetInnerHTML={{ __html: heading }} />
@@ -60,10 +65,20 @@ const DownloadApp = ({
           }}
         >
           <a href={playStoreLink} target="_blank" rel="noreferrer">
-            <DownloadBadge appStore="google" width="10rem" />
+            <DownloadBadge
+              appStore="google"
+              sx={{
+                width: '10rem',
+              }}
+            />
           </a>
           <a href={appStoreLink} target="_blank" rel="noreferrer">
-            <DownloadBadge appStore="apple" width="10rem" />
+            <DownloadBadge
+              appStore="apple"
+              sx={{
+                width: ['10rem'],
+              }}
+            />
           </a>
         </div>
       </div>

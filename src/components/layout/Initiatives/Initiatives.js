@@ -71,7 +71,7 @@ const Item = ({ item }) => {
   return (
     <div
       sx={{
-        minWidth: '23.75rem',
+        minWidth: ['20rem', '20rem', '23.75rem'],
         flexBasis: '33%',
         textAlign: 'left',
         color: 'neutral.white',

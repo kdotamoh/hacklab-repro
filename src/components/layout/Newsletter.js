@@ -28,10 +28,11 @@ const Newsletter = (props) => {
       <div
         sx={{
           display: 'flex',
+          flexDirection: ['column', 'column', 'row'],
           gap: '1rem',
           justifyContent: 'center',
           alignItems: 'center',
-          width: '30rem',
+          width: ['100%', '100%', '30rem'],
           margin: '0 auto',
           mt: '2.5rem',
         }}
@@ -39,6 +40,7 @@ const Newsletter = (props) => {
         <div
           sx={{
             flex: 1,
+            width: ['100%', '100%', 'max-content'],
           }}
         >
           <Field
@@ -50,9 +52,15 @@ const Newsletter = (props) => {
             name="newsletter"
           />
         </div>
-        <Button>Subscribe</Button>
+        <Button
+          sx={{
+            width: ['100%', '100%', 'max-content'],
+          }}
+        >
+          Subscribe
+        </Button>
       </div>
-    </div>
+    </Container>
   )
 }
 

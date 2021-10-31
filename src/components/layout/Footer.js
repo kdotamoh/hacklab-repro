@@ -87,12 +87,20 @@ const Footer = (props) => {
     >
       <div
         sx={{
-          display: 'flex',
+          // display: 'flex',
+          display: 'grid',
+          gridTemplateColumns: [
+            'repeat(2, 1fr)',
+            'repeat(2, 1fr)',
+            'repeat(4, 1fr)',
+          ],
+          rowGap: '2rem',
+
           justifyContent: 'space-between',
           borderBottom: (theme) => `1px solid ${theme.colors?.muted}`,
           borderTop: (theme) => `1px solid ${theme.colors?.muted}`,
           pt: '4rem',
-          paddingRight: '20%',
+          paddingRight: ['0', '0', '20%'],
           pb: '4.75rem',
         }}
       >
@@ -142,8 +150,10 @@ const Footer = (props) => {
       <div
         sx={{
           display: 'flex',
+          flexDirection: ['column', 'column', 'row'],
           justifyContent: 'space-between',
-          alignItems: 'center',
+          rowGap: '2.5rem',
+          alignItems: ['flex-start', 'flex-start', 'center'],
           pb: '3.5rem',
           pt: '2rem',
         }}
@@ -151,11 +161,12 @@ const Footer = (props) => {
         <div
           sx={{
             display: 'flex',
-            alignItems: 'center',
-            gap: '2.5rem',
+            flexDirection: ['column', 'column', 'row'],
+            alignItems: ['flex-start', 'flex-start', 'center'],
+            gap: '0 2.5rem',
           }}
         >
-          <Logo width="7.5rem" />
+          <Logo width="7.5rem" fill="#610b70" />
           <p
             sx={{
               fontSize: 'paragraph2',

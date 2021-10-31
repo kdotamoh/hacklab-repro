@@ -30,10 +30,14 @@ const Impact = ({ heading, items, ...props }) => {
       >
         <div
           sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
+            display: 'grid',
+            gridTemplateColumns: [
+              'repeat(2, 1fr)',
+              'repeat(2, 1fr)',
+              'repeat(4, 1fr)',
+            ],
             rowGap: '3.75rem',
-            px: '2rem',
+            px: ['0', '0', '2rem'],
           }}
         >
           {items.map((item, index) => (
@@ -54,10 +58,8 @@ const ImpactItem = (props) => {
   return (
     <div
       sx={{
-        gap: '1.5rem',
         display: 'flex',
-        flex: '0 0 25%',
-
+        gap: ['1rem', '1rem', '1.5rem'],
         alignItems: 'center',
       }}
     >

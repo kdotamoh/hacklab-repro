@@ -7,6 +7,10 @@ import Masonry from 'react-masonry-css'
  * @param {Object} props
  */
 const Reviews = ({ heading, items, ...props }) => {
+  const masonryBreakpoints = {
+    900: 1,
+    default: 3,
+  }
   return (
     <div
       {...props}
@@ -30,7 +34,7 @@ const Reviews = ({ heading, items, ...props }) => {
           dangerouslySetInnerHTML={{ __html: heading }}
         />
         <Masonry
-          breakpointCols={3}
+          breakpointCols={masonryBreakpoints}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
