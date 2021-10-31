@@ -22,7 +22,6 @@ const AllPosts = ({
   },
   pageContext: { previousPagePath, nextPagePath, ...pageContext },
 }) => {
-  console.log(pageContext)
 
   return (
     <Layout header={<Navigation color="neutral.black" />}>

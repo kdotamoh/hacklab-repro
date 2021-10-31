@@ -2,7 +2,6 @@
 import * as React from 'react'
 
 const StepBlock = ({ text, steps }) => {
-  console.log(steps)
   return (
     <div
       sx={{

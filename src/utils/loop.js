@@ -18,8 +18,6 @@ const loop = (number, character) => {
     }
   }
 
-  console.log(loop)
-
   return loop
 }
 

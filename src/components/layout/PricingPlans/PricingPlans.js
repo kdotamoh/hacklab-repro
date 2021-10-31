@@ -3,7 +3,6 @@ import * as React from 'react'
 import { Container, Button, Divider } from 'theme-ui'
 
 const PricingPlans = ({ backgroundColor, text, plan }) => {
-  console.log(plan)
   return (
     <>
       <div

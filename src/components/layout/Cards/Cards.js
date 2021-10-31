@@ -3,7 +3,6 @@ import * as React from 'react'
 import { Container } from 'theme-ui'
 
 const Cards = ({ card, text }) => {
-  console.log(card)
   return (
     <div
       sx={{

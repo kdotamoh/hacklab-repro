@@ -4,7 +4,6 @@ import * as React from 'react'
 import { loop } from '../../utils'
 
 const Stars = ({ rating }) => {
-  console.log('rating', rating)
   return (
     <div
       sx={{
