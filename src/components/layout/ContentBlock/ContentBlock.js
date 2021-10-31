@@ -56,8 +56,9 @@ const ContentBlock = ({
             p: {
               lineHeight: 'h3',
             },
+            whiteSpace: 'pre-wrap',
           }}
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: content.replace(/&nbsp;/g, ' ') }}
         />
         {buttons && (
           <div
