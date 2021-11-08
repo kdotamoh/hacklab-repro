@@ -4,17 +4,21 @@ import * as React from 'react'
 import Announce from './layout/Announce'
 import Footer from './layout/Footer'
 import Newsletter from './layout/Newsletter'
+import Sidenav from './layout/Sidenav'
+import { NavigationContext } from '../context/Navigation'
 
 /**
  * @typedef Props
- * @prop {React.ReactNode} [header]
+ * @prop {React.ReactNode} [navigation]
  * @prop {React.ReactNode} children
  */
 
 /**
  * @param {Props} props
  */
-const Layout = ({ header, ...props }) => {
+const Layout = ({ navigation, ...props }) => {
+  const [showSideNav, setShowSidenav] = React.useContext(NavigationContext)
+
   return (
     <div
       sx={{
@@ -23,11 +27,13 @@ const Layout = ({ header, ...props }) => {
         minHeight: '100vh',
       }}
     >
-      <header>
+      <Sidenav {...{ showSideNav, setShowSidenav }} />
+
+      <div>
         <Announce />
-        {header}
-      </header>
-      <main
+        {navigation}
+      </div>
+      <div
         sx={{
           width: '100%',
           flex: '1 1 auto',
@@ -37,7 +43,7 @@ const Layout = ({ header, ...props }) => {
           {props.children}
           <Newsletter />
         </>
-      </main>
+      </div>
       <Footer />
     </div>
   )

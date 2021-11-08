@@ -165,8 +165,6 @@ const DownloadBadge = ({ appStore, ...props }) => {
           ...props.sx,
         }}
         {...props}
-        width="163"
-        height="48"
         viewBox="0 0 163 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

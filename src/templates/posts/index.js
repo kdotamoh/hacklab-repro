@@ -3,6 +3,7 @@ import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Container } from 'theme-ui'
 
+import { NavigationContext } from '../../context/Navigation'
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
 import Post from './post'
@@ -22,15 +23,20 @@ const AllPosts = ({
   },
   pageContext: { previousPagePath, nextPagePath, ...pageContext },
 }) => {
+  const [, setShowSidenav] = React.useContext(NavigationContext)
 
+  React.useEffect(() => {
+    setShowSidenav(false)
+  }, [])
   return (
-    <Layout header={<Navigation color="neutral.black" />}>
+    <Layout navigation={<Navigation color="neutral.black" />}>
       <Container
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
+          flexDirection: ['column', 'column', 'row'],
           gap: 'flexGap',
-          pt: '5rem',
+          pt: ['1.25rem', '1.25rem', '5rem'],
           width: ['92%', '92%', '82%'],
         }}
       >

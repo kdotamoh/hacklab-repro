@@ -5,6 +5,7 @@ import { Container } from 'theme-ui'
 
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
+import { NavigationContext } from '../../context/Navigation'
 
 /**
  * @param {Object} props
@@ -15,8 +16,13 @@ import Navigation from '../../components/layout/Navigation'
  * @param {Object} props.pageContext.page.pageBuilder
  */
 const Post = ({ data }) => {
+  const [, setShowSidenav] = React.useContext(NavigationContext)
+
+  React.useEffect(() => {
+    setShowSidenav(false)
+  }, [])
   return (
-    <Layout header={<Navigation color="neutral.black" />}>
+    <Layout navigation={<Navigation color="neutral.black" />}>
       <Container
         sx={{
           width: ['92%', '92%', '82%'],
@@ -24,7 +30,8 @@ const Post = ({ data }) => {
       >
         <h1
           sx={{
-            pt: '5rem',
+            pt: ['3.75rem', '3.75rem', '5rem'],
+            fontSize: ['h2', 'h2', 'h1'],
             mb: '1.5rem',
           }}
         >

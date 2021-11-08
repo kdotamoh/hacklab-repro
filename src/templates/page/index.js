@@ -3,6 +3,7 @@ import * as React from 'react'
 
 import Layout from '../../components/Layout'
 import RenderLayout from '../../components/RenderLayout'
+import { NavigationContext } from '../../context/Navigation'
 
 /**
  * @param {Object} props
@@ -19,6 +20,12 @@ const Page = ({ pageContext }) => {
   } = pageContext
 
   const layouts = pageBuilder.layouts || []
+
+  const [, setShowSidenav] = React.useContext(NavigationContext)
+
+  React.useEffect(() => {
+    setShowSidenav(false)
+  }, [])
 
   return (
     <Layout>
