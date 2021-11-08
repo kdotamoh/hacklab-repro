@@ -15,8 +15,9 @@ const Post = ({ post, index }) => {
         display: 'flex',
         ...(index === 0
           ? {
+              transform: ['scale(1.1)', 'scale(1)', 'scale(1)'],
               minHeight: '27rem',
-              flexDirection: 'row',
+              flexDirection: ['column', 'column', 'row'],
               flexBasis: '100%',
               mb: '5rem',
               bg: 'neutral.backgroundPressed',
@@ -36,7 +37,7 @@ const Post = ({ post, index }) => {
           ...(index === 0
             ? {
                 borderBottomLeftRadius: 'sm',
-                width: `calc((2 * ${width}%) + 2.17%)`,
+                width: ['100%', '100%', `calc((2 * ${width}%) + 2.17%)`],
                 height: '100%',
               }
             : {
@@ -55,7 +56,7 @@ const Post = ({ post, index }) => {
             ? {
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '2.5rem',
+                padding: ['1rem', '1rem', '2.5rem'],
               }
             : {
                 padding: '1rem 1.5rem',

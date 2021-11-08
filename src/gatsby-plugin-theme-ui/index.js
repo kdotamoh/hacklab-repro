@@ -76,7 +76,7 @@ const hacklabColors = {
 }
 
 // breakpoints
-const breakpoints = ['30rem', '48rem', '56rem']
+export const breakpoints = ['30rem', '58rem', '56rem']
 
 // theme
 const theme = {
@@ -95,8 +95,8 @@ const theme = {
     bold: 700,
   },
   fontSizes: {
-    [constants.display1]: '4.5rem',
-    [constants.display2]: '4rem',
+    [constants.display1]: '4rem',
+    [constants.display2]: '3.5rem',
     [constants.h1]: '3rem',
     [constants.h2]: '2rem',
     [constants.h3]: '1.5rem',
@@ -148,7 +148,7 @@ const theme = {
   },
   layout: {
     container: {
-      mx: 'auto',
+      maxWidth: '74rem',
     },
   },
   borders: {
@@ -254,6 +254,9 @@ const theme = {
       fontWeight: 'regular',
       color: 'text',
       p: {
+        fontSize: [constants.paragraph1, constants.paragraph1, constants.h4],
+      },
+      li: {
         fontSize: [constants.paragraph1, constants.paragraph1, constants.h4],
       },
       h1: {
