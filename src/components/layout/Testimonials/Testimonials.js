@@ -14,21 +14,31 @@ const Testimonials = ({ testimonials }) => {
         sx={{
           bg: 'primary',
           color: 'neutral.white',
+          borderRadius: ['sm', 'sm', '0'],
         }}
       >
         {testimonials.map((testimonial, index) => (
           <div
             sx={{
               display: 'grid',
-              gridTemplateColumns: '60% 1fr',
+              gridTemplateColumns: ['100%', '100%', '60% 1fr'],
+              gridTemplateAreas: [
+                `'image'
+                 'text'`,
+                `'image'
+                 'text'`,
+                `'text image'`,
+              ],
             }}
             key={index}
           >
             <div
               sx={{
-                py: '3.5rem',
-                pl: '8rem',
-                pr: '6rem',
+                pt: ['.5rem', '.5rem', '3.5rem'],
+                pb: ['1.5rem', '1.5rem', '3.5rem'],
+                pl: ['1rem', '1rem', '8rem'],
+                pr: ['1rem', '1rem', '6rem'],
+                gridArea: 'text',
               }}
             >
               <div
@@ -59,6 +69,9 @@ const Testimonials = ({ testimonials }) => {
                 minHeight: '20rem',
                 height: '100%',
                 objectFit: 'cover',
+                gridArea: 'image',
+                transform: ['scale(.925)', 'scale(.925)', 'scale(1)'],
+                borderRadius: ['sm', 'sm', '0'],
               }}
               src={testimonial.image?.sourceUrl}
               alt=""

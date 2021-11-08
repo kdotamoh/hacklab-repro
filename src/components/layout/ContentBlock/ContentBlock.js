@@ -53,6 +53,11 @@ const ContentBlock = ({
             h3: {
               pb: '2.5rem',
             },
+            li: {
+              marginLeft: '1.5rem',
+              py: ['.5rem', '.5rem', '1rem'],
+              lineHeight: 'h3',
+            },
             p: {
               lineHeight: 'h3',
             },

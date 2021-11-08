@@ -73,19 +73,28 @@ const Header = ({
             alignSelf: 'center',
             gridArea: 'body',
             alignItems: 'center',
+            minHeight: '20rem',
             width: ['92%', '92%', '82%'],
-            py: '5rem',
+            pb: '5rem',
             ...(image && {
               display: 'grid',
               gap: '4rem 7rem',
               ...(image &&
-                position === 'right' && { gridTemplateColumns: '50% 1fr' }),
+                position === 'right' && {
+                  gridTemplateColumns: ['100%', '100%', '50% 1fr'],
+                }),
               gridTemplateAreas:
                 position === 'bottom'
                   ? `"content"
                     "image"`
                   : position === 'right'
-                  ? `"content image"`
+                  ? [
+                      `"content"
+                       "image"`,
+                      `"content"
+                       "image"`,
+                      `"content image"`,
+                    ]
                   : ``,
             }),
           }}
@@ -94,12 +103,13 @@ const Header = ({
             sx={{
               textAlign: textAlignment,
               gridArea: 'content',
+              mt: '5rem',
             }}
           >
             <div
               sx={{
                 h1: {
-                  fontSize: isFrontPage ? 'display2' : 'h1',
+                  fontSize: isFrontPage ? 'display2' : 'h2',
                 },
                 p: {
                   pt: '1.5rem',
@@ -112,6 +122,7 @@ const Header = ({
               <div
                 sx={{
                   display: 'flex',
+                  flexWrap: 'wrap',
                   gap: '.75rem',
                   justifyContent: textAlignment,
                   mt: '2rem',

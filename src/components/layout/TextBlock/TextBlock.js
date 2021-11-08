@@ -5,11 +5,13 @@ import { Container } from 'theme-ui'
 const TextBlock = ({ content, ...props }) => {
   return (
     <Container
+      // TODO: create const declaration for these styles and reuse in contentblock
       sx={{
         py: '5rem',
         li: {
           marginLeft: '1.5rem',
           py: ['.5rem', '.5rem', '1rem'],
+          lineHeight: 'h3',
         },
         p: {
           py: '1rem',

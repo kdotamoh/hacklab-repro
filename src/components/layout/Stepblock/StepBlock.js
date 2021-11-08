@@ -5,7 +5,7 @@ const StepBlock = ({ text, steps }) => {
   return (
     <div
       sx={{
-        py: '6rem',
+        py: ['2.5rem', '2.5rem', '6rem'],
       }}
     >
       <div dangerouslySetInnerHTML={{ __html: text }} />
@@ -14,19 +14,32 @@ const StepBlock = ({ text, steps }) => {
           sx={{
             display: 'grid',
             gap: '5rem',
-            px: 'calc(6.5rem + 9%)',
-            py: '5rem',
+            rowGap: '2rem',
+            px: ['2rem', '2rem', 'calc(6.5rem + 9%)'],
+            py: ['2.5rem', '2.5rem', '5rem'],
             justifyContent: 'space-between',
             bg: step.backgroundColor,
             alignItems: 'center',
             ...(step.textPosition === 'left'
               ? {
-                  gridTemplateAreas: `'text image'`,
-                  gridTemplateColumns: '60% 1fr',
+                  gridTemplateAreas: [
+                    `'image'
+                     'text'`,
+                    `'image' 
+                     'text'`,
+                    `'text image'`,
+                  ],
+                  gridTemplateColumns: ['100%', '100%', '60% 1fr'],
                 }
               : {
-                  gridTemplateAreas: `'image text'`,
-                  gridTemplateColumns: '1fr 60%',
+                  gridTemplateAreas: [
+                    `'image'
+                     'text'`,
+                    `'image' 
+                     'text'`,
+                    `'image text'`,
+                  ],
+                  gridTemplateColumns: ['100%', '100%', '1fr 60%'],
                 }),
           }}
           key={index}
@@ -42,6 +55,7 @@ const StepBlock = ({ text, steps }) => {
                 display: 'inline-block',
                 fontWeight: 'bold',
                 fontSize: '9rem',
+                pr: '.5rem',
                 color: step.numberColor,
               },
             }}
@@ -50,6 +64,9 @@ const StepBlock = ({ text, steps }) => {
               sx={{
                 p: {
                   pt: '.25rem',
+                },
+                h3: {
+                  fontSize: 'h3',
                 },
               }}
               dangerouslySetInnerHTML={{ __html: step.text }}

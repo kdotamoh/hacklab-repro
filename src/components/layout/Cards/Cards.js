@@ -9,11 +9,18 @@ const Cards = ({ card, text }) => {
         py: '5rem',
       }}
     >
-      <div dangerouslySetInnerHTML={{ __html: text }} />
+      <Container
+        sx={{
+          width: ['92%', '92%', '82%'],
+        }}
+      >
+        <div dangerouslySetInnerHTML={{ __html: text }} />
+      </Container>
       <Container
         sx={{
           pt: '2.5rem',
           display: 'flex',
+          flexDirection: ['column', 'column', 'row'],
           justifyContent: 'space-around',
         }}
       >

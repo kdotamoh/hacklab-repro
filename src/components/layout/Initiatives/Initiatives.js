@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Button } from 'theme-ui'
+import { Button, Container } from 'theme-ui'
 
 import Logo from '../../svg/Logo'
 import Arrow from '../../svg/Arrow'
@@ -20,13 +20,19 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
         py: '5rem',
       }}
     >
-      <h2
+      <Container
         sx={{
-          pb: '1.25rem',
+          width: ['92%', '92%', '82%'],
         }}
-        dangerouslySetInnerHTML={{ __html: heading }}
-      />
-      <p dangerouslySetInnerHTML={{ __html: subtitle }} />
+      >
+        <h2
+          sx={{
+            pb: '1.25rem',
+          }}
+          dangerouslySetInnerHTML={{ __html: heading }}
+        />
+        <p dangerouslySetInnerHTML={{ __html: subtitle }} />
+      </Container>
       <div>
         <div
           sx={{
