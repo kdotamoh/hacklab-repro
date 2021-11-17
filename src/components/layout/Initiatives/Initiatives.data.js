@@ -9,6 +9,9 @@ const initiativesLayout = `
         linkText
         subtitle
         color
+        logo {
+          sourceUrl
+        }
       }
     }
   `

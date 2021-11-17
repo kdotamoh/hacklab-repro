@@ -80,8 +80,8 @@ const Item = ({ item }) => {
         minWidth: ['20rem', '20rem', '23.75rem'],
         flexBasis: '33%',
         textAlign: 'left',
-        color: 'neutral.white',
-        bg: item.color,
+        color: 'neutral.black',
+        bg: 'neutral.backgroundHover',
         padding: '1.5rem',
         borderRadius: 'sm',
         display: 'flex',
@@ -89,18 +89,28 @@ const Item = ({ item }) => {
         justifyContent: 'space-between',
       }}
     >
-      <Logo
+      {/* <Logo
         width="52%"
         fill="white"
         sx={{
           mb: '2rem',
         }}
+      /> */}
+      <img
+        sx={{
+          height: '3rem',
+          width: 'auto',
+          alignSelf: 'flex-start',
+          mb: '2rem',
+        }}
+        src={item.logo.sourceUrl}
+        alt=""
       />
 
       <div
         sx={{
           borderRadius: 'sm',
-          border: 'solid 2px rgba(255, 255, 255, 0.5)',
+          border: (t) => `solid 2px ${t.colors.neutral.border}`,
           p: '2rem 1.5rem',
         }}
       >
