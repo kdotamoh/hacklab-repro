@@ -22,7 +22,7 @@ const Footer = (props) => {
   /**
    * @param {LegalMenuData} legalMenu
    */
-  const { legalMenu, footerMenu } = useStaticQuery(graphql`
+  const { legalMenu, footerMenu, contact } = useStaticQuery(graphql`
     {
       footerMenu: wpMenu(slug: { eq: "footer-navigation" }) {
         menuItems {
@@ -42,6 +42,13 @@ const Footer = (props) => {
             label
             path
             title
+          }
+        }
+      }
+      contact: wpPage(slug: { eq: "admin-page" }) {
+        admin {
+          contact {
+            item
           }
         }
       }
@@ -72,6 +79,8 @@ const Footer = (props) => {
 
   const hierarchicalList = flatListToHierarchical(footerMenu.menuItems.nodes)
 
+  console.log('contact', contact)
+
   /**
    * variables
    */
@@ -100,7 +109,7 @@ const Footer = (props) => {
           borderBottom: (theme) => `1px solid ${theme.colors?.muted}`,
           borderTop: (theme) => `1px solid ${theme.colors?.muted}`,
           pt: '4rem',
-          paddingRight: ['0', '0', '20%'],
+          // paddingRight: ['0', '0', '2rem'],
           pb: '4.75rem',
         }}
       >
@@ -146,6 +155,44 @@ const Footer = (props) => {
             )}
           </div>
         ))}
+        <div
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            rowGap: '1rem',
+          }}
+        >
+          <p
+            sx={{
+              fontSize: 'paragraph2',
+              fontWeight: 'bold',
+            }}
+          >
+            Contact Us
+          </p>
+          {contact?.admin?.contact?.length > 0 && (
+            <div
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                rowGap: '.75rem',
+              }}
+            >
+              {contact?.admin?.contact?.map((item, index) => (
+                <p
+                  sx={{
+                    fontSize: 'paragraph2',
+                    color: 'neutral.textDisabled',
+                    textDecoration: 'none',
+                    lineHeight: 'paragraph2',
+                  }}
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: item.item }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
       <div
         sx={{

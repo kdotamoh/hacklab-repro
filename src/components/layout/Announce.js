@@ -1,11 +1,27 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Button } from '@theme-ui/components'
+import { graphql, useStaticQuery, navigate } from 'gatsby'
 
 /**
  * @param {Object} props
  */
 const Announce = (props) => {
+  const { announce } = useStaticQuery(graphql`
+    {
+      announce: wpPage(slug: { eq: "admin-page" }) {
+        admin {
+          announce {
+            buttonText
+            linkUrl
+            text
+          }
+        }
+      }
+    }
+  `)
+  console.log(announce)
+
   return (
     <div
       {...props}
@@ -26,9 +42,14 @@ const Announce = (props) => {
           fontSize: 'paragraph2',
         }}
       >
-        Annual 2021 Hackathon - Nigeria
+        {announce?.admin?.announce?.text}
       </p>
-      <Button variant="rounded">Register Now </Button>
+      <Button
+        onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
+        variant="rounded"
+      >
+        {announce?.admin?.announce?.buttonText}
+      </Button>
     </div>
   )
 }
