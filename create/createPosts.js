@@ -61,40 +61,6 @@ module.exports = async ({ actions, graphql, reporter }) => {
         allWpPost: { edges },
       } = data
 
-      /**
-       * Define the path for the paginated blog page.
-       * This is the url the page will live at
-       * @type {string}
-       */
-      // const blogPagePath = !variables.after
-      //   ? `${blogURI}/`
-      //   : `${blogURI}/page/${pageNumber + 1}`
-
-      /**
-       * Add config for the blogPage to the blogPage array
-       * for creating later
-       *
-       * @type {{
-       *   path: string,
-       *   component: string,
-       *   context: {nodes: *, pageNumber: number, hasNextPage: *}
-       * }}
-       */
-      // blogPages[pageNumber] = {
-      //   path: blogPagePath,
-      //   component: blogTemplate,
-      //   context: {
-      //     nodes,
-      //     pageNumber: pageNumber + 1,
-      //     hasNextPage,
-      //     itemsPerPage,
-      //     allPosts,
-      //   },
-      // }
-
-      /**
-       * Map over the posts for later creation
-       */
       edges &&
         edges.map((posts) => {
           allPosts.push(posts)
@@ -137,7 +103,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
             post: post,
             databaseId: post.node.databaseId,
             nextId: post.next ? post.next.databaseId : null,
-            prevId: post.prev ? post.next.databaseId : null,
+            prevId: post.previous ? post.previous.databaseId : null,
           },
         })
 
@@ -153,21 +119,5 @@ module.exports = async ({ actions, graphql, reporter }) => {
       pathPrefix: '/blog',
       component: postsIndexTemplate,
     })
-
-    /**
-     * Map over the `blogPages` array to create the
-     * paginated blog pages
-     */
-    // blogPages &&
-    //   blogPages.map((blogPage) => {
-    //     if (blogPage.context.pageNumber === 1) {
-    //       blogPage.context.publisher = true
-    //       blogPage.context.label = blogPage.path.replace('/', '')
-    //     }
-    //     createPage(blogPage)
-    //     reporter.info(
-    //       `created blog archive page ${blogPage.context.pageNumber}`
-    //     )
-    //   })
   })
 }
