@@ -112,24 +112,26 @@ const Navigation = (props) => {
             }
           </div>
         </div>
-        <Button
-          sx={{
-            fontSize: 'paragraph2',
-            display: ['none', 'none', 'block'],
-            bg:
-              props.themeColor === '#ffffff'
-                ? 'primary'
-                : props.themeColor === '#FFFFFF'
-                ? 'primary'
-                : props.themeColor === null
-                ? 'primary'
-                : props.themeColor === undefined
-                ? 'primary'
-                : props.themeColor,
-          }}
-        >
-          Connect
-        </Button>
+        <a href="https://connect.hacklabgh.org/">
+          <Button
+            sx={{
+              fontSize: 'paragraph2',
+              display: ['none', 'none', 'block'],
+              bg:
+                props.themeColor === '#ffffff'
+                  ? 'primary'
+                  : props.themeColor === '#FFFFFF'
+                  ? 'primary'
+                  : props.themeColor === null
+                  ? 'primary'
+                  : props.themeColor === undefined
+                  ? 'primary'
+                  : props.themeColor,
+            }}
+          >
+            Connect
+          </Button>
+        </a>
         <div
           sx={{
             display: ['block', 'none', 'none'],
