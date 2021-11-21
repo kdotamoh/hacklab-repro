@@ -79,8 +79,6 @@ const Footer = (props) => {
 
   const hierarchicalList = flatListToHierarchical(footerMenu.menuItems.nodes)
 
-  console.log('contact', contact)
-
   /**
    * variables
    */

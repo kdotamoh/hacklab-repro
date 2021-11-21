@@ -20,7 +20,6 @@ const Announce = (props) => {
       }
     }
   `)
-  console.log(announce)
 
   return (
     <div
