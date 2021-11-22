@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Button, Container } from 'theme-ui'
+import { Link } from 'gatsby'
 
 import Logo from '../../svg/Logo'
 import Arrow from '../../svg/Arrow'
@@ -123,10 +124,13 @@ const Item = ({ item }) => {
           }}
           dangerouslySetInnerHTML={{ __html: item.subtitle }}
         />
-        <p
+        <Link
           sx={{
             fontSize: 'paragraph1',
+            textDecoration: 'none',
+            color: 'neutral.black',
           }}
+          to={item.link}
           dangerouslySetInnerHTML={{ __html: item.linkText }}
         />
       </div>

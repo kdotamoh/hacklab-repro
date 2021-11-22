@@ -96,18 +96,44 @@ const Navigation = (props) => {
             {
               // @ts-ignore
               hierarchicalList.map((menuItem) => (
-                <Link
-                  sx={{
-                    fontSize: 'paragraph2',
-                    fontWeight: 'medium',
-                    color: props.color,
-                    textDecoration: 'none',
-                  }}
+                <div
                   key={menuItem.id}
-                  to={menuItem.path}
+                  sx={{
+                    position: 'relative',
+                  }}
                 >
-                  {menuItem.label}
-                </Link>
+                  <Link
+                    sx={{
+                      fontSize: 'paragraph2',
+                      fontWeight: 'medium',
+                      color: props.color,
+                      textDecoration: 'none',
+                    }}
+                    to={menuItem.path}
+                  >
+                    {menuItem.label}
+                  </Link>
+                  {menuItem.children.length > 0 && (
+                    <div
+                      sx={{
+                        position: 'absolute',
+                        top: '2rem',
+                        width: 'min-content',
+                      }}
+                    >
+                      {menuItem.children.map((subMenuItem) => (
+                        <p
+                          sx={{
+                            fontSize: 'paragraph2',
+                          }}
+                          key={subMenuItem.id}
+                        >
+                          {subMenuItem.label}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))
             }
           </div>

@@ -51,6 +51,8 @@ const Reviews = ({ heading, items, ...props }) => {
  * @param {Object} props
  * @param {Object} props.item
  * @param {string} props.item.text
+ * @param {object} props.item.avatar
+ * @param {string} props.item.avatar.sourceUrl
  */
 const Review = ({ item }) => {
   return (
@@ -73,14 +75,14 @@ const Review = ({ item }) => {
           gap: '1rem',
         }}
       >
-        <span
+        <img
           sx={{
             borderRadius: 'rounded',
             width: '2.5rem',
             height: '2.5rem',
-            bg: 'primary',
           }}
-        ></span>
+          src={item.avatar?.sourceUrl}
+        ></img>
         <div
           sx={{
             flex: 'display',

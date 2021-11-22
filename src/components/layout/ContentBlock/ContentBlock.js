@@ -81,7 +81,7 @@ const ContentBlock = ({
                       color: 'primary',
                       textDecoration: 'none',
                     }}
-                    to="/"
+                    to={button.linkUrl}
                   >
                     {button.buttonText}
                   </Link>
