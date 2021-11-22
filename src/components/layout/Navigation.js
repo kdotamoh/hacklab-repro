@@ -6,6 +6,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 import { NavigationContext } from '../../context/Navigation'
 import Logo from '../svg/Logo'
 import Hamburger from '../svg/Hamburger'
+import Chevron from '../svg/Chevron'
 
 /**
  * @param {Object} props
@@ -15,6 +16,14 @@ import Hamburger from '../svg/Hamburger'
  */
 const Navigation = (props) => {
   const [showSideNav, setShowSidenav] = React.useContext(NavigationContext)
+  const [activeMenu, setActiveMenu] = React.useState('')
+
+  const handleMouseEnter = (label) => {
+    setActiveMenu(label)
+  }
+  const handleMouseLeave = () => {
+    setActiveMenu('')
+  }
 
   const { wpMenu } = useStaticQuery(graphql`
     {
@@ -70,6 +79,7 @@ const Navigation = (props) => {
           justifyContent: 'space-between',
           width: ['92%', '92%', '82%'],
         }}
+        onMouseLeave={() => handleMouseLeave()}
       >
         <div
           sx={{
@@ -95,12 +105,10 @@ const Navigation = (props) => {
           >
             {
               // @ts-ignore
-              hierarchicalList.map((menuItem) => (
+              hierarchicalList.map((menuItem, index) => (
                 <div
                   key={menuItem.id}
-                  sx={{
-                    position: 'relative',
-                  }}
+                  onMouseEnter={() => handleMouseEnter(index)}
                 >
                   <Link
                     sx={{
@@ -108,29 +116,66 @@ const Navigation = (props) => {
                       fontWeight: 'medium',
                       color: props.color,
                       textDecoration: 'none',
+                      position: 'relative',
                     }}
                     to={menuItem.path}
                   >
                     {menuItem.label}
+                    {menuItem.children.length > 0 && (
+                      <span
+                        sx={{
+                          ml: '.5rem',
+                        }}
+                      >
+                        <Chevron width=".6rem" orientation="down" />
+                      </span>
+                    )}
                   </Link>
                   {menuItem.children.length > 0 && (
                     <div
                       sx={{
                         position: 'absolute',
-                        top: '2rem',
-                        width: 'min-content',
+                        top: '4rem',
+                        py: '1rem',
+                        px: '1.5rem',
+                        borderRadius: 'sm',
+                        width: ['92%', '92%', 'max-content'],
+                        display: activeMenu === index ? 'flex' : 'none',
+                        flexDirection: 'column',
+                        bg: 'neutral.white',
+                        color: 'neutral.black',
                       }}
+                      onMouseLeave={() => handleMouseLeave()}
                     >
-                      {menuItem.children.map((subMenuItem) => (
+                      <>
                         <p
                           sx={{
-                            fontSize: 'paragraph2',
+                            fontSize: '.8rem',
+                            color: 'primary',
+                            fontWeight: 'medium',
+                            textAlign: 'left',
+                            pb: '.5rem',
                           }}
-                          key={subMenuItem.id}
                         >
-                          {subMenuItem.label}
+                          {menuItem.label}
                         </p>
-                      ))}
+                        {menuItem.children.map((subMenuItem) => (
+                          <Link
+                            sx={{
+                              fontSize: 'paragraph2',
+                              textAlign: 'left',
+                              fontWeight: 'medium',
+                              py: '.5rem',
+                              color: 'neutral.black',
+                              textDecoration: 'none',
+                            }}
+                            key={subMenuItem.id}
+                            to={subMenuItem.path}
+                          >
+                            {subMenuItem.label}
+                          </Link>
+                        ))}
+                      </>
                     </div>
                   )}
                 </div>
