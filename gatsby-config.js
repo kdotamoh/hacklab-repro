@@ -13,6 +13,14 @@ module.exports = {
       options: {
         url: `${process.env.SERVER_ADDRESS}/graphql`,
       },
+      type: {
+        MediaItem: {
+          localFile: {
+            excludeByMimeTypes: [`application/pdf`],
+            requestConcurrency: 200,
+          },
+        },
+      },
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-react-helmet',
