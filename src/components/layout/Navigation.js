@@ -79,7 +79,7 @@ const Navigation = (props) => {
           justifyContent: 'space-between',
           width: ['92%', '92%', '82%'],
         }}
-        // onMouseLeave={() => handleMouseLeave()}
+        onMouseLeave={() => handleMouseLeave()}
       >
         <div
           sx={{
@@ -144,8 +144,9 @@ const Navigation = (props) => {
                         flexDirection: 'column',
                         bg: 'neutral.white',
                         color: 'neutral.black',
+                        zIndex: '999',
                       }}
-                      // onMouseLeave={() => handleMouseLeave()}
+                      onMouseLeave={() => handleMouseLeave()}
                     >
                       <>
                         <p
