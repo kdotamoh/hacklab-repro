@@ -16,7 +16,7 @@ import Chevron from '../svg/Chevron'
  */
 const Navigation = (props) => {
   const [showSideNav, setShowSidenav] = React.useContext(NavigationContext)
-  const [activeMenu, setActiveMenu] = React.useState('')
+  const [activeMenu, setActiveMenu] = React.useState(null)
 
   const handleMouseEnter = (label) => {
     setActiveMenu(label)
@@ -79,7 +79,7 @@ const Navigation = (props) => {
           justifyContent: 'space-between',
           width: ['92%', '92%', '82%'],
         }}
-        onMouseLeave={() => handleMouseLeave()}
+        // onMouseLeave={() => handleMouseLeave()}
       >
         <div
           sx={{
@@ -145,7 +145,7 @@ const Navigation = (props) => {
                         bg: 'neutral.white',
                         color: 'neutral.black',
                       }}
-                      onMouseLeave={() => handleMouseLeave()}
+                      // onMouseLeave={() => handleMouseLeave()}
                     >
                       <>
                         <p
