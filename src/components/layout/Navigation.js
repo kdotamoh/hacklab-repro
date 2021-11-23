@@ -11,6 +11,7 @@ import Chevron from '../svg/Chevron'
 /**
  * @param {Object} props
  * @param {string} [props.color]
+ * @param {string} [props.logoUrl]
  * @param {string} [props.themeColor]
  * @param {any} [props.sx]
  */
@@ -88,14 +89,29 @@ const Navigation = (props) => {
             gap: 'gap-2x',
           }}
         >
-          <Link to="/">
-            <Logo
-              width="7.5rem"
-              fill={props.themeColor ? props.themeColor : '#610B70'}
-              sx={{
-                mr: '.5rem',
-              }}
-            />
+          <Link
+            sx={{
+              width: '7.5rem',
+            }}
+            to="/"
+          >
+            {props.logoUrl ? (
+              <img
+                src={props.logoUrl}
+                sx={{
+                  mr: '.5rem',
+                  height: '1.875rem',
+                }}
+              />
+            ) : (
+              <Logo
+                width="7.5rem"
+                fill={props.themeColor ? props.themeColor : '#610B70'}
+                sx={{
+                  mr: '.5rem',
+                }}
+              />
+            )}
           </Link>
           <div
             sx={{
@@ -127,7 +143,11 @@ const Navigation = (props) => {
                           ml: '.5rem',
                         }}
                       >
-                        <Chevron width=".6rem" orientation="down" />
+                        <Chevron
+                          width=".6rem"
+                          stroke={props.color}
+                          orientation="down"
+                        />
                       </span>
                     )}
                   </Link>

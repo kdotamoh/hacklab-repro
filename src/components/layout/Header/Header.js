@@ -21,7 +21,7 @@ const Header = ({
   appStoreLink,
   playStoreLink,
   fullHeight,
-  navigation: { inHeader, textColor: navigationColor, themeColor },
+  navigation: { inHeader, textColor: navigationColor, themeColor, logo },
   headerImage: { position, image },
   pageContext: {
     page: { isFrontPage },
@@ -32,6 +32,7 @@ const Header = ({
     <>
       {!inHeader && (
         <Navigation
+          logoUrl={logo?.sourceUrl}
           sx={{
             gridArea: 'navigation',
           }}
@@ -59,6 +60,7 @@ const Header = ({
       >
         {inHeader && (
           <Navigation
+            logoUrl={logo?.sourceUrl}
             sx={{
               gridArea: 'navigation',
             }}
