@@ -97,14 +97,17 @@ const Post = ({ post, index }) => {
             dangerouslySetInnerHTML={{ __html: post.node.title }}
           />
           {index === 0 && (
-            <p
+            <div
               sx={{
                 fontSize: '1rem',
                 color: 'neutral.textPlaceholder',
+                mb: '2rem',
+                p: {
+                  lineHeight: 'paragraph1',
+                },
               }}
-            >
-              text
-            </p>
+              dangerouslySetInnerHTML={{ __html: post.node.excerpt }}
+            />
           )}
         </div>
         {index === 0 && (
