@@ -22,7 +22,7 @@ const Post = ({ data }) => {
     setShowSidenav(false)
   }, [])
   return (
-    <Layout navigation={<Navigation color="neutral.black" />}>
+    <Layout navigation={<Navigation color="black" />}>
       <Container
         sx={{
           width: ['92%', '92%', '82%'],

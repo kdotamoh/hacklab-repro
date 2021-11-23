@@ -29,7 +29,7 @@ const AllPosts = ({
     setShowSidenav(false)
   }, [])
   return (
-    <Layout navigation={<Navigation color="neutral.black" />}>
+    <Layout navigation={<Navigation color="black" />}>
       <Container
         sx={{
           display: 'flex',
@@ -117,6 +117,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          excerpt
           uri
           date
           author {

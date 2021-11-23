@@ -4,6 +4,7 @@ import * as React from 'react'
 /**
  * @typedef Props
  * @prop {string | number} width
+ * @prop {string} [stroke]
  * @prop {string | number} [height]
  * @prop {('down'|'right')} orientation
  * @prop {any} [sx]
@@ -26,7 +27,7 @@ const Chevron = ({ orientation, ...props }) => {
       >
         <path
           d="M0.84668 1.5L5.84668 6.5L10.8467 1.5"
-          stroke="white"
+          stroke={props.stroke}
           strokeWidth="1.67"
           strokeLinecap="round"
           strokeLinejoin="round"

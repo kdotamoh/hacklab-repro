@@ -16,7 +16,7 @@ import Chevron from '../svg/Chevron'
  * @param {any} [props.sx]
  */
 const Navigation = (props) => {
-  const [showSideNav, setShowSidenav] = React.useContext(NavigationContext)
+  const [, setShowSidenav] = React.useContext(NavigationContext)
   const [activeMenu, setActiveMenu] = React.useState(null)
 
   const handleMouseEnter = (label) => {
@@ -79,6 +79,7 @@ const Navigation = (props) => {
           alignItems: 'center',
           justifyContent: 'space-between',
           width: ['92%', '92%', '82%'],
+          position: 'relative',
         }}
         onMouseLeave={() => handleMouseLeave()}
       >
@@ -132,7 +133,6 @@ const Navigation = (props) => {
                       fontWeight: 'medium',
                       color: props.color,
                       textDecoration: 'none',
-                      position: 'relative',
                     }}
                     to={menuItem.path}
                   >
@@ -165,6 +165,9 @@ const Navigation = (props) => {
                         bg: 'neutral.white',
                         color: 'neutral.black',
                         zIndex: '999',
+                        border: (t) => `solid 1px ${t.colors.neutral.border}`,
+                        boxShadow:
+                          '0px 12px 16px -4px rgba(16, 24, 40, 0.1), 0px 4px 6px -2px rgba(16, 24, 40, 0.05)',
                       }}
                       onMouseLeave={() => handleMouseLeave()}
                     >
@@ -189,6 +192,9 @@ const Navigation = (props) => {
                               py: '.5rem',
                               color: 'neutral.black',
                               textDecoration: 'none',
+                              '&:hover': {
+                                color: 'primary',
+                              },
                             }}
                             key={subMenuItem.id}
                             to={subMenuItem.path}
