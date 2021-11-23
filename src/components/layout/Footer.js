@@ -181,8 +181,10 @@ const Footer = (props) => {
                   sx={{
                     fontSize: 'paragraph2',
                     color: 'neutral.textDisabled',
-                    textDecoration: 'none',
-                    lineHeight: 'paragraph2',
+                    a: {
+                      color: 'neutral.textDisabled',
+                      textDecoration: 'none',
+                    },
                   }}
                   key={index}
                   dangerouslySetInnerHTML={{ __html: item.item }}
