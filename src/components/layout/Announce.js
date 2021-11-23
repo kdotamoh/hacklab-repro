@@ -29,7 +29,7 @@ const Announce = (props) => {
         py: '1rem',
         padding: '1rem',
         bg: 'neutral.black',
-        display: 'flex',
+        display: announce?.admin?.announce?.text ? 'flex' : 'none',
         justifyContent: 'center',
         textAlign: 'center',
         alignItems: 'center',
