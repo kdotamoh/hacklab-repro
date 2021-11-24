@@ -9,6 +9,9 @@ const headerLayout = `
       playStoreLink
       fullHeight
       navigation {
+        logo {
+          sourceUrl
+        }
         inHeader
         textColor
         themeColor
