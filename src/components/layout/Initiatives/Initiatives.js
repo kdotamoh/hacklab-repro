@@ -104,7 +104,7 @@ const Item = ({ item }) => {
           alignSelf: 'flex-start',
           mb: '2rem',
         }}
-        src={item.logo.sourceUrl}
+        src={item?.logo?.sourceUrl}
         alt=""
       />
 

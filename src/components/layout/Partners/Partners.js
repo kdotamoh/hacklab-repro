@@ -70,7 +70,7 @@ const Logo = ({ item }) => {
           width: '10rem',
           height: 'auto',
         }}
-        src={`${item.logo.sourceUrl}`}
+        src={`${item?.logo?.sourceUrl}`}
         alt=""
       />
     </div>
