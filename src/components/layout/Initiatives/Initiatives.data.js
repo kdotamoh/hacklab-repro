@@ -8,6 +8,7 @@ const initiativesLayout = `
         link
         linkText
         subtitle
+        outbound
         color
         logo {
           sourceUrl

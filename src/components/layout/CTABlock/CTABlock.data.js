@@ -6,6 +6,7 @@ const ctaLayout = `
     button {
       buttonAlignment
       buttonText
+      outbound
       buttonVariant
       linkUrl
     }

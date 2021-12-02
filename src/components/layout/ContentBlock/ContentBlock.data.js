@@ -7,6 +7,7 @@ const contentBlockLayout = `
     buttons {
       buttonText
       buttonVariant
+      outbound
       linkUrl
     }
     image {

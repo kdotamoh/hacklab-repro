@@ -15,6 +15,7 @@ const pricingLayout = `
       }
       button {
         buttonText
+        outbound
         buttonVariant
         linkUrl
       }

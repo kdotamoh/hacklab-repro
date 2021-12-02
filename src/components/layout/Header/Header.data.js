@@ -29,6 +29,7 @@ const headerLayout = `
         buttonText
         buttonVariant
         linkUrl
+        outbound
         buttonIcon {
 	        sourceUrl
         }
