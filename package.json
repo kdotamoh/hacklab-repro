@@ -8,7 +8,8 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0",
+    "develop": "gatsby develop",
+    "develop-h": "gatsby develop -H 0.0.0.0",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -20,6 +21,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "axios": "^0.24.0",
+    "axios-oauth-1.0a": "^0.3.4",
+    "crypto-browserify": "^3.12.0",
+    "crypto-js": "^4.1.1",
     "dayjs": "^1.10.7",
     "gatsby": "^3.13.1",
     "gatsby-awesome-pagination": "^0.3.8",
@@ -58,7 +63,9 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-standard": "^5.0.0",
+    "gatsby-plugin-tsconfig-paths": "^1.0.4",
     "prettier": "^2.4.1",
-    "storybook-addon-gatsby": "^0.0.2"
+    "storybook-addon-gatsby": "^0.0.2",
+    "stream-browserify": "^3.0.0"
   }
 }
