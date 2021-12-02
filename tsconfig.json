@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "module": "esnext",
     "target": "esnext",
     "sourceMap": true,
@@ -10,7 +11,11 @@
     "noEmit": true,
     "strict": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "crypto": ["./node_modules/crypto-browserify"],
+      "stream": ["./node_modules/stream-browserify"]
+    }
   },
   "include": ["src/**/*.js"],
   "exclude": ["node_modules", "./*.js"],

@@ -24,6 +24,12 @@ module.exports = {
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-tsconfig-paths',
+      options: {
+        extensions: ['.js'],
+      },
+    },
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
