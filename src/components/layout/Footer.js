@@ -111,14 +111,14 @@ const Footer = (props) => {
           pb: '4.75rem',
         }}
       >
-        {hierarchicalList.map(({ children, ...parentItem }) => (
+        {hierarchicalList.map(({ children, ...parentItem }, index) => (
           <div
             sx={{
               display: 'flex',
               flexDirection: 'column',
               rowGap: '1rem',
             }}
-            key={parentItem.id}
+            key={index}
           >
             <p
               sx={{
@@ -136,7 +136,7 @@ const Footer = (props) => {
                   rowGap: '.75rem',
                 }}
               >
-                {children.map((childItem) => (
+                {children.map((childItem, index) => (
                   <Link
                     to={childItem.path}
                     sx={{
@@ -144,7 +144,7 @@ const Footer = (props) => {
                       color: 'neutral.textDisabled',
                       textDecoration: 'none',
                     }}
-                    key={children.id}
+                    key={index}
                   >
                     {childItem.label}
                   </Link>
