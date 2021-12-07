@@ -68,7 +68,7 @@ const ReviewAndPay = () => {
                 email={checkout?.billing?.email}
                 amount={checkout?.total * 100}
                 currency="GHS"
-                publicKey={process.env.PAYSTACK_PUBLIC_KEY}
+                publicKey={process.env.GATSBY_PAYSTACK_PUBLIC_KEY}
               />
             </div>
           </div>

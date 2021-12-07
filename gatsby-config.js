@@ -4,14 +4,14 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `${process.env.SERVER_ADDRESS}`,
+    siteUrl: `${process.env.GATSBY_SERVER_ADDRESS}`,
     title: 'Hacklab Foundation Website',
   },
   plugins: [
     {
       resolve: 'gatsby-source-wordpress',
       options: {
-        url: `${process.env.SERVER_ADDRESS}/graphql`,
+        url: `${process.env.GATSBY_SERVER_ADDRESS}/graphql`,
       },
       type: {
         MediaItem: {
