@@ -293,7 +293,7 @@ const Form = () => {
               handleSubmit()
             }}
           >
-            Proceed to payment
+            {isSubmitting ? 'Submitting...' : 'Proceed to payment'}
           </Button>
         </form>
       )}
