@@ -35,7 +35,6 @@ const Detail = ({ slug, id }) => {
 
   const fetchData = async (id) => {
     let res = await getProductById(id)
-    console.log(res)
     setProduct(res)
   }
 
@@ -57,6 +56,7 @@ const Detail = ({ slug, id }) => {
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '2rem',
+            mt: '5rem',
           }}
         >
           <div>
@@ -101,14 +101,50 @@ const Detail = ({ slug, id }) => {
           <div>
             {product && (
               <div>
-                <h4>{product.name}</h4>
-                <h3>GH¢ {product.price}</h3>
+                <h4
+                  sx={{
+                    mb: '.5rem',
+                  }}
+                >
+                  {product.name}
+                </h4>
+                <h2
+                  sx={{
+                    mb: '4rem',
+                  }}
+                >
+                  GH¢ {product.price}
+                </h2>
 
-                <div>
-                  <Button variant="white">Add to Cart</Button>
+                <div
+                  sx={{
+                    mt: '2.5rem',
+                    display: 'flex',
+                    gap: '1rem',
+                    mb: '4rem',
+                  }}
+                >
+                  <Button
+                    variant="white"
+                    onClick={async () => {
+                      await addToCart({
+                        product,
+                        product_id: product.id,
+                        variation_id: product.variations[0],
+                        quantity: 1,
+                      })
+                    }}
+                  >
+                    Add to Cart
+                  </Button>
                   <Button
                     onClick={async () => {
-                      await addToCart({ product, quantity: 1 })
+                      await addToCart({
+                        product,
+                        product_id: product.id,
+                        variation_id: product.variations[0],
+                        quantity: 1,
+                      })
                       navigate(`/store/checkout`)
                     }}
                   >
@@ -119,6 +155,7 @@ const Detail = ({ slug, id }) => {
                 <p
                   sx={{
                     fontWeight: 'bold',
+                    mb: '1.5rem',
                   }}
                 >
                   Product Details
@@ -126,6 +163,7 @@ const Detail = ({ slug, id }) => {
                 <p
                   sx={{
                     fontSize: 'paragraph2',
+                    mb: '10rem',
                   }}
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />

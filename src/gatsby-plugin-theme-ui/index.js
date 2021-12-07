@@ -235,6 +235,11 @@ const theme = {
     input: {
       borderColor: 'muted',
     },
+    label: {
+      fontSize: 'caption',
+      fontWeight: 'medium',
+      mb: '.25rem',
+    },
   },
 
   styles: {
