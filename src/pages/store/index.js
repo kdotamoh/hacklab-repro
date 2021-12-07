@@ -1,22 +1,13 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container, Button } from '@theme-ui/components'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import { getAllProducts } from '../../api/products/get-all-products'
 
-const Store = () => {
-  const [products, setProducts] = React.useState([])
-
-  const fetchData = async () => {
-    let res = await getAllProducts()
-    setProducts(res)
-  }
-
-  React.useEffect(() => {
-    fetchData()
-  }, [])
+const Store = ({ data }) => {
+  const products = data.products.nodes
 
   const categories = [
     {
@@ -228,7 +219,7 @@ const Store = () => {
                 pb: '1rem',
               }}
               key={index}
-              to={`./product/${item.id}/${item.slug}`}
+              to={`/store${item.uri}`}
             >
               <img
                 sx={{
@@ -312,5 +303,43 @@ const Store = () => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  {
+    products: allWpProduct {
+      nodes {
+        name
+        slug
+        attributes {
+          nodes {
+            label
+            name
+            options
+            position
+          }
+        }
+        galleryImages {
+          nodes {
+            sourceUrl
+          }
+        }
+        image {
+          sourceUrl
+        }
+        localAttributes {
+          nodes {
+            name
+          }
+        }
+        purchasable
+        ... on WpSimpleProduct {
+          name
+          price
+          uri
+        }
+      }
+    }
+  }
+`
 
 export default Store

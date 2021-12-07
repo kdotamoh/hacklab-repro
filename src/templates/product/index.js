@@ -1,13 +1,27 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
+import { graphql } from 'gatsby'
 import { Container, Button, AspectImage } from '@theme-ui/components'
-
-import Layout from '../../components/Layout'
-import { getProductById } from '../../api/products/get-product-by-id'
-import { StoreContext } from '../../context/Store'
 import { navigate } from 'gatsby'
 
-const Detail = ({ slug, id }) => {
+import Layout from '../../components/Layout'
+import Navigation from '../../components/layout/Navigation'
+import { NavigationContext } from '../../context/Navigation'
+import { StoreContext } from '../../context/Store'
+
+/**
+ * @param {Object} props
+ * @param {Object} props.pageContext
+ * @param {Object} props.pageContext.page
+ * @param {string} props.pageContext.page.content
+ * @param {string} props.pageContext.page.title
+ * @param {Object} props.pageContext.page.pageBuilder
+ */
+const Product = ({ pageContext: { product } }) => {
+  const { addToCart } = React.useContext(StoreContext)
+
+  const [, setShowSidenav] = React.useContext(NavigationContext)
+
   const popular = [
     {
       title: 'Clothing Collection',
@@ -29,22 +43,14 @@ const Detail = ({ slug, id }) => {
     },
   ]
 
-  const { addToCart } = React.useContext(StoreContext)
-  const [product, setProduct] = React.useState(null)
-
-  const fetchData = async (id) => {
-    let res = await getProductById(id)
-    setProduct(res)
-  }
-
   React.useEffect(() => {
-    fetchData(id)
-  }, [id])
+    setShowSidenav(false)
+  }, [])
 
   const width = '31.881'
 
   return (
-    <Layout>
+    <Layout navigation={<Navigation color="black" />}>
       <Container
         sx={{
           width: ['92%', '92%', '82%'],
@@ -128,8 +134,7 @@ const Detail = ({ slug, id }) => {
                     onClick={async () => {
                       await addToCart({
                         product,
-                        product_id: product.id,
-                        variation_id: product.variations[0],
+                        product_id: product.databaseId,
                         quantity: 1,
                       })
                     }}
@@ -140,8 +145,7 @@ const Detail = ({ slug, id }) => {
                     onClick={async () => {
                       await addToCart({
                         product,
-                        product_id: product.id,
-                        variation_id: product.variations[0],
+                        product_id: product.databaseId,
                         quantity: 1,
                       })
                       navigate(`/store/checkout`)
@@ -226,4 +230,18 @@ const Detail = ({ slug, id }) => {
   )
 }
 
-export default Detail
+export const query = graphql`
+  query ($databaseId: Int!) {
+    post: wpPost(databaseId: { eq: $databaseId }) {
+      title
+      content
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+`
+
+export default Product
