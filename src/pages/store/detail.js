@@ -30,7 +30,6 @@ const Detail = ({ slug, id }) => {
   ]
 
   const { addToCart } = React.useContext(StoreContext)
-  const [active, setActive] = React.useState(false)
   const [product, setProduct] = React.useState(null)
 
   const fetchData = async (id) => {

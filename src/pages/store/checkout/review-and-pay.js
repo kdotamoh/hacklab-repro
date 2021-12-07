@@ -8,35 +8,19 @@ import Layout from '../../../components/Layout'
 import ReviewDetails from '../../../components/store/checkout/review-details'
 import OrderDetails from '../../../components/store/checkout/order-details'
 import { updateOrderStatus } from '../../../api/orders/update-order'
-
-const initialValues = {
-  email: '',
-  phoneNumber: '',
-  firstName: '',
-  lastName: '',
-  address: '',
-  city: '',
-  country: '',
-  deliveryOption: '',
-}
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'setForm':
-      return (state = action.payload)
-  }
-}
+import { navigate } from 'gatsby-link'
 
 const ReviewAndPay = () => {
-  const [state, dispatch] = React.useReducer(formReducer, initialValues)
   const { checkout } = React.useContext(StoreContext)
 
   const onSuccess = async (order_id) => {
     const payload = { status: 'processing', set_paid: 'true' }
-    updateOrderStatus({
+    alert('Redirecting...')
+    await updateOrderStatus({
       order_id: order_id,
       payload,
     })
+    navigate('/store/checkout/post-payment')
   }
 
   const onClose = () => {
