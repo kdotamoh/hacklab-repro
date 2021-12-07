@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 const createPages = require('./create/createPages')
 const createPosts = require('./create/createPosts')
 
@@ -7,4 +9,21 @@ exports.createPagesStatefully = async (
 ) => {
   await createPages({ actions, graphql, reporter }, options)
   await createPosts({ actions, graphql, reporter }, options)
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    plugins: [
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer'],
+      }),
+    ],
+    resolve: {
+      extensions: ['.ts', '.js'],
+      fallback: {
+        crypto: require.resolve('crypto-browserify'),
+        stream: require.resolve('stream-browserify'),
+      },
+    },
+  })
 }

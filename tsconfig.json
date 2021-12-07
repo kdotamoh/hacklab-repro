@@ -11,11 +11,7 @@
     "noEmit": true,
     "strict": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "crypto": ["./node_modules/crypto-browserify"],
-      "stream": ["./node_modules/stream-browserify"]
-    }
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.js"],
   "exclude": ["node_modules", "./*.js"],
