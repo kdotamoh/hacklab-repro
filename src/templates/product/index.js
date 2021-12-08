@@ -1,6 +1,5 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import { Container, Button, AspectImage } from '@theme-ui/components'
 import { navigate } from 'gatsby'
 
@@ -9,6 +8,7 @@ import Navigation from '../../components/layout/Navigation'
 import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
 import Quantity from '../../components/store/quantity'
+import Attributes from '../../components/store/attributes'
 
 /**
  * @param {Object} props
@@ -22,8 +22,37 @@ const Product = ({ pageContext: { product } }) => {
   const { addToCart } = React.useContext(StoreContext)
 
   const [, setShowSidenav] = React.useContext(NavigationContext)
+  React.useEffect(() => {
+    setShowSidenav(false)
+  }, [])
 
-  console.log(product)
+  React.useEffect(() => {
+    const newAttributes = [...product.attributes.nodes]
+    newAttributes.forEach(
+      (attribute) => (attribute.selected = attribute.options[0])
+    )
+    //@ts-ignore
+    dispatch({ type: 'initialize', payload: newAttributes })
+  }, [])
+  const attributesReducer = (attributes, action) => {
+    switch (action.type) {
+      case 'initialize':
+        return action.payload
+      case 'setAttribute':
+        return attributes.map((attribute) => {
+          if (attribute.label === action.payload.label) {
+            attribute.selected = action.payload.option
+          }
+          return attribute
+        })
+    }
+  }
+  const [attributes, dispatch] = React.useReducer(attributesReducer, [])
+  const handleSelectedAttribute = ({ label, option }) => {
+    // @ts-ignore
+    dispatch({ type: 'setAttribute', payload: { label, option } })
+  }
+
   const [quantity, setQuantity] = React.useState(1)
   const decrementQuantity = () => {
     if (quantity > 1) {
@@ -54,10 +83,6 @@ const Product = ({ pageContext: { product } }) => {
       price: 'GHC 50',
     },
   ]
-
-  React.useEffect(() => {
-    setShowSidenav(false)
-  }, [])
 
   const width = '31.881'
 
@@ -120,6 +145,14 @@ const Product = ({ pageContext: { product } }) => {
                   GH¢ {product.price}
                 </h2>
 
+                {attributes?.map((attribute, index) => (
+                  <Attributes
+                    key={index}
+                    attribute={attribute}
+                    handleSelected={handleSelectedAttribute}
+                  />
+                ))}
+
                 <Quantity
                   decrement={() => decrementQuantity()}
                   increment={() => incrementQuantity()}
@@ -140,7 +173,15 @@ const Product = ({ pageContext: { product } }) => {
                       await addToCart({
                         product,
                         product_id: product.databaseId,
-                        quantity: 1,
+                        quantity: quantity,
+                        meta_data: [
+                          ...attributes.map((attribute, index) => {
+                            let item = {}
+                            item.key = attribute.label
+                            item.value = attribute.selected
+                            return item
+                          }),
+                        ],
                       })
                     }}
                   >
@@ -151,7 +192,15 @@ const Product = ({ pageContext: { product } }) => {
                       await addToCart({
                         product,
                         product_id: product.databaseId,
-                        quantity: 1,
+                        quantity: quantity,
+                        meta_data: [
+                          ...attributes.map((attribute) => {
+                            let item = {}
+                            item.key = attribute.label
+                            item.value = attribute.selected
+                            return item
+                          }),
+                        ],
                       })
                       navigate(`/store/checkout`)
                     }}
@@ -234,19 +283,5 @@ const Product = ({ pageContext: { product } }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query ($databaseId: Int!) {
-    post: wpPost(databaseId: { eq: $databaseId }) {
-      title
-      content
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-    }
-  }
-`
 
 export default Product
