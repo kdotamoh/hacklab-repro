@@ -29,7 +29,7 @@ export const StoreProvider = ({ children }) => {
    * @param {Number} params.quantity
    */
   const addToCart = ({ product, product_id, quantity, variation_id }) => {
-    const checkId = (obj) => obj.product_id === product.id
+    const checkId = (obj) => obj.product_id === product.databaseId
     if (cart.some(checkId)) {
       alert('The item you are trying to add is already in your cart')
       return false
@@ -81,7 +81,7 @@ export const StoreProvider = ({ children }) => {
     localStorage.setItem('hacklab_cart', JSON.stringify(newCart))
   }
 
-  const updateQuantity = ({ product_id, quantity }) => {
+  const incrementQuantity = ({ product_id, quantity }) => {
     let newCart = cart
     let objIndex = newCart.findIndex((obj) => obj.product_id === product_id)
     newCart[objIndex].quantity += 1
@@ -90,7 +90,7 @@ export const StoreProvider = ({ children }) => {
     localStorage.setItem('hacklab_cart', JSON.stringify(newCart))
   }
 
-  const reduceQuantity = ({ product_id, quantity }) => {
+  const decrementQuantity = ({ product_id, quantity }) => {
     let newCart = cart
     let objIndex = newCart.findIndex((obj) => obj.product_id === product_id)
 
@@ -114,8 +114,8 @@ export const StoreProvider = ({ children }) => {
         addToCart,
         getLocalCart,
         removeLineItem,
-        updateQuantity,
-        reduceQuantity,
+        incrementQuantity,
+        decrementQuantity,
         checkout,
         proceedToCheckout,
         cart,

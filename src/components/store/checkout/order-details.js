@@ -5,7 +5,7 @@ import { Divider } from '@theme-ui/components'
 import { StoreContext } from '../../../context/Store'
 
 const OrderDetails = () => {
-  const { cart, removeLineItem, updateQuantity, reduceQuantity } =
+  const { cart, removeLineItem, incrementQuantity, decrementQuantity } =
     React.useContext(StoreContext)
 
   return (
@@ -26,7 +26,7 @@ const OrderDetails = () => {
           borderRadius: 'sm',
         }}
       >
-        {cart?.map((order, index) => (
+        {cart?.map((item, index) => (
           <div
             key={index}
             sx={{
@@ -46,7 +46,7 @@ const OrderDetails = () => {
               }}
               src="https://media.cntraveler.com/photos/60db7a42303d7ca9bcab2bfc/master/w_2100,h_1500,c_limit/Best%20Travel%20Backpacks%20for%20Every%20Type%20of%20Vacation-2021_Dagne%20Dover%20large%20dakota%20backpack.jpg"
             />
-            <Trash onClick={() => removeLineItem(order.product.id)} />
+            <Trash onClick={() => removeLineItem(item.product.databaseId)} />
             <div
               sx={{
                 display: 'flex',
@@ -60,7 +60,7 @@ const OrderDetails = () => {
                   fontWeight: 'bold',
                 }}
               >
-                {order.product.name}
+                {item.product.name}
               </span>
               <span
                 sx={{
@@ -90,22 +90,22 @@ const OrderDetails = () => {
                     alignSelf: 'flex-end',
                   }}
                 >
-                  GHS {order.product.price}
+                  GHS {item.product.price}
                 </span>
                 <Quantity
                   decrement={() =>
-                    reduceQuantity({
-                      product_id: order.product.id,
-                      quantity: order.quantity,
+                    decrementQuantity({
+                      product_id: item.product.databaseId,
+                      quantity: item.quantity,
                     })
                   }
                   increment={() =>
-                    updateQuantity({
-                      product_id: order.product.id,
-                      quantity: order.quantity,
+                    incrementQuantity({
+                      product_id: item.product.databaseId,
+                      quantity: item.quantity,
                     })
                   }
-                  order={order}
+                  item={item}
                 />
               </div>
             </div>
@@ -170,7 +170,7 @@ const OrderDetails = () => {
   )
 }
 
-const Quantity = ({ decrement, increment, order }) => {
+const Quantity = ({ decrement, increment, item }) => {
   return (
     <div
       sx={{
@@ -197,7 +197,7 @@ const Quantity = ({ decrement, increment, order }) => {
           textAlign: 'center',
         }}
       >
-        {order.quantity}
+        {item.quantity}
       </span>
       <Plus
         sx={{
