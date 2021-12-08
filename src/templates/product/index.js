@@ -22,6 +22,8 @@ const Product = ({ pageContext: { product } }) => {
 
   const [, setShowSidenav] = React.useContext(NavigationContext)
 
+  console.log(product)
+
   const popular = [
     {
       title: 'Clothing Collection',
@@ -66,7 +68,7 @@ const Product = ({ pageContext: { product } }) => {
         >
           <div>
             <AspectImage
-              src="https://cdn.shopify.com/s/files/1/0281/2796/products/LIfestyle-2_17eb843b-eced-4a09-a286-3845895de662.jpg?v=1615406723"
+              src={product.featuredImage?.node?.sourceUrl}
               ratio={1.25}
               sx={{
                 width: '100%',
@@ -84,22 +86,9 @@ const Product = ({ pageContext: { product } }) => {
                 width: '100%',
               }}
             >
-              <AspectImage
-                src="https://target.scene7.com/is/image/Target/GUEST_51fced15-e1cb-4e8b-b5f1-23295edc90e9?wid=488&hei=488&fmt=pjpeg"
-                ratio={1.25}
-              />
-              <AspectImage
-                src="https://target.scene7.com/is/image/Target/GUEST_51fced15-e1cb-4e8b-b5f1-23295edc90e9?wid=488&hei=488&fmt=pjpeg"
-                ratio={1.25}
-              />
-              <AspectImage
-                src="https://target.scene7.com/is/image/Target/GUEST_51fced15-e1cb-4e8b-b5f1-23295edc90e9?wid=488&hei=488&fmt=pjpeg"
-                ratio={1.25}
-              />
-              <AspectImage
-                src="https://target.scene7.com/is/image/Target/GUEST_51fced15-e1cb-4e8b-b5f1-23295edc90e9?wid=488&hei=488&fmt=pjpeg"
-                ratio={1.25}
-              />
+              {product.galleryImages?.nodes?.map((image, index) => (
+                <AspectImage key={index} src={image.sourceUrl} ratio={1.25} />
+              ))}
             </div>
           </div>
 

@@ -229,7 +229,7 @@ const Store = ({ data }) => {
                   borderTopLeftRadius: 'sm',
                   borderTopRightRadius: 'sm',
                 }}
-                src="https://media.cntraveler.com/photos/60db7a42303d7ca9bcab2bfc/master/w_2100,h_1500,c_limit/Best%20Travel%20Backpacks%20for%20Every%20Type%20of%20Vacation-2021_Dagne%20Dover%20large%20dakota%20backpack.jpg"
+                src={item.featuredImage?.node?.sourceUrl}
                 alt=""
               />
               <p
@@ -238,7 +238,7 @@ const Store = ({ data }) => {
                   pt: '1rem',
                   pb: '.5rem',
                 }}
-                dangerouslySetInnerHTML={{ __html: item.description }}
+                dangerouslySetInnerHTML={{ __html: item.name }}
               />
               <p>{item.price}</p>
             </Link>
