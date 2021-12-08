@@ -33,6 +33,11 @@ const GET_PRODUCTS = `
           name
           price
           uri
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
         }
       }
     }

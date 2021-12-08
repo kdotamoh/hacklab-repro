@@ -336,6 +336,11 @@ export const query = graphql`
           name
           price
           uri
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
         }
       }
     }
