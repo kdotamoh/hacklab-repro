@@ -34,8 +34,8 @@ const Form = () => {
     const line_items = cart.map((lineItem) => {
       const item = {
         product_id: lineItem.product_id,
-        variation_id: lineItem.variation_id,
         quantity: lineItem.quantity,
+        meta_data: lineItem.meta_data,
       }
       return item
     })
@@ -94,6 +94,7 @@ const Form = () => {
         country: yup.string(),
       })}
       onSubmit={async (values, { setSubmitting }) => {
+        //@ts-ignore
         dispatch({ type: 'setForm', payload: values })
 
         let order = await handleOrder(values)

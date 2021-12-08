@@ -27,20 +27,19 @@ export const StoreProvider = ({ children }) => {
    * @param {Object} params
    * @param {Object} params.product
    * @param {Number} params.quantity
+   * @param {Number} params.product_id
+   * @param {Object[]} params.meta_data
    */
-  const addToCart = ({ product, product_id, quantity, variation_id }) => {
+  const addToCart = ({ product, product_id, quantity, meta_data }) => {
     const checkId = (obj) => obj.product_id === product.databaseId
     if (cart.some(checkId)) {
       alert('The item you are trying to add is already in your cart')
       return false
     } else {
-      setCart([...cart, { product, product_id, quantity, variation_id }])
+      setCart([...cart, { product, product_id, quantity, meta_data }])
       localStorage.setItem(
         'hacklab_cart',
-        JSON.stringify([
-          ...cart,
-          { product, product_id, quantity, variation_id },
-        ])
+        JSON.stringify([...cart, { product, product_id, quantity, meta_data }])
       )
     }
   }
@@ -72,6 +71,8 @@ export const StoreProvider = ({ children }) => {
     setCheckout(order)
     sessionStorage.setItem('hacklab_checkout', JSON.stringify(order))
   }
+
+  const completeOrder = () => {}
 
   const removeLineItem = (product_id) => {
     const newCart = cart.filter((product, productIndex) => {
