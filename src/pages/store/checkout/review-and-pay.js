@@ -15,7 +15,6 @@ const ReviewAndPay = () => {
 
   const onSuccess = async (order_id) => {
     const payload = { status: 'processing', set_paid: 'true' }
-    alert('Redirecting...')
     await updateOrderStatus({
       order_id: order_id,
       payload,

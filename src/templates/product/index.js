@@ -8,6 +8,7 @@ import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
 import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
+import Quantity from '../../components/store/quantity'
 
 /**
  * @param {Object} props
@@ -23,6 +24,15 @@ const Product = ({ pageContext: { product } }) => {
   const [, setShowSidenav] = React.useContext(NavigationContext)
 
   console.log(product)
+  const [quantity, setQuantity] = React.useState(1)
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1)
+  }
 
   const popular = [
     {
@@ -109,6 +119,12 @@ const Product = ({ pageContext: { product } }) => {
                 >
                   GH¢ {product.price}
                 </h2>
+
+                <Quantity
+                  decrement={() => decrementQuantity()}
+                  increment={() => incrementQuantity()}
+                  value={quantity}
+                />
 
                 <div
                   sx={{
