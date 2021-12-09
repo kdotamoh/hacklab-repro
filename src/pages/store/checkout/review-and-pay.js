@@ -73,7 +73,7 @@ const ReviewAndPay = () => {
           </div>
 
           <div>
-            <OrderDetails />
+            <OrderDetails reviewing={true} />
           </div>
         </div>
       </Container>

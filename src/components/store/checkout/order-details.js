@@ -4,10 +4,30 @@ import { Divider } from '@theme-ui/components'
 
 import { StoreContext } from '../../../context/Store'
 import Quantity from '../quantity'
+import parsePrice from '../../../utils/parsePrice'
 
-const OrderDetails = () => {
-  const { cart, removeLineItem, incrementQuantity, decrementQuantity } =
-    React.useContext(StoreContext)
+/**
+ * @param {Object} props
+ * @param {boolean} [props.reviewing]
+ */
+const OrderDetails = ({ reviewing }) => {
+  const {
+    cart,
+    removeLineItem,
+    incrementQuantity,
+    decrementQuantity,
+    deliveryMethod,
+  } = React.useContext(StoreContext)
+
+  const subTotal = Number(
+    cart.reduce((prev, curr) => {
+      return (
+        prev + curr.quantity * Number(parsePrice({ price: curr.product.price }))
+      )
+    }, 0)
+  )
+
+  const total = subTotal + Number(deliveryMethod?.total)
 
   return (
     <div>
@@ -47,7 +67,9 @@ const OrderDetails = () => {
               }}
               src="https://media.cntraveler.com/photos/60db7a42303d7ca9bcab2bfc/master/w_2100,h_1500,c_limit/Best%20Travel%20Backpacks%20for%20Every%20Type%20of%20Vacation-2021_Dagne%20Dover%20large%20dakota%20backpack.jpg"
             />
-            <Trash onClick={() => removeLineItem(item.product.databaseId)} />
+            {!reviewing && (
+              <Trash onClick={() => removeLineItem(item.product.databaseId)} />
+            )}
             <div
               sx={{
                 display: 'flex',
@@ -59,30 +81,77 @@ const OrderDetails = () => {
               <span
                 sx={{
                   fontWeight: 'bold',
+                  pb: '.5rem',
                 }}
               >
                 {item.product.name}
               </span>
-              <span
-                sx={{
-                  pt: '.5rem',
-                }}
-              >
-                color
-              </span>
-              <span
-                sx={{
-                  pt: '.5rem',
-                }}
-              >
-                size
-              </span>
+              <div>
+                {item.meta_data.map((meta_data, index) => (
+                  <>
+                    {meta_data.key.toLowerCase() === 'color' ? (
+                      <div
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '.4rem',
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        <span>{meta_data.key}:</span>
+                        <span
+                          sx={{
+                            height: '1rem',
+                            width: '1rem',
+                            borderRadius: 'sm',
+                            bg: meta_data.value,
+                            display: 'inline-block',
+                          }}
+                        />
+                      </div>
+                    ) : meta_data.key.toLowerCase() === 'colour' ? (
+                      <div
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '.4rem',
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        <span>{meta_data.key}:</span>
+                        <span
+                          sx={{
+                            height: '1rem',
+                            width: '1rem',
+                            borderRadius: 'sm',
+                            bg: meta_data.value,
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <span
+                        key={index}
+                        sx={{
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        {meta_data.key}: {meta_data.value}
+                      </span>
+                    )}
+                  </>
+                ))}
+              </div>
+
               <div
                 sx={{
                   display: 'flex',
                   width: '100%',
                   height: '100%',
                   justifyContent: 'space-between',
+                  // mt: '1rem',
                 }}
               >
                 <span
@@ -91,23 +160,25 @@ const OrderDetails = () => {
                     alignSelf: 'flex-end',
                   }}
                 >
-                  GHS {item.product.price}
+                  GH¢{parsePrice({ price: item?.product?.price })}
                 </span>
-                <Quantity
-                  decrement={() =>
-                    decrementQuantity({
-                      product_id: item.product.databaseId,
-                      quantity: item.quantity,
-                    })
-                  }
-                  increment={() =>
-                    incrementQuantity({
-                      product_id: item.product.databaseId,
-                      quantity: item.quantity,
-                    })
-                  }
-                  value={item.quantity}
-                />
+                {!reviewing && (
+                  <Quantity
+                    decrement={() =>
+                      decrementQuantity({
+                        product_id: item.product.databaseId,
+                        quantity: item.quantity,
+                      })
+                    }
+                    increment={() =>
+                      incrementQuantity({
+                        product_id: item.product.databaseId,
+                        quantity: item.quantity,
+                      })
+                    }
+                    value={item.quantity}
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -128,7 +199,7 @@ const OrderDetails = () => {
             }}
           >
             <span>Subtotal</span>
-            <span>GHS 50.00</span>
+            <span>GH¢{subTotal.toFixed(2)}</span>
           </div>
         </div>
         <div
@@ -140,18 +211,7 @@ const OrderDetails = () => {
           }}
         >
           <span>Shipping</span>
-          <span>GHS 50.00</span>
-        </div>
-        <div
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            fontWeight: 'bold',
-            my: '1.5rem',
-          }}
-        >
-          <span>Taxes</span>
-          <span>GHS 50.00</span>
+          <span>GH¢{deliveryMethod.total}</span>
         </div>
         <Divider />
         <div
@@ -164,7 +224,7 @@ const OrderDetails = () => {
           }}
         >
           <span>Total</span>
-          <span>GHS 50.00</span>
+          <span>GH¢{total.toFixed(2)}</span>
         </div>
       </div>
     </div>
