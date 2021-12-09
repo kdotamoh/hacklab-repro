@@ -29,7 +29,9 @@ const Product = ({ pageContext: { product } }) => {
   const parsedPrice = parsePrice({ price: product.price })
 
   React.useEffect(() => {
-    const newAttributes = [...product.attributes.nodes]
+    const newAttributes = product.attributes?.nodes
+      ? [...product.attributes?.nodes]
+      : []
     newAttributes.forEach(
       (attribute) => (attribute.selected = attribute.options[0])
     )
