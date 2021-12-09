@@ -9,7 +9,7 @@ import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
 import Quantity from '../../components/store/quantity'
 import Attributes from '../../components/store/attributes'
-
+import parsePrice from '../../utils/parsePrice'
 /**
  * @param {Object} props
  * @param {Object} props.pageContext
@@ -25,6 +25,8 @@ const Product = ({ pageContext: { product } }) => {
   React.useEffect(() => {
     setShowSidenav(false)
   }, [])
+
+  const parsedPrice = parsePrice({ price: product.price })
 
   React.useEffect(() => {
     const newAttributes = [...product.attributes.nodes]
@@ -142,7 +144,7 @@ const Product = ({ pageContext: { product } }) => {
                     mb: '4rem',
                   }}
                 >
-                  GH¢ {product.price}
+                  GH¢{parsedPrice}
                 </h2>
 
                 {attributes?.map((attribute, index) => (
