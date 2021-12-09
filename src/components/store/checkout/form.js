@@ -3,21 +3,14 @@ import * as React from 'react'
 import { Field, Radio, Button } from '@theme-ui/components'
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import { navigate } from 'gatsby'
+import { graphql, useStaticQuery, navigate } from 'gatsby'
 
 import { StoreContext } from '../../../context/Store'
 import { createOrder } from '../../../api/orders/create-order'
 
-const initialValues = {
-  email: '',
-  phoneNumber: '',
-  firstName: '',
-  lastName: '',
-  address: '',
-  city: '',
-  country: '',
-  deliveryOption: '',
-}
+const Form = () => {
+  const { cart, proceedToCheckout, deliveryMethod } =
+    React.useContext(StoreContext)
 
 const formReducer = (state, action) => {
   switch (action.type) {
@@ -70,9 +63,9 @@ const Form = () => {
       line_items,
       shipping_lines: [
         {
-          method_id: 'standard_delivery',
-          method_title: 'Standard delivery',
-          total: '10.00',
+          method_id: deliveryMethod.methodId,
+          method_title: deliveryMethod.methodTitle,
+          total: deliveryMethod.total,
         },
       ],
     }
@@ -303,40 +296,41 @@ const Form = () => {
 }
 
 const DeliveryOptions = ({ selectOption }) => {
-  const [active, setActive] = React.useState(null)
+  const {
+    deliveryMethods: {
+      admin: { woocommerceDeliveryMethods },
+    },
+  } = useStaticQuery(graphql`
+    {
+      deliveryMethods: wpPage(slug: { eq: "admin-page" }) {
+        admin {
+          woocommerceDeliveryMethods {
+            description
+            icon {
+              sourceUrl
+            }
+            methodId
+            methodTitle
+            total
+          }
+        }
+      }
+    }
+  `)
 
-  const options = [
-    {
-      icon: '',
-      type: 'Standard Delivery',
-      description: '4 - 10 business days',
-      cost: 'GH¢10.00',
-    },
-    {
-      icon: '',
-      type: 'Normal Delivery',
-      description: '4 - 10 business days',
-      cost: 'GH¢10.00',
-    },
-    {
-      icon: '',
-      type: 'Express Delivery',
-      description: '4 - 10 business days',
-      cost: 'GH¢10.00',
-    },
-    // {
-    //   method_id: 'standard_delivery',
-    //   method_title: 'Standard delivery',
-    //   total: '10.00',
-    // },
-  ]
+  const { setDeliveryMethod } = React.useContext(StoreContext)
+  const [active, setActive] = React.useState(null)
 
   return (
     <>
-      {options.map((option, index) => (
+      {woocommerceDeliveryMethods.map((option, index) => (
         <div
           key={index}
-          onClick={() => setActive(index)}
+          onClick={() => {
+            setActive(index)
+            selectOption('deliveryMethod', option)
+            setDeliveryMethod(option)
+          }}
           sx={{
             borderRadius: 'md',
             mb: '1rem',
@@ -372,7 +366,7 @@ const DeliveryOptions = ({ selectOption }) => {
                 mt: '.1rem',
               }}
             >
-              {option.type}
+              {option.methodTitle}
             </p>
             <p
               sx={{
@@ -388,7 +382,7 @@ const DeliveryOptions = ({ selectOption }) => {
                 mt: '1rem',
               }}
             >
-              {option.cost}
+              GH¢{option.total}
             </p>
           </div>
           <div>
