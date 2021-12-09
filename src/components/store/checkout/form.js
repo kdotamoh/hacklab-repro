@@ -12,15 +12,24 @@ const Form = () => {
   const { cart, proceedToCheckout, deliveryMethod } =
     React.useContext(StoreContext)
 
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case 'setForm':
-      return (state = action.payload)
+  const initialValues = {
+    email: '',
+    phoneNumber: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    country: '',
+    deliveryMethod: deliveryMethod,
   }
-}
 
-const Form = () => {
-  const { cart, proceedToCheckout } = React.useContext(StoreContext)
+  const formReducer = (state, action) => {
+    switch (action.type) {
+      case 'setForm':
+        return (state = action.payload)
+    }
+  }
+
   const [state, dispatch] = React.useReducer(formReducer, initialValues)
 
   const handleOrder = async (values) => {
@@ -78,13 +87,18 @@ const Form = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={yup.object().shape({
-        email: yup.string().email().required(),
+        email: yup.string().email().required('Email is required'),
         // phoneNumber: yup.number()
         firstName: yup.string(),
         lastName: yup.string(),
         address: yup.string(),
         city: yup.string(),
         country: yup.string(),
+        deliveryMethod: yup.object().shape({
+          method_id: yup.string(),
+          method_title: yup.string(),
+          total: yup.string(),
+        }),
       })}
       onSubmit={async (values, { setSubmitting }) => {
         //@ts-ignore
@@ -107,7 +121,6 @@ const Form = () => {
         isSubmitting,
         isValid,
         setFieldValue,
-        /* and other goodies */
       }) => (
         <form>
           <div>
@@ -131,10 +144,19 @@ const Form = () => {
                 label="Email"
                 placeholder="Email"
                 name="email"
+                type="email"
                 onChange={handleChange}
                 value={values.email}
               />
-              {errors.email && touched.email && errors.email}
+              <p
+                sx={{
+                  pt: '.25rem',
+                  color: 'red',
+                  fontSize: 'caption',
+                }}
+              >
+                {errors.email && touched.email && errors.email}
+              </p>
             </div>
             <div
               sx={{
@@ -148,6 +170,7 @@ const Form = () => {
                 label="Phone number"
                 placeholder="0203948576"
                 name="phoneNumber"
+                type="text"
                 onChange={handleChange}
                 value={values.phoneNumber}
               />
@@ -180,6 +203,7 @@ const Form = () => {
                   label="First name"
                   placeholder="First name"
                   name="firstName"
+                  type="text"
                   onChange={handleChange}
                   value={values.firstName}
                 />
@@ -196,6 +220,7 @@ const Form = () => {
                   label="Last name"
                   placeholder="Last name"
                   name="lastName"
+                  type="text"
                   onChange={handleChange}
                   value={values.lastName}
                 />
@@ -213,6 +238,7 @@ const Form = () => {
                 label="Address"
                 placeholder="eg: Accra Mall Ghana"
                 name="address"
+                type="text"
                 onChange={handleChange}
                 value={values.address}
               />
@@ -233,6 +259,7 @@ const Form = () => {
                   label="City"
                   placeholder="City"
                   name="city"
+                  type="text"
                   onChange={handleChange}
                   value={values.city}
                 />
@@ -245,6 +272,7 @@ const Form = () => {
                   label="Country"
                   placeholder="Country"
                   name="country"
+                  type="text"
                   onChange={handleChange}
                   value={values.country}
                 />
