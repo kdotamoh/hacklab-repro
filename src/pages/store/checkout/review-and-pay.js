@@ -63,7 +63,7 @@ const ReviewAndPay = () => {
                 text="Pay now"
                 onSuccess={() => onSuccess(checkout?.id)}
                 onClose={() => onClose()}
-                reference={checkout?.id}
+                reference={`${checkout?.id}-${new Date().getTime()}`}
                 email={checkout?.billing?.email}
                 amount={checkout?.total * 100}
                 currency="GHS"
