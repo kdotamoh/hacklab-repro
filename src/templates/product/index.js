@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container, Button, AspectImage } from '@theme-ui/components'
-import { navigate } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
@@ -20,6 +20,11 @@ import parsePrice from '../../utils/parsePrice'
  */
 const Product = ({ pageContext: { product } }) => {
   const { addToCart } = React.useContext(StoreContext)
+
+  const relatedProducts = [
+    ...product.crossSell?.nodes,
+    ...product.upsell?.nodes,
+  ]
 
   const [, setShowSidenav] = React.useContext(NavigationContext)
   React.useEffect(() => {
@@ -233,57 +238,61 @@ const Product = ({ pageContext: { product } }) => {
           </div>
         </div>
       </Container>
-      <h3
-        sx={{
-          textAlign: 'center',
-        }}
-      >
-        You may also like
-      </h3>
-      <Container
-        sx={{
-          width: ['92%', '92%', '82%'],
-          display: 'flex',
-          gap: 'flexGap',
-          rowGap: ['1.5rem', '1.5rem', '2.5rem'],
-          flexWrap: 'wrap',
-          pt: '3.5rem',
-        }}
-      >
-        {popular.map((item, index) => (
-          <div
+      {relatedProducts.length > 0 ? (
+        <>
+          <h3
             sx={{
-              flexBasis: ['100%', '100%', `${width}%`],
-              borderTopLeftRadius: 'sm',
-              borderTopRightRadius: 'sm',
-              pb: '1rem',
+              textAlign: 'center',
             }}
-            key={index}
           >
-            <img
-              sx={{
-                width: '100%',
-                height: '18rem',
-                objectFit: 'cover',
-                borderTopLeftRadius: 'sm',
-                borderTopRightRadius: 'sm',
-              }}
-              src="https://media.cntraveler.com/photos/60db7a42303d7ca9bcab2bfc/master/w_2100,h_1500,c_limit/Best%20Travel%20Backpacks%20for%20Every%20Type%20of%20Vacation-2021_Dagne%20Dover%20large%20dakota%20backpack.jpg"
-              alt=""
-            />
-            <p
-              sx={{
-                fontWeight: 'medium',
-                pt: '1rem',
-                pb: '.5rem',
-              }}
-            >
-              {item.description}
-            </p>
-            <p>{item.price}</p>
-          </div>
-        ))}
-      </Container>
+            You may also like
+          </h3>
+          <Container
+            sx={{
+              width: ['92%', '92%', '82%'],
+              display: 'flex',
+              gap: 'flexGap',
+              rowGap: ['1.5rem', '1.5rem', '2.5rem'],
+              flexWrap: 'wrap',
+              pt: '3.5rem',
+            }}
+          >
+            {relatedProducts.map((item, index) => (
+              <Link
+                to={`/store/product/${item.slug}/`}
+                sx={{
+                  flexBasis: ['100%', '100%', `${width}%`],
+                  borderTopLeftRadius: 'sm',
+                  borderTopRightRadius: 'sm',
+                  pb: '1rem',
+                }}
+                key={index}
+              >
+                <img
+                  sx={{
+                    width: '100%',
+                    height: '18rem',
+                    objectFit: 'cover',
+                    borderTopLeftRadius: 'sm',
+                    borderTopRightRadius: 'sm',
+                  }}
+                  src={item.image.sourceUrl}
+                  alt=""
+                />
+                <p
+                  sx={{
+                    fontWeight: 'medium',
+                    pt: '1rem',
+                    pb: '.5rem',
+                  }}
+                >
+                  {item.name}
+                </p>
+              </Link>
+            ))}
+          </Container>
+        </>
+      ) : null}
     </Layout>
   )
 }

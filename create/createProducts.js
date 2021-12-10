@@ -38,6 +38,24 @@ const GET_PRODUCTS = `
               sourceUrl
             }
           }
+          crossSell {
+            nodes {
+              name
+              slug
+              image {
+                sourceUrl
+              }
+            }
+          }
+          upsell {
+            nodes {
+              name
+              slug
+              image {
+                sourceUrl
+              }
+            }
+          }
         }
       }
     }
