@@ -21,35 +21,65 @@ const Announce = (props) => {
     }
   `)
 
+  // TODO: improve this implementation
+  const [hide, setHide] = React.useState('false')
+
+  React.useEffect(() => {
+    const hideAnnounce = sessionStorage.getItem('hide_hacklab_announce')
+    setHide(hideAnnounce)
+  }, [])
+
+  const dismissAnnounce = () => {
+    setHide('true')
+    sessionStorage.setItem('hide_hacklab_announce', 'true')
+  }
+
   return (
-    <div
-      {...props}
-      sx={{
-        color: 'neutral.white',
-        py: '1rem',
-        padding: '1rem',
-        bg: 'neutral.black',
-        display: announce?.admin?.announce?.text ? 'flex' : 'none',
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignItems: 'center',
-        gap: 'gapDefault',
-      }}
-    >
-      <p
-        sx={{
-          fontSize: 'paragraph2',
-        }}
-      >
-        {announce?.admin?.announce?.text}
-      </p>
-      <Button
-        onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
-        variant="rounded"
-      >
-        {announce?.admin?.announce?.buttonText}
-      </Button>
-    </div>
+    <>
+      {!hide && (
+        <div
+          {...props}
+          sx={{
+            color: 'neutral.white',
+            py: '1rem',
+            padding: '1rem',
+            bg: 'neutral.black',
+            display: announce?.admin?.announce?.text ? 'flex' : 'none',
+            justifyContent: 'center',
+            textAlign: 'center',
+            alignItems: 'center',
+            gap: 'gapDefault',
+            position: 'relative',
+          }}
+        >
+          <p
+            sx={{
+              fontSize: 'paragraph2',
+            }}
+          >
+            {announce?.admin?.announce?.text}
+          </p>
+          <Button
+            onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
+            variant="rounded"
+          >
+            {announce?.admin?.announce?.buttonText}
+          </Button>
+
+          <span
+            sx={{
+              display: 'inline-flex',
+              position: 'absolute',
+              right: '4rem',
+              cursor: 'pointer',
+            }}
+            onClick={() => dismissAnnounce()}
+          >
+            &times;
+          </span>
+        </div>
+      )}
+    </>
   )
 }
 
