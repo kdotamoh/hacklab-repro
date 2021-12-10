@@ -23,15 +23,6 @@ const Form = () => {
     deliveryMethod: deliveryMethod,
   }
 
-  const formReducer = (state, action) => {
-    switch (action.type) {
-      case 'setForm':
-        return (state = action.payload)
-    }
-  }
-
-  const [state, dispatch] = React.useReducer(formReducer, initialValues)
-
   const handleOrder = async (values) => {
     const line_items = cart.map((lineItem) => {
       const item = {
@@ -72,9 +63,9 @@ const Form = () => {
       line_items,
       shipping_lines: [
         {
-          method_id: deliveryMethod.methodId,
-          method_title: deliveryMethod.methodTitle,
-          total: deliveryMethod.total,
+          method_id: values.deliveryMethod.methodId,
+          method_title: values.deliveryMethod.methodTitle,
+          total: values.deliveryMethod.total,
         },
       ],
     }
@@ -88,26 +79,22 @@ const Form = () => {
       initialValues={initialValues}
       validationSchema={yup.object().shape({
         email: yup.string().email().required('Email is required'),
-        // phoneNumber: yup.number()
-        firstName: yup.string(),
-        lastName: yup.string(),
-        address: yup.string(),
-        city: yup.string(),
-        country: yup.string(),
+        phoneNumber: yup.string().required('Phone number is required'),
+        firstName: yup.string().required('First name is required'),
+        lastName: yup.string().required('Last name is required'),
+        address: yup.string().required('Address is required'),
+        city: yup.string().required('City is required'),
+        country: yup.string().required('Country is required'),
         deliveryMethod: yup.object().shape({
-          method_id: yup.string(),
-          method_title: yup.string(),
+          methodId: yup.string().required('Delivery method is required'),
+          methodTitle: yup.string(),
           total: yup.string(),
         }),
       })}
-      onSubmit={async (values, { setSubmitting }) => {
+      onSubmit={async (values) => {
         //@ts-ignore
-        dispatch({ type: 'setForm', payload: values })
-
         let order = await handleOrder(values)
-
         proceedToCheckout(order)
-
         navigate('/store/checkout/review-and-pay')
       }}
     >
@@ -116,11 +103,10 @@ const Form = () => {
         errors,
         touched,
         handleChange,
-        handleBlur,
         handleSubmit,
         isSubmitting,
-        isValid,
         setFieldValue,
+        setFieldTouched,
       }) => (
         <form>
           <div>
@@ -174,6 +160,17 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.phoneNumber}
               />
+              <p
+                sx={{
+                  pt: '.25rem',
+                  color: 'red',
+                  fontSize: 'caption',
+                }}
+              >
+                {errors.phoneNumber &&
+                  touched.phoneNumber &&
+                  errors.phoneNumber}
+              </p>
             </div>
 
             <h4
@@ -207,6 +204,15 @@ const Form = () => {
                   onChange={handleChange}
                   value={values.firstName}
                 />
+                <p
+                  sx={{
+                    pt: '.25rem',
+                    color: 'red',
+                    fontSize: 'caption',
+                  }}
+                >
+                  {errors.firstName && touched.firstName && errors.firstName}
+                </p>
               </div>
               <div
                 sx={{
@@ -224,6 +230,15 @@ const Form = () => {
                   onChange={handleChange}
                   value={values.lastName}
                 />
+                <p
+                  sx={{
+                    pt: '.25rem',
+                    color: 'red',
+                    fontSize: 'caption',
+                  }}
+                >
+                  {errors.lastName && touched.lastName && errors.lastName}
+                </p>
               </div>
             </div>
             <div
@@ -242,6 +257,15 @@ const Form = () => {
                 onChange={handleChange}
                 value={values.address}
               />
+              <p
+                sx={{
+                  pt: '.25rem',
+                  color: 'red',
+                  fontSize: 'caption',
+                }}
+              >
+                {errors.address && touched.address && errors.address}
+              </p>
             </div>
             <div
               sx={{
@@ -263,6 +287,15 @@ const Form = () => {
                   onChange={handleChange}
                   value={values.city}
                 />
+                <p
+                  sx={{
+                    pt: '.25rem',
+                    color: 'red',
+                    fontSize: 'caption',
+                  }}
+                >
+                  {errors.city && touched.city && errors.city}
+                </p>
               </div>
               <div>
                 <Field
@@ -276,23 +309,16 @@ const Form = () => {
                   onChange={handleChange}
                   value={values.country}
                 />
+                <p
+                  sx={{
+                    pt: '.25rem',
+                    color: 'red',
+                    fontSize: 'caption',
+                  }}
+                >
+                  {errors.country && touched.country && errors.country}
+                </p>
               </div>
-            </div>
-            <div
-              sx={{
-                mb: '1rem',
-              }}
-            >
-              <Field
-                sx={{
-                  padding: '.625rem',
-                }}
-                label=""
-                placeholder="Email"
-                name="country"
-                onChange={handleChange}
-                value={values.country}
-              />
             </div>
 
             <h4
@@ -303,12 +329,25 @@ const Form = () => {
             >
               Delivery method
             </h4>
-            <DeliveryOptions selectOption={setFieldValue} />
+            <DeliveryOptions {...{ setFieldValue, setFieldTouched }} />
+            <p
+              sx={{
+                pt: '.25rem',
+                color: 'red',
+                fontSize: 'caption',
+              }}
+            >
+              {errors.deliveryMethod?.method_id &&
+                touched.deliveryMethod?.method_id &&
+                errors.deliveryMethod?.method_id}
+            </p>
           </div>
 
           <Button
+            type="submit"
             sx={{
               mt: '1rem',
+              width: '100%',
             }}
             onClick={(e) => {
               e.preventDefault()
@@ -323,7 +362,7 @@ const Form = () => {
   )
 }
 
-const DeliveryOptions = ({ selectOption }) => {
+const DeliveryOptions = ({ setFieldValue, setFieldTouched }) => {
   const {
     deliveryMethods: {
       admin: { woocommerceDeliveryMethods },
@@ -356,12 +395,13 @@ const DeliveryOptions = ({ selectOption }) => {
           key={index}
           onClick={() => {
             setActive(index)
-            selectOption('deliveryMethod', option)
+            setFieldValue('deliveryMethod', option)
+            setFieldTouched('deliveryMethod')
             setDeliveryMethod(option)
           }}
           sx={{
             borderRadius: 'md',
-            mb: '1rem',
+            mt: '1rem',
             outline:
               active === index ? 'solid 2px #610B70' : 'solid 1px #E4E7EC',
             padding: '.75rem',
