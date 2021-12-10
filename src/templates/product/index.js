@@ -7,8 +7,8 @@ import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
 import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
-import Quantity from '../../components/store/quantity'
-import Attributes from '../../components/store/attributes'
+import Quantity from '../../components/store/product/quantity'
+import Attributes from '../../components/store/product/attributes'
 import parsePrice from '../../utils/parsePrice'
 /**
  * @param {Object} props

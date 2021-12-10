@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Divider } from '@theme-ui/components'
 
 import { StoreContext } from '../../../context/Store'
-import Quantity from '../quantity'
+import Quantity from '../product/quantity'
 import parsePrice from '../../../utils/parsePrice'
 
 /**
