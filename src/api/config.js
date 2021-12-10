@@ -8,8 +8,6 @@ export const client = axios.create({
   responseType: 'json',
 })
 
-console.log('baseURL', baseURL)
-
 addOAuthInterceptor(client, {
   key: process.env.GATSBY_WOOCOMMERCE_CONSUMER_KEY,
   secret: process.env.GATSBY_WOOCOMMERCE_CONSUMER_SECRET,

@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { isEmpty } from 'lodash'
+import { toast } from 'react-toastify'
 
 /**
  * @param {Object} props
@@ -39,7 +40,7 @@ export const StoreProvider = ({ children }) => {
   const addToCart = ({ product, product_id, quantity, meta_data }) => {
     const checkId = (obj) => obj.product_id === product.databaseId
     if (cart.some(checkId)) {
-      alert('The item you are trying to add is already in your cart')
+      toast('The item you are trying to add is already in your cart', {})
       return false
     } else {
       setCart([...cart, { product, product_id, quantity, meta_data }])
