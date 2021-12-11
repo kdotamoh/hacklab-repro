@@ -5,27 +5,11 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
+import parsePrice from '../../utils/parsePrice'
 
 const Store = ({ data }) => {
   const products = data.products.nodes
-
-  const categories = [
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-    },
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-    },
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-    },
-  ]
+  const categories = data.categories.nodes[0].store.featuredCategories
 
   const width = '31.881'
 
@@ -99,8 +83,7 @@ const Store = ({ data }) => {
         {categories.map((category, index) => (
           <div
             sx={{
-              backgroundImage:
-                'url("https://media.cntraveler.com/photos/60db7a42303d7ca9bcab2bfc/master/w_2100,h_1500,c_limit/Best%20Travel%20Backpacks%20for%20Every%20Type%20of%20Vacation-2021_Dagne%20Dover%20large%20dakota%20backpack.jpg")',
+              backgroundImage: `url(${category.image?.sourceUrl})`,
               height: '23rem',
               backgroundSize: 'cover',
               backgroundPosition: 'center center',
@@ -124,7 +107,7 @@ const Store = ({ data }) => {
                 px: '4.5rem',
               }}
             >
-              <h3>Category</h3>
+              <h3>{category.name}</h3>
               <p
                 sx={{
                   mt: '.5rem',
@@ -134,16 +117,18 @@ const Store = ({ data }) => {
                 {category.description}
               </p>
             </div>
-            <Button
-              sx={{
-                position: 'absolute',
-                bottom: '2.5rem',
-                left: '50%',
-                transform: 'translateX(-50%)',
-              }}
-            >
-              Shop now
-            </Button>
+            <Link to={`/store${category.uri}`}>
+              <Button
+                sx={{
+                  position: 'absolute',
+                  bottom: '2.5rem',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                }}
+              >
+                Shop now
+              </Button>
+            </Link>
             <div
               sx={{
                 bg: 'rgba(0, 0, 0, 0.4)',

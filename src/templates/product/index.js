@@ -4,7 +4,7 @@ import { Container, Button, AspectImage } from '@theme-ui/components'
 import { Link, navigate } from 'gatsby'
 
 import Layout from '../../components/Layout'
-import Navigation from '../../components/layout/Navigation'
+import Menu from '../../components/store/layout/menu'
 import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
 import Quantity from '../../components/store/product/quantity'
@@ -72,31 +72,11 @@ const Product = ({ pageContext: { product } }) => {
     setQuantity(quantity + 1)
   }
 
-  const popular = [
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-      price: 'GHC 50',
-    },
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-      price: 'GHC 50',
-    },
-    {
-      title: 'Clothing Collection',
-      description: 'Checkout the new merch available',
-      buttonText: 'Shop now',
-      price: 'GHC 50',
-    },
-  ]
-
   const width = '31.881'
 
   return (
-    <Layout navigation={<Navigation color="black" />}>
+    <Layout>
+      <Menu />
       <Container
         sx={{
           width: ['92%', '92%', '82%'],

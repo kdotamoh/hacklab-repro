@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const createPages = require('./create/createPages')
 const createPosts = require('./create/createPosts')
 const createProducts = require('./create/createProducts')
+const createProductCategories = require('./create/createProductCategories')
 
 exports.createPagesStatefully = async (
   { graphql, actions, reporter },
@@ -11,6 +12,7 @@ exports.createPagesStatefully = async (
   await createPages({ actions, graphql, reporter }, options)
   await createPosts({ actions, graphql, reporter }, options)
   await createProducts({ actions, graphql, reporter }, options)
+  await createProductCategories({ actions, graphql, reporter }, options)
 }
 
 exports.onCreateWebpackConfig = ({ actions }) => {
