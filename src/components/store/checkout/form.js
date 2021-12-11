@@ -337,9 +337,9 @@ const Form = () => {
                 fontSize: 'caption',
               }}
             >
-              {errors.deliveryMethod?.method_id &&
-                touched.deliveryMethod?.method_id &&
-                errors.deliveryMethod?.method_id}
+              {errors.deliveryMethod?.methodId &&
+                touched.deliveryMethod?.methodId &&
+                errors.deliveryMethod?.methodId}
             </p>
           </div>
 
