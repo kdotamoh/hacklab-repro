@@ -288,6 +288,7 @@ const Product = ({ pageContext: { product } }) => {
                 >
                   {item.name}
                 </p>
+                <p>GH¢{parsePrice({ price: item.price })}</p>
               </Link>
             ))}
           </Container>

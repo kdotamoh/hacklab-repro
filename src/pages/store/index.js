@@ -202,7 +202,7 @@ const Store = ({ data }) => {
                 }}
                 dangerouslySetInnerHTML={{ __html: item.name }}
               />
-              <p>{item.price}</p>
+              <p>GH¢{parsePrice({ price: item.price })}</p>
             </Link>
           ))}
       </Container>
@@ -270,38 +270,19 @@ export const query = graphql`
   {
     products: allWpProduct {
       nodes {
-        name
-        slug
-        attributes {
-          nodes {
-            label
-            name
-            options
-            position
-          }
-        }
-        galleryImages {
-          nodes {
-            sourceUrl
-          }
-        }
-        image {
-          sourceUrl
-        }
-        localAttributes {
-          nodes {
-            name
-          }
-        }
-        purchasable
-        ... on WpSimpleProduct {
-          name
-          price
-          uri
-          featuredImage {
-            node {
+        ...ProductInformation
+      }
+    }
+    categories: allWpPage(filter: { slug: { eq: "store" } }) {
+      nodes {
+        store {
+          featuredCategories {
+            uri
+            image {
               sourceUrl
             }
+            name
+            description
           }
         }
       }

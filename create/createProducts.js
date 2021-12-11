@@ -1,5 +1,9 @@
 const productTemplate = require.resolve('../src/templates/product')
 
+// gatsby-node does not have access to fragments, meaning it's not possible to simply use the PageInformation
+// fragment here. There are ways around this (https://github.com/gatsbyjs/gatsby/discussions/12155#discussioncomment-100921)
+// but since we don't use fragment a ton this seems like overkill. For now, just remember to keep this file in track with the
+// any changes made to ProductInformation
 const GET_PRODUCTS = `
   query GET_PRODUCTS {
     allWpProduct {
@@ -40,19 +44,27 @@ const GET_PRODUCTS = `
           }
           crossSell {
             nodes {
-              name
               slug
               image {
                 sourceUrl
+              }
+              ... on WpSimpleProduct {
+                name
+                price
+                uri
               }
             }
           }
           upsell {
             nodes {
-              name
               slug
               image {
                 sourceUrl
+              }
+              ... on WpSimpleProduct {
+                name
+                price
+                uri
               }
             }
           }
