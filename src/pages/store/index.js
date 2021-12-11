@@ -4,6 +4,7 @@ import { Container, Button } from '@theme-ui/components'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
+import Menu from '../../components/store/layout/menu'
 
 const Store = ({ data }) => {
   const products = data.products.nodes
@@ -30,6 +31,7 @@ const Store = ({ data }) => {
 
   return (
     <Layout>
+      <Menu />
       <div
         sx={{
           height: '92vh',

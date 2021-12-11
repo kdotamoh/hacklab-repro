@@ -5,6 +5,7 @@ import { PaystackButton } from 'react-paystack'
 import { StoreContext } from '../../../context/Store'
 
 import Layout from '../../../components/Layout'
+import Menu from '../../../components/store/layout/menu'
 import ReviewDetails from '../../../components/store/checkout/review-details'
 import OrderDetails from '../../../components/store/checkout/order-details'
 import { updateOrderStatus } from '../../../api/orders/update-order'
@@ -28,6 +29,7 @@ const ReviewAndPay = () => {
 
   return (
     <Layout>
+      <Menu />
       <Container
         sx={{
           width: ['92%', '92%', '82%'],
