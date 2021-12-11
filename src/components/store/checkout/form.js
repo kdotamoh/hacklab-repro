@@ -46,7 +46,7 @@ const Form = () => {
         city: values.city,
         state: '',
         postcode: '',
-        country: 'GH',
+        country: values.country,
         email: values.email,
         phone: values.phoneNumber,
       },
