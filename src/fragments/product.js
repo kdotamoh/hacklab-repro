@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 
+// Be sure to copy updates made here to createProducts.js
 export const query = graphql`
   fragment ProductInformation on WpProduct {
     databaseId
@@ -17,9 +18,6 @@ export const query = graphql`
       nodes {
         sourceUrl
       }
-    }
-    image {
-      sourceUrl
     }
     localAttributes {
       nodes {
@@ -39,26 +37,30 @@ export const query = graphql`
       crossSell {
         nodes {
           slug
-          image {
-            sourceUrl
-          }
           ... on WpSimpleProduct {
             name
             price
             uri
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
           }
         }
       }
       upsell {
         nodes {
           slug
-          image {
-            sourceUrl
-          }
           ... on WpSimpleProduct {
             name
             price
             uri
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
           }
         }
       }

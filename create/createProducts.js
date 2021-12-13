@@ -24,9 +24,6 @@ const GET_PRODUCTS = `
             sourceUrl
           }
         }
-        image {
-          sourceUrl
-        }
         localAttributes {
           nodes {
             name
@@ -45,26 +42,30 @@ const GET_PRODUCTS = `
           crossSell {
             nodes {
               slug
-              image {
-                sourceUrl
-              }
               ... on WpSimpleProduct {
                 name
                 price
                 uri
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
               }
             }
           }
           upsell {
             nodes {
               slug
-              image {
-                sourceUrl
-              }
               ... on WpSimpleProduct {
                 name
                 price
                 uri
+                featuredImage {
+                  node {
+                    sourceUrl
+                  }
+                }
               }
             }
           }

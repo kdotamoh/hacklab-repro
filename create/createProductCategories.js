@@ -11,13 +11,15 @@ const GET_PRODUCT_CATEGORIES = `
         databaseId
         products {
           nodes {
-            image {
-              sourceUrl
-            }
             ... on WpSimpleProduct {
               name
               price
               uri
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
             }
           }
         }

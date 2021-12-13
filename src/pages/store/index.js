@@ -5,13 +5,11 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
-import parsePrice from '../../utils/parsePrice'
+import ProductCard from '../../components/store/product/card'
 
 const Store = ({ data }) => {
   const products = data.products.nodes
   const categories = data.categories.nodes[0].store.featuredCategories
-
-  const width = '31.881'
 
   return (
     <Layout>
@@ -158,37 +156,7 @@ const Store = ({ data }) => {
       >
         {products &&
           products.map((item, index) => (
-            <Link
-              sx={{
-                flexBasis: ['100%', '100%', `${width}%`],
-                borderTopLeftRadius: 'sm',
-                borderTopRightRadius: 'sm',
-                pb: '1rem',
-              }}
-              key={index}
-              to={`/store${item.uri}`}
-            >
-              <img
-                sx={{
-                  width: '100%',
-                  height: '18rem',
-                  objectFit: 'cover',
-                  borderTopLeftRadius: 'sm',
-                  borderTopRightRadius: 'sm',
-                }}
-                src={item.featuredImage?.node?.sourceUrl}
-                alt=""
-              />
-              <p
-                sx={{
-                  fontWeight: 'medium',
-                  pt: '1rem',
-                  pb: '.5rem',
-                }}
-                dangerouslySetInnerHTML={{ __html: item.name }}
-              />
-              <p>GH¢{parsePrice({ price: item.price })}</p>
-            </Link>
+            <ProductCard key={index} {...{ item }} />
           ))}
       </Container>
       <Container

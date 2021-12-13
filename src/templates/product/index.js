@@ -1,7 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container, Button, AspectImage } from '@theme-ui/components'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
@@ -9,6 +9,7 @@ import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
 import Quantity from '../../components/store/product/quantity'
 import Attributes from '../../components/store/product/attributes'
+import ProductCard from '../../components/store/product/card'
 import parsePrice from '../../utils/parsePrice'
 /**
  * @param {Object} props
@@ -71,8 +72,6 @@ const Product = ({ pageContext: { product } }) => {
   const incrementQuantity = () => {
     setQuantity(quantity + 1)
   }
-
-  const width = '31.881'
 
   return (
     <Layout>
@@ -238,38 +237,7 @@ const Product = ({ pageContext: { product } }) => {
             }}
           >
             {relatedProducts.map((item, index) => (
-              <Link
-                to={`/store/product/${item.slug}/`}
-                sx={{
-                  flexBasis: ['100%', '100%', `${width}%`],
-                  borderTopLeftRadius: 'sm',
-                  borderTopRightRadius: 'sm',
-                  pb: '1rem',
-                }}
-                key={index}
-              >
-                <img
-                  sx={{
-                    width: '100%',
-                    height: '18rem',
-                    objectFit: 'cover',
-                    borderTopLeftRadius: 'sm',
-                    borderTopRightRadius: 'sm',
-                  }}
-                  src={item.image.sourceUrl}
-                  alt=""
-                />
-                <p
-                  sx={{
-                    fontWeight: 'medium',
-                    pt: '1rem',
-                    pb: '.5rem',
-                  }}
-                >
-                  {item.name}
-                </p>
-                <p>GH¢{parsePrice({ price: item.price })}</p>
-              </Link>
+              <ProductCard key={index} {...{ item }} />
             ))}
           </Container>
         </>
