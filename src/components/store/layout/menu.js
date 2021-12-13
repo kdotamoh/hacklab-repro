@@ -221,7 +221,8 @@ const Menu = (props) => {
             <Hamburger
               fill="#610B70"
               sx={{
-                height: '2rem',
+                height: '1.5rem',
+                ml: ['1.5rem', 0, 0],
                 display: ['block', 'block', 'none'],
               }}
             />

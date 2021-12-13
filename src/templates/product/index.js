@@ -84,7 +84,7 @@ const Product = ({ pageContext: { product } }) => {
         <div
           sx={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: ['1fr', '1fr', '1fr 1fr'],
             gap: '2rem',
             mt: '5rem',
           }}
@@ -157,6 +157,9 @@ const Product = ({ pageContext: { product } }) => {
                 >
                   <Button
                     variant="white"
+                    sx={{
+                      width: ['50%', '50%', 'max-content'],
+                    }}
                     onClick={async () => {
                       await addToCart({
                         product,
@@ -176,6 +179,9 @@ const Product = ({ pageContext: { product } }) => {
                     Add to Cart
                   </Button>
                   <Button
+                    sx={{
+                      width: ['50%', '50%', 'max-content'],
+                    }}
                     onClick={async () => {
                       await addToCart({
                         product,

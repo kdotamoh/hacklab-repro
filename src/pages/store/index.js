@@ -73,7 +73,7 @@ const Store = ({ data }) => {
           maxWidth: '87.5rem',
           display: 'grid',
           margin: '0 auto',
-          gridTemplateColumns: '1fr 1fr 1fr',
+          gridTemplateColumns: ['1fr', '', '1fr 1fr 1fr'],
           gap: '1rem',
           mb: '6rem',
         }}
@@ -171,7 +171,8 @@ const Store = ({ data }) => {
             transform: 'scale(1.03)',
             padding: '4rem',
             display: 'grid',
-            gridTemplateColumns: '2fr 1fr',
+            gridTemplateColumns: ['1fr', '1fr', '2fr 1fr'],
+            gap: ['1rem', '1rem', ''],
             mt: '7.25rem',
             boxShadow:
               '0px 20px 24px -4px rgba(16, 24, 40, 0.1), 0px 8px 8px -4px rgba(16, 24, 40, 0.04)',
@@ -198,9 +199,9 @@ const Store = ({ data }) => {
           </div>
           <Button
             sx={{
-              width: 'max-content',
+              width: ['100%', '100%', 'max-content'],
               height: 'max-content',
-              ml: 'auto',
+              ml: ['0', '0', 'auto'],
             }}
             variant="whitePrimary"
           >
