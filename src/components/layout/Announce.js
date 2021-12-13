@@ -36,49 +36,49 @@ const Announce = (props) => {
 
   return (
     <>
-      {!hide && (
-        <div
-          {...props}
+      {/* {!hide && ( */}
+      <div
+        {...props}
+        sx={{
+          color: 'neutral.white',
+          py: '1rem',
+          padding: '1rem',
+          bg: 'neutral.black',
+          display: announce?.admin?.announce?.text ? 'flex' : 'none',
+          justifyContent: 'center',
+          textAlign: 'center',
+          alignItems: 'center',
+          gap: 'gapDefault',
+          position: 'relative',
+        }}
+      >
+        <p
           sx={{
-            color: 'neutral.white',
-            py: '1rem',
-            padding: '1rem',
-            bg: 'neutral.black',
-            display: announce?.admin?.announce?.text ? 'flex' : 'none',
-            justifyContent: 'center',
-            textAlign: 'center',
-            alignItems: 'center',
-            gap: 'gapDefault',
-            position: 'relative',
+            fontSize: 'paragraph2',
           }}
         >
-          <p
-            sx={{
-              fontSize: 'paragraph2',
-            }}
-          >
-            {announce?.admin?.announce?.text}
-          </p>
-          <Button
-            onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
-            variant="rounded"
-          >
-            {announce?.admin?.announce?.buttonText}
-          </Button>
+          {announce?.admin?.announce?.text}
+        </p>
+        <Button
+          onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
+          variant="rounded"
+        >
+          {announce?.admin?.announce?.buttonText}
+        </Button>
 
-          <span
-            sx={{
-              display: 'inline-flex',
-              position: 'absolute',
-              right: '4rem',
-              cursor: 'pointer',
-            }}
-            onClick={() => dismissAnnounce()}
-          >
-            &times;
-          </span>
-        </div>
-      )}
+        {/* <span
+          sx={{
+            display: 'inline-flex',
+            position: 'absolute',
+            right: '4rem',
+            cursor: 'pointer',
+          }}
+          onClick={() => dismissAnnounce()}
+        >
+          &times;
+        </span> */}
+      </div>
+      {/* )} */}
     </>
   )
 }

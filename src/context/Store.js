@@ -23,8 +23,8 @@ export const StoreProvider = ({ children }) => {
   const [checkout, setCheckout] = React.useState({})
   const [cart, setCart] = React.useState([])
   const [deliveryMethod, setDeliveryMethod] = React.useState({
-    method_id: '',
-    method_title: '',
+    methodId: '',
+    methodTitle: '',
     description: '',
     total: '0.00',
   })
