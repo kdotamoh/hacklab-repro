@@ -4,7 +4,7 @@ import { Container } from '@theme-ui/components'
 import { PaystackButton } from 'react-paystack'
 import { StoreContext } from '../../../context/Store'
 
-import Layout from '../../../components/Layout'
+import { StoreLayout } from '../../../components/Layout'
 import Menu from '../../../components/store/layout/menu'
 import ReviewDetails from '../../../components/store/checkout/review-details'
 import OrderDetails from '../../../components/store/checkout/order-details'
@@ -28,7 +28,7 @@ const ReviewAndPay = () => {
   }
 
   return (
-    <Layout>
+    <StoreLayout>
       <Menu />
       <Container
         sx={{

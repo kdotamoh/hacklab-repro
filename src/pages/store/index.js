@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Container, Button } from '@theme-ui/components'
 import { Link, graphql } from 'gatsby'
 
-import Layout from '../../components/Layout'
+import { StoreLayout } from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
 import ProductCard from '../../components/store/product/card'
 
@@ -12,7 +12,7 @@ const Store = ({ data }) => {
   const categories = data.categories.nodes[0].store.featuredCategories
 
   return (
-    <Layout>
+    <StoreLayout>
       <Menu />
       <div
         sx={{
@@ -216,7 +216,7 @@ const Store = ({ data }) => {
           mt: '-7rem',
         }}
       ></div>
-    </Layout>
+    </StoreLayout>
   )
 }
 

@@ -1,11 +1,9 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container } from '@theme-ui/components'
-import { Link } from 'gatsby'
 
-import Layout from '../../components/Layout'
+import { StoreLayout } from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
-import parsePrice from '../../utils/parsePrice'
 import ProductCard from '../../components/store/product/card'
 
 /**
@@ -20,7 +18,7 @@ const Product = ({ pageContext: { category } }) => {
   const products = category.products.nodes
 
   return (
-    <Layout>
+    <StoreLayout>
       <Menu />
       <h3
         sx={{
@@ -45,7 +43,7 @@ const Product = ({ pageContext: { category } }) => {
             <ProductCard key={index} {...{ item }} />
           ))}
       </Container>
-    </Layout>
+    </StoreLayout>
   )
 }
 

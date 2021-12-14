@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Container, Button } from '@theme-ui/components'
 import { navigate } from 'gatsby'
 
-import Layout from '../../components/Layout'
+import { StoreLayout } from '../../components/Layout'
 import Menu from '../../components/store/layout/menu'
 import { NavigationContext } from '../../context/Navigation'
 import { StoreContext } from '../../context/Store'
@@ -74,7 +74,7 @@ const Product = ({ pageContext: { product } }) => {
   }
 
   return (
-    <Layout>
+    <StoreLayout>
       <Menu />
       <Container
         sx={{
@@ -259,7 +259,7 @@ const Product = ({ pageContext: { product } }) => {
           </Container>
         </>
       ) : null}
-    </Layout>
+    </StoreLayout>
   )
 }
 

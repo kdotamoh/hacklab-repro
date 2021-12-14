@@ -49,4 +49,49 @@ const Layout = ({ navigation, ...props }) => {
   )
 }
 
+/**
+ * @typedef StoreProps
+ * @prop {React.ReactNode} [navigation]
+ * @prop {React.ReactNode} children
+ */
+
+/**
+ * @param {StoreProps} props
+ */
+export const StoreLayout = ({ navigation, ...props }) => {
+  const [showSideNav, setShowSidenav] = React.useContext(NavigationContext)
+
+  React.useEffect(() => {
+    setShowSidenav(false)
+  }, [])
+  return (
+    <div
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+      }}
+    >
+      <Sidenav {...{ showSideNav, setShowSidenav }} isStore={true} />
+
+      <div>
+        <Announce />
+        {navigation}
+      </div>
+      <div
+        sx={{
+          width: '100%',
+          flex: '1 1 auto',
+        }}
+      >
+        <>
+          {props.children}
+          <Newsletter />
+        </>
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
 export default Layout
