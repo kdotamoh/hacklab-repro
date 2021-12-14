@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Container, Button, AspectImage } from '@theme-ui/components'
+import { Container, Button } from '@theme-ui/components'
 import { navigate } from 'gatsby'
 
 import Layout from '../../components/Layout'
@@ -84,18 +84,20 @@ const Product = ({ pageContext: { product } }) => {
         <div
           sx={{
             display: 'grid',
-            gridTemplateColumns: ['1fr', '1fr', '1fr 1fr'],
+            gridTemplateColumns: ['1fr', '1fr', '50% 1fr'],
             gap: '2rem',
             mt: '5rem',
           }}
         >
-          <div>
-            <AspectImage
+          <div sx={{ width: '100%' }}>
+            <img
               src={product.featuredImage?.node?.sourceUrl}
-              ratio={1.25}
               sx={{
                 width: '100%',
                 objectPosition: 'center center',
+                objectFit: 'cover',
+                aspectRatio: '5/4',
+                borderRadius: 'sm',
               }}
             />
 
@@ -105,12 +107,21 @@ const Product = ({ pageContext: { product } }) => {
                 mt: '1rem',
                 gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: '1rem',
-                height: '9rem',
                 width: '100%',
               }}
             >
               {product.galleryImages?.nodes?.map((image, index) => (
-                <AspectImage key={index} src={image.sourceUrl} ratio={1.25} />
+                <img
+                  key={index}
+                  sx={{
+                    aspectRatio: '5/4',
+                    width: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center center',
+                    borderRadius: 'sm',
+                  }}
+                  src={image.sourceUrl}
+                />
               ))}
             </div>
           </div>
