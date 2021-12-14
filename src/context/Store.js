@@ -79,7 +79,9 @@ export const StoreProvider = ({ children }) => {
     sessionStorage.setItem('hacklab_checkout', JSON.stringify(order))
   }
 
-  const completeOrder = () => {}
+  const completeOrder = () => {
+    setCart([])
+  }
 
   const removeLineItem = (product_id) => {
     const newCart = cart.filter((product, productIndex) => {
@@ -126,6 +128,7 @@ export const StoreProvider = ({ children }) => {
         decrementQuantity,
         checkout,
         proceedToCheckout,
+        completeOrder,
         cart,
         deliveryMethod,
         setDeliveryMethod,
