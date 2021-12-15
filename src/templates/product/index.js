@@ -20,7 +20,7 @@ import parsePrice from '../../utils/parsePrice'
  * @param {Object} props.pageContext.page.pageBuilder
  */
 const Product = ({ pageContext: { product } }) => {
-  const { addToCart } = React.useContext(StoreContext)
+  const { addToCart, buyNow } = React.useContext(StoreContext)
 
   const relatedProducts = [
     ...product.crossSell?.nodes,
@@ -194,10 +194,10 @@ const Product = ({ pageContext: { product } }) => {
                       width: ['50%', '50%', 'max-content'],
                     }}
                     onClick={async () => {
-                      await addToCart({
+                      await buyNow({
                         product,
                         product_id: product.databaseId,
-                        quantity: quantity,
+                        quantity,
                         meta_data: [
                           ...attributes.map((attribute) => {
                             let item = {}
@@ -207,7 +207,7 @@ const Product = ({ pageContext: { product } }) => {
                           }),
                         ],
                       })
-                      navigate(`/store/checkout`)
+                      navigate(`/store/checkout/${product.slug}`)
                     }}
                   >
                     Buy now

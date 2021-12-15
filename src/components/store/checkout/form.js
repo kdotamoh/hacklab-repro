@@ -10,6 +10,7 @@ import { createOrder } from '../../../api/orders/create-order'
 
 const Form = () => {
   const { cart, proceedToCheckout, deliveryMethod } =
+  const { cart, singleItemPurchase, proceedToCheckout } =
     React.useContext(StoreContext)
 
   const initialValues = {
@@ -24,14 +25,25 @@ const Form = () => {
   }
 
   const handleOrder = async (values) => {
-    const line_items = cart.map((lineItem) => {
-      const item = {
-        product_id: lineItem.product_id,
-        quantity: lineItem.quantity,
-        meta_data: lineItem.meta_data,
-      }
-      return item
-    })
+    let line_items = []
+    if (isSingleProduct) {
+      line_items = [
+        {
+          product_id: singleItemPurchase.product_id,
+          quantity: singleItemPurchase.quantity,
+          meta_data: singleItemPurchase.meta_data,
+        },
+      ]
+    } else {
+      line_items = cart.map((lineItem) => {
+        const item = {
+          product_id: lineItem.product_id,
+          quantity: lineItem.quantity,
+          meta_data: lineItem.meta_data,
+        }
+        return item
+      })
+    }
 
     const orderData = {
       payment_method: 'paystack',

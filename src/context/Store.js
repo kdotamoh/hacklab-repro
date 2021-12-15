@@ -22,6 +22,7 @@ export const StoreProvider = ({ children }) => {
    */
   const [checkout, setCheckout] = React.useState({})
   const [cart, setCart] = React.useState([])
+  const [singleItemPurchase, setSingleItemPurchase] = React.useState({})
   const [deliveryMethod, setDeliveryMethod] = React.useState({
     methodId: '',
     methodTitle: '',
@@ -51,6 +52,14 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
+  const buyNow = ({ product, product_id, quantity, meta_data }) => {
+    sessionStorage.setItem(
+      'hacklab_buyNow',
+      JSON.stringify({ product, product_id, quantity, meta_data })
+    )
+    setSingleItemPurchase({ product, product_id, quantity, meta_data })
+  }
+
   const getLocalCart = () => {
     // grab localCart from localStorage
     const cachedCart = localStorage.getItem('hacklab_cart')
@@ -74,6 +83,17 @@ export const StoreProvider = ({ children }) => {
     }
   }
 
+  const getBuyNow = () => {
+    const cachedBuyNow = sessionStorage.getItem('hacklab_buyNow')
+
+    if (cachedBuyNow && !isEmpty(cachedBuyNow)) {
+      setSingleItemPurchase(JSON.parse(cachedBuyNow))
+      console.log('Buy now: Using cached!')
+    } else {
+      setSingleItemPurchase({})
+    }
+  }
+
   const proceedToCheckout = (order) => {
     setCheckout(order)
     sessionStorage.setItem('hacklab_checkout', JSON.stringify(order))
@@ -81,6 +101,7 @@ export const StoreProvider = ({ children }) => {
 
   const completeOrder = () => {
     setCart([])
+    setSingleItemPurchase({})
   }
 
   const removeLineItem = (product_id) => {
@@ -112,20 +133,39 @@ export const StoreProvider = ({ children }) => {
     localStorage.setItem('hacklab_cart', JSON.stringify(newCart))
   }
 
+  const incrementSingleItem = () => {
+    let newItem = singleItemPurchase
+    newItem.quantity += 1
+    setSingleItemPurchase({ ...newItem })
+  }
+
+  const decrementSingleItem = () => {
+    let newItem = singleItemPurchase
+    if (newItem.quantity > 1) {
+      newItem.quantity -= 1
+    }
+    setSingleItemPurchase({ ...newItem })
+  }
+
   React.useEffect(() => {
     getLocalCart()
     getCheckout()
+    getBuyNow()
   }, [])
 
   return (
     <StoreContext.Provider
       value={{
         ...defaultValues,
+        buyNow,
+        singleItemPurchase,
         addToCart,
         getLocalCart,
         removeLineItem,
         incrementQuantity,
         decrementQuantity,
+        incrementSingleItem,
+        decrementSingleItem,
         checkout,
         proceedToCheckout,
         completeOrder,

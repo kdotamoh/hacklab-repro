@@ -9,25 +9,221 @@ import parsePrice from '../../../utils/parsePrice'
 /**
  * @param {Object} props
  * @param {boolean} [props.reviewing]
+ * @param {boolean} [props.isSingleProduct]
  */
-const OrderDetails = ({ reviewing }) => {
+const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
   const {
     cart,
     removeLineItem,
     incrementQuantity,
     decrementQuantity,
     deliveryMethod,
+    incrementSingleItem,
+    decrementSingleItem,
+    singleItemPurchase,
   } = React.useContext(StoreContext)
 
-  const subTotal = Number(
-    cart.reduce((prev, curr) => {
-      return (
-        prev + curr.quantity * Number(parsePrice({ price: curr.product.price }))
+  const subTotal = isSingleProduct
+    ? Number(parsePrice({ price: singleItemPurchase?.product?.price })) *
+      singleItemPurchase.quantity
+    : Number(
+        cart.reduce((prev, curr) => {
+          return (
+            prev +
+            curr.quantity * Number(parsePrice({ price: curr.product.price }))
+          )
+        }, 0)
       )
-    }, 0)
-  )
 
   const total = subTotal + Number(deliveryMethod?.total)
+
+  if (isSingleProduct) {
+    return (
+      <div>
+        <h4
+          sx={{
+            mt: '2.5rem',
+            mb: '1rem',
+          }}
+        >
+          Order Details
+        </h4>
+        <div
+          sx={{
+            bg: '#F9FAFB',
+            padding: '1.5rem',
+            pt: '0rem',
+            borderRadius: 'sm',
+          }}
+        >
+          <div
+            sx={{
+              display: 'flex',
+              gap: '.75rem',
+              borderBottom: '1px solid #E5E7EB',
+              py: '1.5rem',
+              position: 'relative',
+            }}
+          >
+            <img
+              sx={{
+                height: '7.5rem',
+                width: '6.25rem',
+                objectFit: 'cover',
+                borderRadius: 'sm',
+              }}
+              src={singleItemPurchase.product?.featuredImage?.node?.sourceUrl}
+            />
+
+            <div
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <span
+                sx={{
+                  fontWeight: 'bold',
+                  pb: '.5rem',
+                }}
+              >
+                {singleItemPurchase.product?.name}
+              </span>
+              <div>
+                {singleItemPurchase.meta_data?.map((meta_data, index) => (
+                  <>
+                    {meta_data.key.toLowerCase() === 'color' ? (
+                      <div
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '.4rem',
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        <span>{meta_data.key}:</span>
+                        <span
+                          sx={{
+                            height: '1rem',
+                            width: '1rem',
+                            borderRadius: 'sm',
+                            bg: meta_data.value,
+                            display: 'inline-block',
+                          }}
+                        />
+                      </div>
+                    ) : meta_data.key.toLowerCase() === 'colour' ? (
+                      <div
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '.4rem',
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        <span>{meta_data.key}:</span>
+                        <span
+                          sx={{
+                            height: '1rem',
+                            width: '1rem',
+                            borderRadius: 'sm',
+                            bg: meta_data.value,
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <span
+                        key={index}
+                        sx={{
+                          py: '.4rem',
+                          color: '#4B5563',
+                        }}
+                      >
+                        {meta_data.key}: {meta_data.value}
+                      </span>
+                    )}
+                  </>
+                ))}
+              </div>
+
+              <div
+                sx={{
+                  display: 'flex',
+                  width: '100%',
+                  height: '100%',
+                  justifyContent: 'space-between',
+                  // mt: '1rem',
+                }}
+              >
+                <span
+                  sx={{
+                    fontWeight: 'bold',
+                    alignSelf: 'flex-end',
+                  }}
+                >
+                  GH¢{parsePrice({ price: singleItemPurchase.product?.price })}
+                </span>
+                {!reviewing && (
+                  <Quantity
+                    decrement={() => decrementSingleItem()}
+                    increment={() => incrementSingleItem()}
+                    value={singleItemPurchase.quantity}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          <div
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontWeight: 'bold',
+            }}
+          >
+            <div
+              sx={{
+                mt: '1.5rem',
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-between',
+              }}
+            >
+              <span>Subtotal</span>
+              <span>GH¢{subTotal.toFixed(2)}</span>
+            </div>
+          </div>
+          <div
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontWeight: 'bold',
+              my: '1.5rem',
+            }}
+          >
+            <span>Shipping</span>
+            <span>GH¢{deliveryMethod.total}</span>
+          </div>
+          <Divider />
+          <div
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontWeight: 'bold',
+              fontSize: 'h4',
+              mt: '1.5rem',
+            }}
+          >
+            <span>Total</span>
+            <span>GH¢{total.toFixed(2)}</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div>
