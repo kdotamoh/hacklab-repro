@@ -276,6 +276,11 @@ const theme = {
       fontWeight: 'medium',
       mb: '.25rem',
     },
+    spinner: {
+      color: 'white',
+      strokeWidth: 3,
+      size: 15,
+    },
   },
 
   styles: {

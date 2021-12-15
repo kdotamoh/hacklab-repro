@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Field, Radio, Button } from '@theme-ui/components'
+import { Field, Radio, Button, Spinner } from '@theme-ui/components'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
@@ -372,7 +372,11 @@ const Form = ({ isSingleProduct, deliveryMethod, setDeliveryMethod }) => {
               handleSubmit()
             }}
           >
-            {isSubmitting ? 'Submitting...' : 'Proceed to payment'}
+            {isSubmitting ? (
+              <Spinner variant="forms.spinner" />
+            ) : (
+              'Proceed to payment'
+            )}
           </Button>
         </form>
       )}

@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Container } from '@theme-ui/components'
+import { Container, Spinner } from '@theme-ui/components'
 import { PaystackButton } from 'react-paystack'
 import { StoreContext } from '../../../context/Store'
 
@@ -108,8 +108,8 @@ const Status = ({ status, checkout, onSuccess, onClose }) => {
             mb: '2.5rem',
           }}
         >
-          Updating your order...
-        </p>
+          <Spinner strokeWidth={4} size={15} /> <p>Updating your order...</p>
+        </div>
       </>
     )
   }
