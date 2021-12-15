@@ -102,6 +102,7 @@ export const StoreProvider = ({ children }) => {
   const completeOrder = () => {
     setCart([])
     setSingleItemPurchase({})
+    setCheckout({})
   }
 
   const removeLineItem = (product_id) => {

@@ -3,11 +3,11 @@ import * as React from 'react'
 import { Container, Spinner } from '@theme-ui/components'
 import { PaystackButton } from 'react-paystack'
 import { StoreContext } from '../../../context/Store'
+import { isEmpty } from 'lodash'
 
 import { StoreLayout } from '../../../components/Layout'
 import Menu from '../../../components/store/layout/menu'
 import ReviewDetails from '../../../components/store/checkout/review-details'
-import OrderDetails from '../../../components/store/checkout/order-details'
 import { updateOrderStatus } from '../../../api/orders/update-order'
 
 const ReviewAndPay = () => {
@@ -45,7 +45,7 @@ const ReviewAndPay = () => {
         <div
           sx={{
             display: 'grid',
-            gridTemplateColumns: ['1fr', '1fr', '1fr 1fr'],
+            gridTemplateColumns: ['1fr', '1fr', '60% 1fr'],
             gap: '3.25rem',
           }}
         >
@@ -60,41 +60,56 @@ const Status = ({ status, checkout, onSuccess, onClose }) => {
   if (status === 'initial') {
     return (
       <>
-        <div>
-          <ReviewDetails />
-
+        {isEmpty(checkout) ? (
           <div
             sx={{
               display: 'flex',
+              flexDirection: 'column',
             }}
           >
-            <PaystackButton
-              disabled={true}
+            <h4
               sx={{
-                bg: 'primary',
-                border: 'none',
-                borderRadius: 'sm',
-                fontWeight: 'medium',
-                padding: '.625rem 1.125rem',
-                cursor: 'pointer',
-                color: 'white',
-                mt: '1rem',
+                mt: '2.5rem',
+                mb: '1rem',
               }}
-              text="Pay now"
-              onSuccess={() => onSuccess(checkout?.id)}
-              onClose={() => onClose()}
-              reference={checkout?.id}
-              email={checkout?.billing?.email}
-              amount={checkout?.total * 100}
-              currency="GHS"
-              publicKey={process.env.GATSBY_PAYSTACK_PUBLIC_KEY}
-            />
+            >
+              Your checkout is empty
+            </h4>
+            <p>Please create an order</p>
           </div>
-        </div>
+        ) : (
+          <div>
+            <ReviewDetails />
 
-        <div>
-          <OrderDetails reviewing={true} />
-        </div>
+            <div
+              sx={{
+                display: 'flex',
+              }}
+            >
+              <PaystackButton
+                disabled={true}
+                sx={{
+                  bg: 'primary',
+                  border: 'none',
+                  borderRadius: 'sm',
+                  fontWeight: 'medium',
+                  padding: '.625rem 1.125rem',
+                  cursor: 'pointer',
+                  color: 'white',
+                  mt: '1rem',
+                }}
+                text="Pay now"
+                onSuccess={() => onSuccess(checkout?.id)}
+                onClose={() => onClose()}
+                reference={checkout?.id}
+                email={checkout?.billing?.email}
+                amount={checkout?.total * 100}
+                currency="GHS"
+                publicKey={process.env.GATSBY_PAYSTACK_PUBLIC_KEY}
+              />
+            </div>
+          </div>
+        )}
       </>
     )
   }
@@ -102,10 +117,13 @@ const Status = ({ status, checkout, onSuccess, onClose }) => {
   if (status === 'updating') {
     return (
       <>
-        <p
+        <div
           sx={{
             mt: '2.5rem',
             mb: '2.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '.5rem',
           }}
         >
           <Spinner strokeWidth={4} size={15} /> <p>Updating your order...</p>

@@ -15,6 +15,7 @@ import parsePrice from '../../../utils/parsePrice'
 const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
   const {
     cart,
+    checkout,
     removeLineItem,
     incrementQuantity,
     decrementQuantity,
@@ -93,7 +94,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
               </span>
               <div>
                 {singleItemPurchase.meta_data?.map((meta_data, index) => (
-                  <>
+                  <div key={index}>
                     {meta_data.key.toLowerCase() === 'color' ? (
                       <div
                         sx={{
@@ -146,7 +147,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                         {meta_data.key}: {meta_data.value}
                       </span>
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
 
@@ -167,13 +168,11 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                 >
                   GH¢{parsePrice({ price: singleItemPurchase.product?.price })}
                 </span>
-                {!reviewing && (
-                  <Quantity
-                    decrement={() => decrementSingleItem()}
-                    increment={() => incrementSingleItem()}
-                    value={singleItemPurchase.quantity}
-                  />
-                )}
+                <Quantity
+                  decrement={() => decrementSingleItem()}
+                  increment={() => incrementSingleItem()}
+                  value={singleItemPurchase.quantity}
+                />
               </div>
             </div>
           </div>
@@ -225,6 +224,194 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
     )
   }
 
+  // if (reviewing) {
+  //   const subTotal = Number(
+  //     checkout.line_items?.reduce((prev, curr) => {
+  //       return prev + Number(curr.total)
+  //     }, 0)
+  //   )
+  //   return (
+  //     <div>
+  //       <h4
+  //         sx={{
+  //           mt: '2.5rem',
+  //           mb: '1rem',
+  //         }}
+  //       >
+  //         Order Details
+  //       </h4>
+  //       <div
+  //         sx={{
+  //           bg: '#F9FAFB',
+  //           padding: '1.5rem',
+  //           pt: '0rem',
+  //           borderRadius: 'sm',
+  //         }}
+  //       >
+  //         {checkout?.line_items?.map((item, index) => (
+  //           <div
+  //             key={index}
+  //             sx={{
+  //               display: 'flex',
+  //               gap: '.75rem',
+  //               borderBottom: '1px solid #E5E7EB',
+  //               py: '1.5rem',
+  //               position: 'relative',
+  //             }}
+  //           >
+  //             <img
+  //               sx={{
+  //                 height: '7.5rem',
+  //                 width: '6.25rem',
+  //                 objectFit: 'cover',
+  //                 borderRadius: 'sm',
+  //               }}
+  //               // src={item.product.featuredImage?.node?.sourceUrl}
+  //             />
+  //             <div
+  //               sx={{
+  //                 display: 'flex',
+  //                 flexDirection: 'column',
+  //                 width: '100%',
+  //                 height: '100%',
+  //               }}
+  //             >
+  //               <span
+  //                 sx={{
+  //                   fontWeight: 'bold',
+  //                   pb: '.5rem',
+  //                 }}
+  //               >
+  //                 {item.name}
+  //               </span>
+  //               <div>
+  //                 {item.meta_data.map((meta_data, index) => (
+  //                   <div key={index}>
+  //                     {meta_data.key.toLowerCase() === 'color' ? (
+  //                       <div
+  //                         sx={{
+  //                           display: 'flex',
+  //                           alignItems: 'center',
+  //                           gap: '.4rem',
+  //                           py: '.4rem',
+  //                           color: '#4B5563',
+  //                         }}
+  //                       >
+  //                         <span>{meta_data.key}:</span>
+  //                         <span
+  //                           sx={{
+  //                             height: '1rem',
+  //                             width: '1rem',
+  //                             borderRadius: 'sm',
+  //                             bg: meta_data.value,
+  //                             display: 'inline-block',
+  //                           }}
+  //                         />
+  //                       </div>
+  //                     ) : meta_data.key.toLowerCase() === 'colour' ? (
+  //                       <div
+  //                         sx={{
+  //                           display: 'flex',
+  //                           alignItems: 'center',
+  //                           gap: '.4rem',
+  //                           py: '.4rem',
+  //                           color: '#4B5563',
+  //                         }}
+  //                       >
+  //                         <span>{meta_data.key}:</span>
+  //                         <span
+  //                           sx={{
+  //                             height: '1rem',
+  //                             width: '1rem',
+  //                             borderRadius: 'sm',
+  //                             bg: meta_data.value,
+  //                           }}
+  //                         />
+  //                       </div>
+  //                     ) : (
+  //                       <span
+  //                         key={index}
+  //                         sx={{
+  //                           py: '.4rem',
+  //                           color: '#4B5563',
+  //                         }}
+  //                       >
+  //                         {meta_data.key}: {meta_data.value}
+  //                       </span>
+  //                     )}
+  //                   </div>
+  //                 ))}
+  //               </div>
+
+  //               <div
+  //                 sx={{
+  //                   display: 'flex',
+  //                   width: '100%',
+  //                   height: '100%',
+  //                   justifyContent: 'space-between',
+  //                   // mt: '1rem',
+  //                 }}
+  //               >
+  //                 <span
+  //                   sx={{
+  //                     fontWeight: 'bold',
+  //                     alignSelf: 'flex-end',
+  //                   }}
+  //                 >
+  //                   GH¢{item?.price}
+  //                 </span>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         ))}
+  //         <div
+  //           sx={{
+  //             display: 'flex',
+  //             justifyContent: 'space-between',
+  //             fontWeight: 'bold',
+  //           }}
+  //         >
+  //           <div
+  //             sx={{
+  //               mt: '1.5rem',
+  //               display: 'flex',
+  //               width: '100%',
+  //               justifyContent: 'space-between',
+  //             }}
+  //           >
+  //             <span>Subtotal</span>
+  //             <span>GH¢{Number(subTotal)}</span>
+  //           </div>
+  //         </div>
+  //         <div
+  //           sx={{
+  //             display: 'flex',
+  //             justifyContent: 'space-between',
+  //             fontWeight: 'bold',
+  //             my: '1.5rem',
+  //           }}
+  //         >
+  //           <span>Shipping</span>
+  //           <span>GH¢{Number(checkout.shipping_lines?.[0].total)}</span>
+  //         </div>
+  //         <Divider />
+  //         <div
+  //           sx={{
+  //             display: 'flex',
+  //             justifyContent: 'space-between',
+  //             fontWeight: 'bold',
+  //             fontSize: 'h4',
+  //             mt: '1.5rem',
+  //           }}
+  //         >
+  //           <span>Total</span>
+  //           <span>GH¢{Number(checkout.total)}</span>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // }
+
   return (
     <div>
       <h4
@@ -263,9 +450,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
               }}
               src={item.product.featuredImage?.node?.sourceUrl}
             />
-            {!reviewing && (
-              <Trash onClick={() => removeLineItem(item.product.databaseId)} />
-            )}
+            <Trash onClick={() => removeLineItem(item.product.databaseId)} />
             <div
               sx={{
                 display: 'flex',
@@ -283,8 +468,8 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                 {item.product.name}
               </span>
               <div>
-                {item.meta_data.map((meta_data, index) => (
-                  <>
+                {item.meta_data?.map((meta_data, index) => (
+                  <div key={index}>
                     {meta_data.key.toLowerCase() === 'color' ? (
                       <div
                         sx={{
@@ -337,7 +522,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                         {meta_data.key}: {meta_data.value}
                       </span>
                     )}
-                  </>
+                  </div>
                 ))}
               </div>
 
@@ -358,23 +543,21 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                 >
                   GH¢{parsePrice({ price: item?.product?.price })}
                 </span>
-                {!reviewing && (
-                  <Quantity
-                    decrement={() =>
-                      decrementQuantity({
-                        product_id: item.product.databaseId,
-                        quantity: item.quantity,
-                      })
-                    }
-                    increment={() =>
-                      incrementQuantity({
-                        product_id: item.product.databaseId,
-                        quantity: item.quantity,
-                      })
-                    }
-                    value={item.quantity}
-                  />
-                )}
+                <Quantity
+                  decrement={() =>
+                    decrementQuantity({
+                      product_id: item.product.databaseId,
+                      quantity: item.quantity,
+                    })
+                  }
+                  increment={() =>
+                    incrementQuantity({
+                      product_id: item.product.databaseId,
+                      quantity: item.quantity,
+                    })
+                  }
+                  value={item.quantity}
+                />
               </div>
             </div>
           </div>
