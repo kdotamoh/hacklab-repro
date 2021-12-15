@@ -11,6 +11,13 @@ import { StoreContext } from '../../../context/Store'
 const Checkout = () => {
   const { cart } = React.useContext(StoreContext)
 
+  const [deliveryMethod, setDeliveryMethod] = React.useState({
+    methodId: '',
+    methodTitle: '',
+    description: '',
+    total: '0.00',
+  })
+
   return (
     <StoreLayout>
       <Menu />
@@ -27,8 +34,8 @@ const Checkout = () => {
               gap: '3.25rem',
             }}
           >
-            <Form />
-            <OrderDetails />
+            <Form {...{ deliveryMethod, setDeliveryMethod }} />
+            <OrderDetails {...{ deliveryMethod }} />
           </div>
         ) : (
           <>

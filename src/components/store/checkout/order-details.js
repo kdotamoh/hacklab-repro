@@ -10,6 +10,7 @@ import parsePrice from '../../../utils/parsePrice'
  * @param {Object} props
  * @param {boolean} [props.reviewing]
  * @param {boolean} [props.isSingleProduct]
+ * @param {Object} [props.deliveryMethod]
  */
 const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
   const {
@@ -17,7 +18,6 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
     removeLineItem,
     incrementQuantity,
     decrementQuantity,
-    deliveryMethod,
     incrementSingleItem,
     decrementSingleItem,
     singleItemPurchase,

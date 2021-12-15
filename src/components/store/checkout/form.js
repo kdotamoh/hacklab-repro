@@ -8,8 +8,12 @@ import { graphql, useStaticQuery, navigate } from 'gatsby'
 import { StoreContext } from '../../../context/Store'
 import { createOrder } from '../../../api/orders/create-order'
 
-const Form = () => {
-  const { cart, proceedToCheckout, deliveryMethod } =
+/**
+ * @param {Object} props
+ * @param {boolean} [props.isSingleProduct]
+ * @param {Object} [props.deliveryMethod]
+ */
+const Form = ({ isSingleProduct, deliveryMethod, setDeliveryMethod }) => {
   const { cart, singleItemPurchase, proceedToCheckout } =
     React.useContext(StoreContext)
 
@@ -341,7 +345,9 @@ const Form = () => {
             >
               Delivery method
             </h4>
-            <DeliveryOptions {...{ setFieldValue, setFieldTouched }} />
+            <DeliveryOptions
+              {...{ setFieldValue, setFieldTouched, setDeliveryMethod }}
+            />
             <p
               sx={{
                 pt: '.25rem',
@@ -374,7 +380,11 @@ const Form = () => {
   )
 }
 
-const DeliveryOptions = ({ setFieldValue, setFieldTouched }) => {
+const DeliveryOptions = ({
+  setFieldValue,
+  setFieldTouched,
+  setDeliveryMethod,
+}) => {
   const {
     deliveryMethods: {
       admin: { woocommerceDeliveryMethods },
@@ -397,7 +407,6 @@ const DeliveryOptions = ({ setFieldValue, setFieldTouched }) => {
     }
   `)
 
-  const { setDeliveryMethod } = React.useContext(StoreContext)
   const [active, setActive] = React.useState(null)
 
   return (
