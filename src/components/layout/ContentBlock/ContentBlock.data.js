@@ -13,6 +13,12 @@ const contentBlockLayout = `
     image {
       sourceUrl
     }
+    youtubeVideo {
+      thumbnail {
+        sourceUrl
+      }
+      videoId
+    }
   }
 `
 

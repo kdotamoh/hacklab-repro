@@ -2,6 +2,9 @@
 import * as React from 'react'
 import { Container, Button } from 'theme-ui'
 import { Link } from 'gatsby'
+import ModalVideo from 'react-modal-video'
+
+import PlayVideo from '../../svg/PlayVideo'
 
 const ContentBlock = ({
   content,
@@ -9,8 +12,10 @@ const ContentBlock = ({
   textPosition,
   buttons,
   imageFit,
+  youtubeVideo,
   ...props
 }) => {
+  const [isOpen, setOpen] = React.useState(false)
   return (
     <Container
       sx={{
@@ -110,6 +115,67 @@ const ContentBlock = ({
           src={image?.sourceUrl}
           alt=""
         />
+      )}
+      {youtubeVideo?.videoId && (
+        <div
+          sx={{
+            gridArea: 'media',
+          }}
+        >
+          <div
+            sx={{
+              cursor: 'pointer',
+              borderRadius: 'md',
+              display: 'grid',
+              '::after': {
+                content: '""',
+                backgroundColor: '#000',
+                opacity: '0.4',
+                gridArea: '1/-1',
+                borderRadius: 'md',
+              },
+              '&:hover': {
+                '.play-button': {
+                  transform: 'scale(1.1)',
+                },
+              },
+            }}
+            onClick={() => setOpen(true)}
+          >
+            <PlayVideo
+              className="play-button"
+              sx={{
+                width: '3rem',
+                height: '3rem',
+                gridArea: '1/-1',
+                margin: 'auto',
+                zIndex: '1',
+                transform: 'scale(1)',
+                transition: 'ease-in-out all 0.25s',
+              }}
+            />
+            <img
+              sx={{
+                gridArea: '1/-1',
+                width: '100%',
+                objectFit: imageFit,
+                height: 'auto',
+                minHeight: ['20rem', '20rem', '32.5rem'],
+                borderRadius: 'md',
+              }}
+              src={youtubeVideo?.thumbnail?.sourceUrl}
+              alt=""
+            />
+          </div>
+
+          <ModalVideo
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={youtubeVideo.videoId}
+            onClose={() => setOpen(false)}
+          />
+        </div>
       )}
     </Container>
   )
