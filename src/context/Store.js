@@ -49,6 +49,7 @@ export const StoreProvider = ({ children }) => {
         'hacklab_cart',
         JSON.stringify([...cart, { product, product_id, quantity, meta_data }])
       )
+      toast('Added to cart', {})
     }
   }
 
