@@ -2,6 +2,8 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Container } from 'theme-ui'
+import day from 'dayjs'
+const readingTime = require('reading-time/lib/reading-time')
 
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
@@ -17,6 +19,8 @@ import { NavigationContext } from '../../context/Navigation'
  */
 const Post = ({ data }) => {
   const [, setShowSidenav] = React.useContext(NavigationContext)
+
+  const stats = readingTime(data.post.content)
 
   React.useEffect(() => {
     setShowSidenav(false)
@@ -71,6 +75,24 @@ const Post = ({ data }) => {
           >
             Mechenzy
           </span>
+          <span
+            sx={{
+              color: '#9CA3AF',
+              mx: '1.5rem',
+            }}
+          >
+            &bull;
+          </span>
+          <div
+            sx={{
+              color: '#9CA3AF',
+              display: 'flex',
+              gap: '1.5rem',
+            }}
+          >
+            <span>{day(data.post.date).format('MMM D, YYYY')}</span>
+            <span>{stats.text}</span>
+          </div>
         </div>
         <div
           sx={{
@@ -94,6 +116,7 @@ export const query = graphql`
     post: wpPost(databaseId: { eq: $databaseId }) {
       title
       content
+      date
       featuredImage {
         node {
           sourceUrl

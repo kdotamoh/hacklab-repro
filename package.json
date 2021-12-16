@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0",
+    "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -35,6 +35,7 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-masonry-css": "^1.0.16",
+    "reading-time": "^1.5.0",
     "theme-ui": "^0.11.3"
   },
   "devDependencies": {
