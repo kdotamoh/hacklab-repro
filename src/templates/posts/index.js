@@ -6,7 +6,7 @@ import { Container } from 'theme-ui'
 import { NavigationContext } from '../../context/Navigation'
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
-import Post from './post'
+import PostCard from './post-card'
 import Arrow from '../../components/svg/Arrow'
 
 /**
@@ -41,7 +41,12 @@ const AllPosts = ({
         }}
       >
         {edges.map((post, index) => (
-          <Post key={index} post={post} index={index} />
+          <PostCard
+            key={index}
+            post={post}
+            index={index}
+            hasFeaturedPost={true}
+          />
         ))}
       </Container>
       {(previousPagePath || nextPagePath) && (

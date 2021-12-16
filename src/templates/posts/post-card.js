@@ -3,7 +3,14 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import day from 'dayjs'
 
-const Post = ({ post, index }) => {
+/**
+ *
+ * @param {Object} props
+ * @param {Object} props.post
+ * @param {Number} props.index
+ * @param {boolean} [props.hasFeaturedPost]
+ */
+const PostCard = ({ post, index, hasFeaturedPost }) => {
   const width = '31.881'
   return (
     <Link
@@ -13,7 +20,7 @@ const Post = ({ post, index }) => {
         textDecoration: 'none',
         color: 'neutral.black',
         display: 'flex',
-        ...(index === 0
+        ...(hasFeaturedPost && index === 0
           ? {
               transform: ['scale(1.1)', 'scale(1)', 'scale(1)'],
               minHeight: '27rem',
@@ -34,7 +41,7 @@ const Post = ({ post, index }) => {
         sx={{
           objectFit: 'cover',
           borderTopLeftRadius: 'sm',
-          ...(index === 0
+          ...(hasFeaturedPost && index === 0
             ? {
                 borderBottomLeftRadius: 'sm',
                 width: ['100%', '100%', `calc((2 * ${width}%) + 2.17%)`],
@@ -52,7 +59,7 @@ const Post = ({ post, index }) => {
       <div
         sx={{
           flex: '1 1 auto',
-          ...(index === 0
+          ...(hasFeaturedPost && index === 0
             ? {
                 display: 'flex',
                 flexDirection: 'column',
@@ -69,7 +76,7 @@ const Post = ({ post, index }) => {
             fontWeight: 'bold',
             fontSize: 'caption',
             letterSpacing: '.025rem',
-            ...(index === 0
+            ...(hasFeaturedPost && index === 0
               ? {
                   color: 'neutral.textDisabled',
                 }
@@ -82,9 +89,10 @@ const Post = ({ post, index }) => {
         </span>
         <div
           sx={{
-            ...(index === 0 && {
-              flex: '1 1 auto',
-            }),
+            ...(hasFeaturedPost &&
+              index === 0 && {
+                flex: '1 1 auto',
+              }),
           }}
         >
           <p
@@ -96,7 +104,7 @@ const Post = ({ post, index }) => {
             }}
             dangerouslySetInnerHTML={{ __html: post.node.title }}
           />
-          {index === 0 && (
+          {hasFeaturedPost && index === 0 && (
             <div
               sx={{
                 fontSize: '1rem',
@@ -110,7 +118,7 @@ const Post = ({ post, index }) => {
             />
           )}
         </div>
-        {index === 0 && (
+        {hasFeaturedPost && index === 0 && (
           <div
             sx={{
               display: 'flex',
@@ -152,7 +160,7 @@ const Post = ({ post, index }) => {
           </div>
         )}
       </div>
-      {index !== 0 && (
+      {hasFeaturedPost && index !== 0 && (
         <span
           sx={{
             px: '1.5rem',
@@ -168,4 +176,4 @@ const Post = ({ post, index }) => {
   )
 }
 
-export default Post
+export default PostCard

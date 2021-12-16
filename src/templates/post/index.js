@@ -8,6 +8,7 @@ const readingTime = require('reading-time/lib/reading-time')
 import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
 import { NavigationContext } from '../../context/Navigation'
+import PostCard from '../posts/post-card'
 
 /**
  * @param {Object} props
@@ -106,6 +107,34 @@ const Post = ({ data }) => {
           }}
           dangerouslySetInnerHTML={{ __html: data.post.content }}
         />
+        {data.readMore?.edges?.length > 0 && (
+          <div
+            sx={{
+              pt: ['1.25rem', '1.25rem', '5rem'],
+            }}
+          >
+            <h3
+              sx={{
+                mb: '2.5rem',
+                textAlign: 'center',
+              }}
+            >
+              Read more
+            </h3>
+            <div
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                flexDirection: ['column', 'column', 'row'],
+                gap: 'flexGap',
+              }}
+            >
+              {data.readMore?.edges?.map((post, index) => (
+                <PostCard key={index} post={post} index={index} />
+              ))}
+            </div>
+          </div>
+        )}
       </Container>
     </Layout>
   )
@@ -120,6 +149,36 @@ export const query = graphql`
       featuredImage {
         node {
           sourceUrl
+        }
+      }
+    }
+    readMore: allWpPost(limit: 3, filter: { databaseId: { ne: $databaseId } }) {
+      edges {
+        node {
+          excerpt
+          uri
+          date
+          author {
+            node {
+              name
+            }
+          }
+          categories {
+            nodes {
+              name
+            }
+          }
+          tags {
+            nodes {
+              name
+            }
+          }
+          title
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
         }
       }
     }
