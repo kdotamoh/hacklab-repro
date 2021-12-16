@@ -419,7 +419,7 @@ const DeliveryOptions = ({
         <div
           key={index}
           onClick={() => {
-            setActive(index)
+            setActive(option.methodId)
             setFieldValue('deliveryMethod', option)
             setFieldTouched('deliveryMethod')
             setDeliveryMethod(option)
@@ -428,12 +428,14 @@ const DeliveryOptions = ({
             borderRadius: 'md',
             mt: '1rem',
             outline:
-              active === index ? 'solid 2px #610B70' : 'solid 1px #E4E7EC',
+              active === option.methodId
+                ? 'solid 2px #610B70'
+                : 'solid 1px #E4E7EC',
             padding: '.75rem',
             pb: '1rem',
             '&:hover': {
               '.radio-check': {
-                opacity: active === index ? '1' : '.5',
+                opacity: active === option.methodId ? '1' : '.5',
                 display: 'block',
               },
               '.radio-input': {
@@ -485,13 +487,13 @@ const DeliveryOptions = ({
                 height: '1.25rem',
                 width: '1.25rem',
                 opacity: '.2',
-                display: active === index ? 'none' : '',
+                display: active === option.methodId ? 'none' : '',
               }}
             />
             <Check
               sx={{
-                display: active === index ? 'block' : 'none',
-                ...(active === index && {
+                display: active === option.methodId ? 'block' : 'none',
+                ...(active === option.methodId && {
                   opacity: '1',
                 }),
               }}
