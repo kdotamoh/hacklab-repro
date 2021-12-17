@@ -2,14 +2,25 @@
 import * as React from 'react'
 import { Button, Container } from 'theme-ui'
 import { Link } from 'gatsby'
+import useEmblaCarousel from 'embla-carousel-react'
 
-import Logo from '../../svg/Logo'
 import Arrow from '../../svg/Arrow'
 
 /**
  * @param {Object} props
  */
 const Initiatives = ({ heading, subtitle, items, ...props }) => {
+  const options = { align: 'start' }
+  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+
+  const scrollPrev = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
   return (
     <div
       {...props}
@@ -34,20 +45,13 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
         />
         <p dangerouslySetInnerHTML={{ __html: subtitle }} />
       </Container>
-      <div>
+      <div className="embla" ref={emblaRef}>
         <div
+          className="embla__container"
           sx={{
             mb: '2rem',
-            display: 'flex',
-            gap: 'gapDefault',
-            pt: '4rem',
-            overflowX: 'scroll',
-            msOverflowY: 'hidden',
+            mt: '4rem',
             marginLeft: '9%',
-            paddingRight: '2.5rem',
-            '::-webkit-scrollbar': {
-              display: 'none',
-            },
           }}
         >
           {items.map((item, index) => (
@@ -62,10 +66,10 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
             gap: '2rem',
           }}
         >
-          <Button variant="circle">
+          <Button variant="circle" onClick={() => scrollPrev()}>
             <Arrow width="1.5rem" orientation="left" />
           </Button>
-          <Button variant="circle">
+          <Button variant="circle" onClick={() => scrollNext()}>
             <Arrow width="1.5rem" orientation="right" />
           </Button>
         </div>
@@ -77,9 +81,10 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
 const Item = ({ item }) => {
   return (
     <div
+      className="embla__slide"
       sx={{
         minWidth: ['20rem', '20rem', '23.75rem'],
-        flexBasis: '33%',
+
         textAlign: 'left',
         color: 'neutral.black',
         bg: 'neutral.backgroundHover',
@@ -90,13 +95,6 @@ const Item = ({ item }) => {
         justifyContent: 'space-between',
       }}
     >
-      {/* <Logo
-        width="52%"
-        fill="white"
-        sx={{
-          mb: '2rem',
-        }}
-      /> */}
       <img
         sx={{
           height: '3rem',

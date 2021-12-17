@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "dayjs": "^1.10.7",
+    "embla-carousel-react": "^6.0.2",
     "gatsby": "^3.13.1",
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-image": "^2.2.0",
