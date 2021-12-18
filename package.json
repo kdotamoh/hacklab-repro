@@ -20,6 +20,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@loadable/component": "^5.15.2",
     "dayjs": "^1.10.7",
     "embla-carousel-react": "^6.0.2",
     "gatsby": "^3.13.1",
