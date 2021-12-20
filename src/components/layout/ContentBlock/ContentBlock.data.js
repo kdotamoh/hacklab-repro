@@ -9,6 +9,18 @@ const contentBlockLayout = `
       buttonVariant
       outbound
       linkUrl
+      pageLink {
+        ... on WpPage {
+          id
+          link
+          uri
+        }
+        ... on WpPost {
+          id
+          link
+          slug
+        }
+      }
     }
     image {
       sourceUrl

@@ -79,23 +79,51 @@ const ContentBlock = ({
           >
             {buttons.map((button, index) => (
               <>
+                {/* Check whether the link is styled like a button */}
                 {button.buttonVariant === 'link' ? (
-                  <Link
-                    sx={{
-                      fontWeight: 'bold',
-                      color: 'primary',
-                      textDecoration: 'none',
-                    }}
-                    to={button.linkUrl}
-                  >
-                    {button.buttonText}
-                  </Link>
+                  <>
+                    {/* Check whether the link is to an external website */}
+                    {button.outbound ? (
+                      <a
+                        sx={{
+                          fontWeight: 'bold',
+                          color: 'primary',
+                          textDecoration: 'none',
+                        }}
+                        href={button.linkUrl}
+                      >
+                        {button.buttonText}
+                      </a>
+                    ) : (
+                      <Link
+                        sx={{
+                          fontWeight: 'bold',
+                          color: 'primary',
+                          textDecoration: 'none',
+                        }}
+                        to={button.pageLink?.link}
+                      >
+                        {button.buttonText}
+                      </Link>
+                    )}
+                  </>
                 ) : (
-                  <Link key={index} to={button.linkUrl}>
-                    <Button variant={button.buttonVariant}>
-                      {button.buttonText}
-                    </Button>
-                  </Link>
+                  <>
+                    {/* Check whether the link is to an external website */}
+                    {button.outbound ? (
+                      <a href={button.linkUrl}>
+                        <Button variant={button.buttonVariant}>
+                          {button.buttonText}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link key={index} to={button.pageLink?.link}>
+                        <Button variant={button.buttonVariant}>
+                          {button.buttonText}
+                        </Button>
+                      </Link>
+                    )}
+                  </>
                 )}
               </>
             ))}

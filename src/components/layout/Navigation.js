@@ -210,7 +210,12 @@ const Navigation = (props) => {
             }
           </div>
         </div>
-        <a href="https://connect.hacklabgh.org/">
+        <a
+          sx={{
+            textDecoration: 'none',
+          }}
+          href="https://connect.hacklabgh.org/"
+        >
           <Button
             sx={{
               fontSize: 'paragraph2',
