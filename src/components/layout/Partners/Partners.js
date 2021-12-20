@@ -69,6 +69,8 @@ const Logo = ({ item }) => {
         sx={{
           width: '10rem',
           height: 'auto',
+          objectFit: 'contain',
+          aspectRatio: '2/1',
         }}
         src={`${item?.logo?.sourceUrl}`}
         alt=""

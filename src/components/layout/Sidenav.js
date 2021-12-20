@@ -2,7 +2,7 @@
 import * as React from 'react'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 
-export default function Sidenav({ showSideNav, setShowSidenav }) {
+export default function Sidenav({ showSideNav, setShowSidenav, isStore }) {
   /**
    * state
    */
@@ -11,9 +11,20 @@ export default function Sidenav({ showSideNav, setShowSidenav }) {
   /**
    * queries
    */
-  const { wpMenu } = useStaticQuery(graphql`
+  const { wpMenu, storeNav } = useStaticQuery(graphql`
     {
       wpMenu(slug: { eq: "main-navigation" }) {
+        menuItems {
+          nodes {
+            id
+            label
+            path
+            parentId
+            title
+          }
+        }
+      }
+      storeNav: wpMenu(slug: { eq: "store-menu" }) {
         menuItems {
           nodes {
             id
@@ -48,7 +59,9 @@ export default function Sidenav({ showSideNav, setShowSidenav }) {
     return tree
   }
 
-  const hierarchicalList = flatListToHierarchical(wpMenu.menuItems.nodes)
+  const hierarchicalList = flatListToHierarchical(
+    isStore ? storeNav.menuItems.nodes : wpMenu.menuItems.nodes
+  )
 
   return (
     <nav
@@ -114,7 +127,7 @@ export default function Sidenav({ showSideNav, setShowSidenav }) {
                 style={{
                   pointerEvents: menuItem.path === null ? 'none' : 'all',
                 }}
-                to={`${menuItem.path}`}
+                to={isStore ? `/store${menuItem.path}` : `${menuItem.path}`}
                 className=""
                 sx={{
                   textDecoration: 'none',

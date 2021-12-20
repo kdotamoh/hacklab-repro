@@ -163,6 +163,14 @@ const theme = {
       padding: '.625rem 1.125rem',
       bg: 'primary',
       cursor: 'pointer',
+      transition: 'ease-in-out all 0.2s',
+      '&:hover': {
+        bg: 'purple.hover',
+      },
+      '&:active': {
+        bg: 'purple.pressed',
+      },
+      '&:disabled': {},
     },
     white: {
       borderRadius: 'sm',
@@ -173,6 +181,13 @@ const theme = {
       color: 'neutral.black',
       bg: 'neutral.white',
       cursor: 'pointer',
+      '&:hover': {
+        bg: 'neutral.backgroundHover',
+      },
+      '&:active': {
+        bg: 'neutral.backgroundPressed',
+      },
+      '&:disabled': {},
     },
     whitePrimary: {
       borderRadius: 'sm',
@@ -182,6 +197,13 @@ const theme = {
       color: 'primary',
       bg: 'neutral.white',
       cursor: 'pointer',
+      '&:hover': {
+        bg: 'neutral.backgroundHover',
+      },
+      '&:active': {
+        bg: 'neutral.backgroundPressed',
+      },
+      '&:disabled': {},
     },
     transparent: {
       borderRadius: 'sm',
@@ -214,6 +236,13 @@ const theme = {
       px: '1rem',
       py: '.25rem',
       cursor: 'pointer',
+      '&:hover': {
+        bg: 'neutral.backgroundHover',
+      },
+      '&:active': {
+        bg: 'neutral.backgroundPressed',
+      },
+      '&:disabled': {},
     },
     circle: {
       borderRadius: 'rounded',
@@ -227,6 +256,13 @@ const theme = {
       // @ts-ignore
       border: (t) => `solid 1px ${t.colors.neutral.border}`,
       cursor: 'pointer',
+      '&:hover': {
+        bg: 'neutral.backgroundHover',
+      },
+      '&:active': {
+        bg: 'neutral.backgroundPressed',
+      },
+      '&:disabled': {},
     },
   },
 
@@ -234,6 +270,16 @@ const theme = {
   forms: {
     input: {
       borderColor: 'muted',
+    },
+    label: {
+      fontSize: 'caption',
+      fontWeight: 'medium',
+      mb: '.25rem',
+    },
+    spinner: {
+      color: 'white',
+      strokeWidth: 3,
+      size: 15,
     },
   },
 
