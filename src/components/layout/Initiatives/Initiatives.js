@@ -45,13 +45,20 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
         />
         <p dangerouslySetInnerHTML={{ __html: subtitle }} />
       </Container>
-      <div className="embla" ref={emblaRef}>
+      <div
+        // className="embla"
+        sx={{
+          overflow: 'hidden',
+        }}
+        ref={emblaRef}
+      >
         <div
-          className="embla__container"
+          // className="embla__container"
           sx={{
             mb: '2rem',
             mt: '4rem',
             marginLeft: '9%',
+            display: 'flex',
           }}
         >
           {items.map((item, index) => (
@@ -81,9 +88,12 @@ const Initiatives = ({ heading, subtitle, items, ...props }) => {
 const Item = ({ item }) => {
   return (
     <div
-      className="embla__slide"
+      // className="embla__slide"
       sx={{
         minWidth: ['20rem', '20rem', '23.75rem'],
+        position: 'relative',
+        flex: '0 0 16%',
+        marginRight: '20px',
 
         textAlign: 'left',
         color: 'neutral.black',

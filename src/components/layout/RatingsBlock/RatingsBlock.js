@@ -1,11 +1,23 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Button, Container } from 'theme-ui'
+import useEmblaCarousel from 'embla-carousel-react'
 
 import Arrow from '../../svg/Arrow'
 import Stars from '../../svg/Stars'
 
 const RatingsBlock = ({ image, ratings, ...props }) => {
+  const options = { align: 'start' }
+  const [emblaRef, emblaApi] = useEmblaCarousel(options)
+
+  const scrollPrev = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev()
+  }, [emblaApi])
+
+  const scrollNext = React.useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext()
+  }, [emblaApi])
+
   return (
     <Container
       sx={{
@@ -30,9 +42,36 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
           py: '2rem',
         }}
       >
-        {ratings.map((rating, index) => (
-          <Rating key={index} {...{ rating }} />
-        ))}
+        <div
+          ref={emblaRef}
+          sx={{
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            sx={{
+              display: 'flex',
+            }}
+          >
+            {ratings.map((rating, index) => (
+              <Rating key={index} {...{ rating }} />
+            ))}
+          </div>
+        </div>
+        <div
+          sx={{
+            display: 'flex',
+            gap: '2rem',
+            justifyContent: 'flex-end',
+          }}
+        >
+          <Button variant="circle" onClick={() => scrollPrev()}>
+            <Arrow width="1.5rem" orientation="left" />
+          </Button>
+          <Button variant="circle" onClick={() => scrollNext()}>
+            <Arrow width="1.5rem" orientation="right" />
+          </Button>
+        </div>
       </div>
       <img
         sx={{
@@ -40,7 +79,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
           width: '100%',
           borderRadius: 'sm',
           objectFit: 'cover',
-          height: '100%',
+          aspectRatio: '5/4',
         }}
         src={image?.sourceUrl}
         alt=""
@@ -49,29 +88,19 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
   )
 }
 
-const RatingButtons = () => {
-  return (
-    <div>
-      <div
-        sx={{
-          display: 'flex',
-          gap: '2rem',
-        }}
-      >
-        <Button variant="circle">
-          <Arrow width="1.5rem" orientation="left" />
-        </Button>
-        <Button variant="circle">
-          <Arrow width="1.5rem" orientation="right" />
-        </Button>
-      </div>
-    </div>
-  )
-}
-
 const Rating = ({ rating }) => {
   return (
-    <>
+    <div
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 'max-content',
+        position: 'relative',
+        minWidth: '100%',
+        maxWidth: '100%',
+        flex: '0 0 auto',
+      }}
+    >
       <Stars rating={rating.stars} />
       <p
         sx={{
@@ -102,6 +131,7 @@ const Rating = ({ rating }) => {
               width: '3.5rem',
               height: '3.5rem',
               bg: 'primary',
+              objectFit: 'cover',
             }}
           ></img>
           <div
@@ -115,20 +145,19 @@ const Rating = ({ rating }) => {
                 fontWeight: 'bold',
                 pb: '.5rem',
               }}
-              dangerouslySetInnerHTML={{ __html: 'name' }}
+              dangerouslySetInnerHTML={{ __html: rating.name }}
             />
             <p
               sx={{
                 fontSize: 'paragraph2',
                 color: 'neutral.textDisabled',
               }}
-              dangerouslySetInnerHTML={{ __html: 'role' }}
+              dangerouslySetInnerHTML={{ __html: rating.role }}
             />
           </div>
         </div>
-        <RatingButtons />
       </div>
-    </>
+    </div>
   )
 }
 
