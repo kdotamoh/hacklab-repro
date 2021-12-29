@@ -24,6 +24,8 @@ export const query = graphql`
         name
       }
     }
+    description
+    shortDescription
     purchasable
     ... on WpSimpleProduct {
       name

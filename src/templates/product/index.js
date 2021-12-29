@@ -227,7 +227,11 @@ const Product = ({ pageContext: { product } }) => {
                     fontSize: 'paragraph2',
                     mb: '10rem',
                   }}
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{
+                    __html: product.description
+                      ? product.description
+                      : product.shortDescription,
+                  }}
                 />
               </div>
             )}

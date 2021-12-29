@@ -29,6 +29,8 @@ const GET_PRODUCTS = `
             name
           }
         }
+        description
+        shortDescription
         purchasable
         ... on WpSimpleProduct {
           name
