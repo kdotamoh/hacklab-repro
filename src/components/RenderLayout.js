@@ -16,6 +16,7 @@ import PricingPlans from './layout/PricingPlans'
 import Cards from './layout/Cards'
 import StepBlock from './layout/Stepblock'
 import Testimonials from './layout/Testimonials'
+import Newsletter from './layout/Newsletter'
 // import ContentBlock from './layout/ContentBlock'
 
 const LoadableContentBlock = Loadable(() => import('./layout/ContentBlock'))
@@ -50,6 +51,7 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_Cards: Cards,
     Page_Pagebuilder_Layouts_Stepblock: StepBlock,
     Page_Pagebuilder_Layouts_Testimonialblock: Testimonials,
+    Page_Pagebuilder_Layouts_Newsletter: Newsletter,
     Page_default: Default,
   }
 

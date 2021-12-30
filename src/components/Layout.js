@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import Announce from './layout/Announce'
 import Footer from './layout/Footer'
-import Newsletter from './layout/Newsletter'
 import Sidenav from './layout/Sidenav'
 import { NavigationContext } from '../context/Navigation'
 
@@ -39,10 +38,7 @@ const Layout = ({ navigation, ...props }) => {
           flex: '1 1 auto',
         }}
       >
-        <>
-          {props.children}
-          <Newsletter />
-        </>
+        <>{props.children}</>
       </div>
       <Footer />
     </div>
@@ -84,10 +80,7 @@ export const StoreLayout = ({ navigation, ...props }) => {
           flex: '1 1 auto',
         }}
       >
-        <>
-          {props.children}
-          <Newsletter />
-        </>
+        <>{props.children}</>
       </div>
       <Footer />
     </div>

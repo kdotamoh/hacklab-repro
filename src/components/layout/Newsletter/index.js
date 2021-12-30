@@ -5,7 +5,7 @@ import { Field, Button, Container } from 'theme-ui'
 /**
  * @param {Object} props
  */
-const Newsletter = (props) => {
+const Newsletter = ({ buttonText, placeholder, text, ...props }) => {
   return (
     <Container
       {...props}
@@ -17,14 +17,20 @@ const Newsletter = (props) => {
         width: ['92%', '92%', '82%'],
       }}
     >
-      <h3
+      <div
         sx={{
-          pb: '1.25rem',
+          h1: {
+            pb: '1.25rem',
+          },
+          h2: {
+            pb: '1.25rem',
+          },
+          h3: {
+            pb: '1.25rem',
+          },
         }}
-      >
-        Sign up for our newsletter
-      </h3>
-      <p>Be the first to know about releases and industry news and insights.</p>
+        dangerouslySetInnerHTML={{ __html: text }}
+      ></div>
       <div
         sx={{
           display: 'flex',
@@ -48,7 +54,7 @@ const Newsletter = (props) => {
               padding: '.625rem',
             }}
             label=""
-            placeholder="Enter your email"
+            placeholder={placeholder}
             name="newsletter"
           />
         </div>
@@ -57,7 +63,7 @@ const Newsletter = (props) => {
             width: ['100%', '100%', 'max-content'],
           }}
         >
-          Subscribe
+          {buttonText}
         </Button>
       </div>
     </Container>

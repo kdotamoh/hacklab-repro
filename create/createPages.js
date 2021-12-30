@@ -40,6 +40,9 @@ const {
 const {
   stepblockLayout,
 } = require('../src/components/layout/Stepblock/Stepblock.data.js')
+const {
+  newsletterLayout,
+} = require('../src/components/layout/Newsletter/Newsletter.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -65,6 +68,7 @@ const GET_PAGES = `
             ${cardsLayout}
             ${testimonialsLayout}
             ${stepblockLayout}
+            ${newsletterLayout}
           }
         }
       }
