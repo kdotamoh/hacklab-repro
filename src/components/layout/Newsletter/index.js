@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
-import { Field, Button, Container } from 'theme-ui'
+import { Field, Button, Container, Spinner } from 'theme-ui'
 
 /**
  * @param {Object} props
@@ -61,9 +61,15 @@ const Newsletter = ({ buttonText, placeholder, text, ...props }) => {
         <Button
           sx={{
             width: ['100%', '100%', 'max-content'],
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '7rem',
+            transition: 'ease-in-out all 0.25s',
           }}
         >
           {buttonText}
+          {/* <Spinner strokeWidth={4} size={15} color="white" /> */}
         </Button>
       </div>
     </Container>

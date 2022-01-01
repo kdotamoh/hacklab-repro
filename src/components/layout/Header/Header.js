@@ -82,6 +82,10 @@ const Header = ({
               display: 'grid',
               gap: '4rem 7rem',
               ...(image &&
+                position === 'topLogo' && {
+                  gap: '0rem',
+                }),
+              ...(image &&
                 position === 'right' && {
                   gridTemplateColumns: ['100%', '100%', '50% 1fr'],
                 }),
@@ -89,6 +93,12 @@ const Header = ({
                 position === 'bottom'
                   ? `"content"
                     "image"`
+                  : position === 'top'
+                  ? `"image"
+                    "content"`
+                  : position === 'topLogo'
+                  ? `"image"
+                    "content"`
                   : position === 'right'
                   ? [
                       `"content"
@@ -184,6 +194,10 @@ const Header = ({
             <img
               sx={{
                 width: '100%',
+                ...(position === 'topLogo' && {
+                  maxWidth: '10rem',
+                  justifySelf: 'center',
+                }),
                 gridArea: 'image',
               }}
               src={image?.sourceUrl}
