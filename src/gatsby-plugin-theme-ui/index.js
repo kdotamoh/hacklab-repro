@@ -170,7 +170,9 @@ const theme = {
       '&:active': {
         bg: 'purple.pressed',
       },
-      '&:disabled': {},
+      '&:disabled': {
+        bg: 'purple.surface',
+      },
     },
     white: {
       borderRadius: 'sm',

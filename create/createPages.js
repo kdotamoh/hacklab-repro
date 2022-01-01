@@ -43,6 +43,9 @@ const {
 const {
   newsletterLayout,
 } = require('../src/components/layout/Newsletter/Newsletter.data.js')
+const {
+  donationBlockLayout,
+} = require('../src/components/layout/Donationblock/Donationblock.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -69,6 +72,7 @@ const GET_PAGES = `
             ${testimonialsLayout}
             ${stepblockLayout}
             ${newsletterLayout}
+            ${donationBlockLayout}
           }
         }
       }
