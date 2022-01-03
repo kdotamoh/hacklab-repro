@@ -272,6 +272,11 @@ const theme = {
   forms: {
     input: {
       borderColor: 'muted',
+      padding: '.625rem',
+    },
+    textarea: {
+      borderColor: 'muted',
+      padding: '.625rem',
     },
     label: {
       fontSize: 'caption',

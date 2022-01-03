@@ -18,14 +18,21 @@ module.exports = {
           requestConcurrency: 50,
         },
       },
+      develop: { hardCacheMediaFiles: true },
       type: {
         MediaItem: {
-          localFile: {
-            ...(process.env.NODE_ENV === 'development' && {
-              excludeByMimeTypes: [`application/pdf`],
-            }),
-            requestConcurrency: 200,
-          },
+          ...(process.env.NODE_ENV !== 'development' && {
+            localFile: {
+              maxFileSizeBytes: 0,
+              excludeByMimeTypes: [
+                `application/pdf`,
+                `image/jpeg`,
+                `image/png`,
+                `image/svg+xml`,
+              ],
+            },
+          }),
+          requestConcurrency: 200,
         },
       },
     },
