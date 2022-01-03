@@ -44,6 +44,7 @@ const Header = ({
         {...props}
         sx={{
           ...(fullHeight && { height: '92vh' }),
+          minHeight: 'max-content',
           color: `neutral.${textColor}`,
           ...(backgroundImage && {
             backgroundImage: `url(${backgroundImage.sourceUrl})`,
@@ -71,13 +72,13 @@ const Header = ({
 
         <Container
           sx={{
-            ...(fullHeight && { transform: 'translateY(-5rem)' }),
+            ...(isFrontPage && { transform: 'translateY(-5rem)' }),
             alignSelf: 'center',
             gridArea: 'body',
             alignItems: 'center',
             minHeight: '20rem',
             width: ['92%', '92%', '82%'],
-            pb: '5rem',
+            pb: ['2rem', '2rem', '5rem'],
             ...(image && {
               display: 'grid',
               gap: '4rem 7rem',
@@ -109,6 +110,18 @@ const Header = ({
                     ]
                   : ``,
             }),
+            ...(textAlignment === 'left' && {
+              display: 'grid',
+              gridTemplateColumns: ['100%', '100%', '50% 1fr'],
+              gridTemplateAreas: [
+                `"content"
+                "image"`,
+                `"content"
+                "image"`,
+                `"content image"`,
+              ],
+            }),
+            // the styling's pretty messy here, clean this up
           }}
         >
           <div
