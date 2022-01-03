@@ -79,7 +79,7 @@ const RatingsBlock = ({ image, ratings, ...props }) => {
           width: '100%',
           borderRadius: 'sm',
           objectFit: 'cover',
-          aspectRatio: '5/4',
+          aspectRatio: '1/1',
         }}
         src={image?.sourceUrl}
         alt=""

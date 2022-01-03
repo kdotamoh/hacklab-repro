@@ -46,6 +46,15 @@ const {
 const {
   donationBlockLayout,
 } = require('../src/components/layout/Donationblock/Donationblock.data.js')
+const {
+  wardRegistrationLayout,
+} = require('../src/components/layout/WardRegistration/WardResgistration.data.js')
+const {
+  linkblockLayout,
+} = require('../src/components/layout/Linkblock/Linkblock.data.js')
+const {
+  xhubFeaturesLayout,
+} = require('../src/components/layout/XHubFeatures/XHubFeatures.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -73,6 +82,9 @@ const GET_PAGES = `
             ${stepblockLayout}
             ${newsletterLayout}
             ${donationBlockLayout}
+            ${wardRegistrationLayout}
+            ${linkblockLayout}
+            ${xhubFeaturesLayout}
           }
         }
       }

@@ -18,6 +18,9 @@ import StepBlock from './layout/Stepblock'
 import Testimonials from './layout/Testimonials'
 import Newsletter from './layout/Newsletter'
 import Donationblock from './layout/Donationblock'
+import WardRegistration from './layout/WardRegistration'
+import Linkblock from './layout/Linkblock'
+import XHubFeatures from './layout/XHubFeatures'
 
 const LoadableContentBlock = Loadable(() => import('./layout/ContentBlock'))
 
@@ -53,6 +56,9 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_Testimonialblock: Testimonials,
     Page_Pagebuilder_Layouts_Newsletter: Newsletter,
     Page_Pagebuilder_Layouts_Donationblock: Donationblock,
+    Page_Pagebuilder_Layouts_Wardregistration: WardRegistration,
+    Page_Pagebuilder_Layouts_Linkblock: Linkblock,
+    Page_Pagebuilder_Layouts_Xhubfeatures: XHubFeatures,
     Page_default: Default,
   }
 
