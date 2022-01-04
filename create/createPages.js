@@ -55,6 +55,9 @@ const {
 const {
   xhubFeaturesLayout,
 } = require('../src/components/layout/XHubFeatures/XHubFeatures.data.js')
+const {
+  reportsBlockLayout,
+} = require('../src/components/layout/Reportsblock/Reportsblock.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -85,6 +88,7 @@ const GET_PAGES = `
             ${wardRegistrationLayout}
             ${linkblockLayout}
             ${xhubFeaturesLayout}
+            ${reportsBlockLayout}
           }
         }
       }
