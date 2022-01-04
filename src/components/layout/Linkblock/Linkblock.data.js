@@ -3,7 +3,9 @@ const linkblockLayout = `
       fieldGroupName
       text
       items {
-        image
+        image {
+          sourceUrl
+        }
         label
         outboundlink
         pagelink {
