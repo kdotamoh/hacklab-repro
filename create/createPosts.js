@@ -19,6 +19,10 @@ const GET_POSTS = `
         node {
           uri
           databaseId
+          seo {
+            fullHead
+            readingTime
+          }
         }
       }
     }
@@ -101,6 +105,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
           component: postTemplate,
           context: {
             post: post,
+            seo: post.node.seo,
             databaseId: post.node.databaseId,
             nextId: post.next ? post.next.databaseId : null,
             prevId: post.previous ? post.previous.databaseId : null,

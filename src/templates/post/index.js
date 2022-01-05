@@ -9,6 +9,7 @@ import Layout from '../../components/Layout'
 import Navigation from '../../components/layout/Navigation'
 import { NavigationContext } from '../../context/Navigation'
 import PostCard from '../posts/post-card'
+import SEO from '../../components/SEO'
 
 /**
  * @param {Object} props
@@ -18,125 +19,130 @@ import PostCard from '../posts/post-card'
  * @param {string} props.pageContext.page.title
  * @param {Object} props.pageContext.page.pageBuilder
  */
-const Post = ({ data }) => {
+const Post = ({ data, pageContext }) => {
   const [, setShowSidenav] = React.useContext(NavigationContext)
 
   const stats = readingTime(data.post.content)
+
+  console.log('pageContext.seo', pageContext.seo)
 
   React.useEffect(() => {
     setShowSidenav(false)
   }, [])
   return (
-    <Layout navigation={<Navigation color="black" />}>
-      <Container
-        sx={{
-          width: ['92%', '92%', '82%'],
-        }}
-      >
-        <h1
+    <>
+      <SEO seo={pageContext.seo} />
+      <Layout navigation={<Navigation color="black" />}>
+        <Container
           sx={{
-            pt: ['3.75rem', '3.75rem', '5rem'],
-            fontSize: ['h2', 'h2', 'h1'],
-            mb: '1.5rem',
+            width: ['92%', '92%', '82%'],
           }}
         >
-          {data.post.title}
-        </h1>
-        <img
-          sx={{
-            width: '100%',
-            height: 'auto',
-            mb: '2rem',
-            borderRadius: 'sm',
-          }}
-          src={data.post.featuredImage?.node?.sourceUrl}
-          alt=""
-        />
-        <div
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '.5rem',
-            mb: '2.5rem',
-          }}
-        >
-          <div
+          <h1
             sx={{
-              width: '2rem',
-              height: '2rem',
-              bg: 'primary',
-              borderRadius: 'rounded',
+              pt: ['3.75rem', '3.75rem', '5rem'],
+              fontSize: ['h2', 'h2', 'h1'],
+              mb: '1.5rem',
             }}
+          >
+            {data.post.title}
+          </h1>
+          <img
+            sx={{
+              width: '100%',
+              height: 'auto',
+              mb: '2rem',
+              borderRadius: 'sm',
+            }}
+            src={data.post.featuredImage?.node?.sourceUrl}
+            alt=""
           />
-          <span
-            sx={{
-              fontSize: 'paragraph2',
-              fontWeight: 'bold',
-            }}
-          >
-            Mechenzy
-          </span>
-          <span
-            sx={{
-              color: '#9CA3AF',
-              mx: '1.5rem',
-            }}
-          >
-            &bull;
-          </span>
           <div
             sx={{
-              color: '#9CA3AF',
               display: 'flex',
-              gap: '1.5rem',
+              alignItems: 'center',
+              gap: '.5rem',
+              mb: '2.5rem',
             }}
           >
-            <span>{day(data.post.date).format('MMM D, YYYY')}</span>
-            <span>{stats.text}</span>
-          </div>
-        </div>
-        <div
-          sx={{
-            mb: '2.5rem',
-            h2: {
-              pb: '2.5rem',
-            },
-            p: {
-              lineHeight: 'h3',
-            },
-          }}
-          dangerouslySetInnerHTML={{ __html: data.post.content }}
-        />
-        {data.readMore?.edges?.length > 0 && (
-          <div
-            sx={{
-              pt: ['1.25rem', '1.25rem', '5rem'],
-            }}
-          >
-            <h3
-              sx={{
-                mb: '2.5rem',
-                textAlign: 'center',
-              }}
-            >
-              Read more
-            </h3>
             <div
               sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                flexDirection: ['column', 'column', 'row'],
-                gap: 'flexGap',
+                width: '2rem',
+                height: '2rem',
+                bg: 'primary',
+                borderRadius: 'rounded',
+              }}
+            />
+            <span
+              sx={{
+                fontSize: 'paragraph2',
+                fontWeight: 'bold',
               }}
             >
-              {data.readMore?.edges?.map((post, index) => (
-                <PostCard key={index} post={post} index={index} />
-              ))}
+              Mechenzy
+            </span>
+            <span
+              sx={{
+                color: '#9CA3AF',
+                mx: '1.5rem',
+              }}
+            >
+              &bull;
+            </span>
+            <div
+              sx={{
+                color: '#9CA3AF',
+                display: 'flex',
+                gap: '1.5rem',
+              }}
+            >
+              <span>{day(data.post.date).format('MMM D, YYYY')}</span>
+              <span>{stats.text}</span>
             </div>
           </div>
-        )}
-      </Container>
-    </Layout>
+          <div
+            sx={{
+              mb: '2.5rem',
+              h2: {
+                pb: '2.5rem',
+              },
+              p: {
+                lineHeight: 'h3',
+              },
+            }}
+            dangerouslySetInnerHTML={{ __html: data.post.content }}
+          />
+          {data.readMore?.edges?.length > 0 && (
+            <div
+              sx={{
+                pt: ['1.25rem', '1.25rem', '5rem'],
+              }}
+            >
+              <h3
+                sx={{
+                  mb: '2.5rem',
+                  textAlign: 'center',
+                }}
+              >
+                Read more
+              </h3>
+              <div
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  flexDirection: ['column', 'column', 'row'],
+                  gap: 'flexGap',
+                }}
+              >
+                {data.readMore?.edges?.map((post, index) => (
+                  <PostCard key={index} post={post} index={index} />
+                ))}
+              </div>
+            </div>
+          )}
+        </Container>
+      </Layout>
+    </>
   )
 }
 

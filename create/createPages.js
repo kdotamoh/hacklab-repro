@@ -66,6 +66,9 @@ const GET_PAGES = `
         title
         uri
         isFrontPage
+        seo {
+          fullHead
+        }
         pageBuilder {
           layouts {
             ${headerLayout}
