@@ -207,6 +207,22 @@ const theme = {
       },
       '&:disabled': {},
     },
+    whiteOutline: {
+      borderRadius: 'sm',
+      fontWeight: 'medium',
+      // @ts-ignore
+      padding: '.625rem 1.125rem',
+      color: 'white',
+      bg: 'transparent',
+      cursor: 'pointer',
+      border: 'solid 1px white',
+      '&:hover': {
+        bg: 'rgba(0, 0, 0, 0.1)',
+      },
+      '&:active': {
+        bg: 'rgba(0, 0, 0, 0.4)',
+      },
+    },
     transparent: {
       borderRadius: 'sm',
       fontWeight: 'medium',

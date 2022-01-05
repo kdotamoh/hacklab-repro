@@ -49,14 +49,16 @@ const CTABlock = ({ backgroundColor, text, items, button }) => {
             textAlign: button.buttonAlignment,
           }}
         >
-          <Button
-            sx={{
-              mt: '2rem',
-            }}
-            variant={button.buttonVariant}
-          >
-            {button.buttonText}
-          </Button>
+          <a href={button.linkUrl}>
+            <Button
+              sx={{
+                mt: '2rem',
+              }}
+              variant={button.buttonVariant}
+            >
+              {button.buttonText}
+            </Button>
+          </a>
         </div>
       </Container>
     </div>
