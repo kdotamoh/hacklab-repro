@@ -8,6 +8,9 @@ const reportsBlockLayout = `
       }
       label
       link
+      image {
+        sourceUrl
+      }
     }
   }
 `

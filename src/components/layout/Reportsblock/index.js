@@ -45,14 +45,17 @@ const Reportsblock = ({ items, ...props }) => {
                 alignItems: 'center',
               }}
             >
-              <div
+              <img
+                src={item.image?.sourceUrl}
                 sx={{
-                  height: '12.5rem',
-                  width: '12rem',
-                  display: 'flex',
-                  alignItems: 'center',
+                  width: '100%',
+                  aspectRatio: '16/9',
+                  borderRadius: 'sm',
+                  objectFit: 'cover',
+                  mb: '1rem',
                 }}
-              ></div>
+                alt=""
+              />
 
               <div>
                 <a

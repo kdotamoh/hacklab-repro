@@ -22,6 +22,7 @@ import WardRegistration from './layout/WardRegistration'
 import Linkblock from './layout/Linkblock'
 import XHubFeatures from './layout/XHubFeatures'
 import Reportsblock from './layout/Reportsblock'
+import Surveyblock from './layout/SurveyBlock'
 
 const LoadableContentBlock = Loadable(() => import('./layout/ContentBlock'))
 
@@ -61,6 +62,7 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_Linkblock: Linkblock,
     Page_Pagebuilder_Layouts_Xhubfeatures: XHubFeatures,
     Page_Pagebuilder_Layouts_Reportsblock: Reportsblock,
+    Page_Pagebuilder_Layouts_Surveyblock: Surveyblock,
     Page_default: Default,
   }
 
