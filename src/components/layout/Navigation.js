@@ -26,7 +26,7 @@ const Navigation = (props) => {
     setActiveMenu('')
   }
 
-  const { wpMenu } = useStaticQuery(graphql`
+  const { wpMenu, navButton } = useStaticQuery(graphql`
     {
       wpMenu(slug: { eq: "main-navigation" }) {
         menuItems {
@@ -36,6 +36,14 @@ const Navigation = (props) => {
             path
             parentId
             title
+          }
+        }
+      }
+      navButton: wpPage(slug: { eq: "admin-page" }) {
+        admin {
+          navigation {
+            buttonLink
+            buttonText
           }
         }
       }
@@ -214,7 +222,9 @@ const Navigation = (props) => {
           sx={{
             textDecoration: 'none',
           }}
-          href="https://connect.hacklabgh.org/"
+          href={navButton.admin.navigation.buttonLink}
+          target="_blank"
+          rel="noreferrer"
         >
           <Button
             sx={{
@@ -232,7 +242,7 @@ const Navigation = (props) => {
                   : props.themeColor,
             }}
           >
-            Connect
+            {navButton.admin.navigation.buttonText}
           </Button>
         </a>
         <div
