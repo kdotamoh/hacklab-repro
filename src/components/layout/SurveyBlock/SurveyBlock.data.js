@@ -5,6 +5,9 @@ const surveyLayout = `
     fieldGroupName
     linkUrl
     text
+    image {
+      sourceUrl
+    }
   }
 `
 
