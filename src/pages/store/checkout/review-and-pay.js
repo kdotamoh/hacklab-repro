@@ -141,7 +141,8 @@ const Status = ({ status, checkout, onSuccess, onClose }) => {
             mb: '2.5rem',
           }}
         >
-          Order complete. Thank you for your purchase!
+          Order complete. Please check your email for your payment receipt.
+          Thank you for your purchase!
         </p>
       </>
     )
