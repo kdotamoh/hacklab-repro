@@ -2,6 +2,7 @@ import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './src/styles/index.css'
+import './node_modules/react-modal-video/css/modal-video.css'
 
 import { NavigationProvider } from './src/context/Navigation'
 import { StoreProvider } from './src/context/Store'
