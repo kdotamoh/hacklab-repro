@@ -9,7 +9,9 @@ import ProductCard from '../../components/store/product/card'
 
 const Store = ({ data }) => {
   const products = data.products.nodes
-  const categories = data.categories.nodes[0].store.featuredCategories
+  const categories = data.categories.nodes.filter(
+    (category) => category.name.toLowerCase() !== 'uncategorized'
+  )
 
   return (
     <StoreLayout>
@@ -227,18 +229,14 @@ export const query = graphql`
         ...ProductInformation
       }
     }
-    categories: allWpPage(filter: { slug: { eq: "store" } }) {
+
+    categories: allWpProductCategory {
       nodes {
-        store {
-          featuredCategories {
-            uri
-            image {
-              sourceUrl
-            }
-            name
-            description
-          }
+        image {
+          sourceUrl
         }
+        uri
+        name
       }
     }
   }

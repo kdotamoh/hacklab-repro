@@ -35,13 +35,18 @@ const Product = ({ pageContext: { category } }) => {
           gap: 'flexGap',
           rowGap: ['1.5rem', '1.5rem', '2.5rem'],
           flexWrap: 'wrap',
-          pt: '3.5rem',
+          py: '3.5rem',
         }}
       >
-        {products &&
+        {products.length > 0 ? (
           products.map((item, index) => (
             <ProductCard key={index} {...{ item }} />
-          ))}
+          ))
+        ) : (
+          <p>
+            No products available currently. Please check back at another time.
+          </p>
+        )}
       </Container>
     </StoreLayout>
   )
