@@ -31,7 +31,7 @@ const Reportsblock = ({ items, ...props }) => {
             width: ['92%', '92%', '82%'],
           }}
         >
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <div
               key={index}
               sx={{
