@@ -4,14 +4,19 @@ const pricingLayout = `
     fieldGroupName
     text
     plan {
-      description
-      label
-      price
-      features {
-        icon {
-          sourceUrl
+      planDetails {
+        description
+        label
+        features {
+          text
+          icon {
+            sourceUrl
+          }
         }
-        text
+      }
+      options {
+        label
+        price
       }
       button {
         buttonText

@@ -1,6 +1,7 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container, Button, Divider } from 'theme-ui'
+import { Link } from 'gatsby'
 
 const PricingPlans = ({ backgroundColor, text, plan }) => {
   return (
@@ -40,81 +41,115 @@ const PricingPlans = ({ backgroundColor, text, plan }) => {
         }}
       >
         {plan.map((item, index) => (
-          <div
-            key={index}
-            sx={{
-              bg: 'neutral.white',
-              flexDirection: 'column',
-              flexBasis: `31%`,
-              mb: ['0', '0', '2.5rem'],
-              textAlign: 'center',
-              padding: '2rem',
-              borderRadius: 'sm',
-              // @ts-ignore
-              border: (t) => `solid 1px ${t.colors.neutral.border}`,
-            }}
-          >
-            <span
-              sx={{
-                borderRadius: 'xl',
-                px: '.5rem',
-                py: '.25rem',
-                color: 'purple.hover',
-                fontWeight: 'medium',
-                bg: 'purple.surface',
-                display: 'inline-block',
-                mb: '1rem',
-              }}
-              dangerouslySetInnerHTML={{ __html: item.label }}
-            />
-            <p
-              sx={{
-                fontWeight: 'bold',
-                fontSize: 'h2',
-                mb: '.5rem',
-              }}
-              dangerouslySetInnerHTML={{ __html: item.price }}
-            />
-            <p
-              sx={{
-                mb: '1rem',
-                color: 'neutral.textPlaceholder',
-                fontSize: 'paragraph2',
-              }}
-              dangerouslySetInnerHTML={{ __html: item.description }}
-            />
-            <Button
-              sx={{
-                width: '100%',
-              }}
-              variant={item.button.buttonVariant}
-            >
-              {item.button.buttonText}
-            </Button>
-            <Divider
-              sx={{
-                my: '2rem',
-              }}
-            />
-            <div>
-              {item.features.map((feature, index) => (
-                <div
-                  key={index}
-                  sx={{
-                    display: 'flex',
-                    gap: '.75rem',
-                    pb: '1rem',
-                  }}
-                >
-                  <img src={feature.icon.sourceUrl} alt="" />
-                  <span>{feature.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Plan item={item} key={index} />
         ))}
       </div>
     </>
+  )
+}
+
+const Plan = ({ item }) => {
+  const [active, setActive] = React.useState(0)
+  return (
+    <div
+      sx={{
+        bg: 'neutral.white',
+        flexDirection: 'column',
+        flexBasis: `31%`,
+        mb: ['0', '0', '2.5rem'],
+        textAlign: 'center',
+        padding: '2rem',
+        borderRadius: 'sm',
+        // @ts-ignore
+        border: (t) => `solid 1px ${t.colors.neutral.border}`,
+      }}
+    >
+      <span
+        sx={{
+          borderRadius: 'xl',
+          px: '.5rem',
+          py: '.25rem',
+          color: 'purple.hover',
+          fontWeight: 'medium',
+          bg: 'purple.surface',
+          display: 'inline-block',
+          mb: '1rem',
+        }}
+        dangerouslySetInnerHTML={{ __html: item.planDetails.label }}
+      />
+      <p
+        sx={{
+          fontWeight: 'bold',
+          fontSize: 'h2',
+          mb: '.5rem',
+        }}
+        dangerouslySetInnerHTML={{ __html: item.options[active].price }}
+      />
+      <p
+        sx={{
+          mb: '1rem',
+          color: 'neutral.textPlaceholder',
+          fontSize: 'paragraph2',
+        }}
+        dangerouslySetInnerHTML={{ __html: item.planDetails.description }}
+      />
+      <div
+        sx={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+        }}
+      >
+        {item.options.map((option, index) => (
+          <span
+            key={index}
+            sx={{
+              borderRadius: 'xl',
+              px: '.5rem',
+              py: '.25rem',
+              fontWeight: 'medium',
+              display: 'inline-block',
+              cursor: 'pointer',
+              color: active === index ? 'white' : 'purple.hover',
+              bg: active === index ? 'purple.main' : 'purple.surface',
+            }}
+            onClick={() => setActive(index)}
+            dangerouslySetInnerHTML={{ __html: option.label }}
+          />
+        ))}
+      </div>
+      <Divider
+        sx={{
+          my: '2rem',
+        }}
+      />
+      <div>
+        {item.planDetails.features.map((feature, index) => (
+          <div
+            key={index}
+            sx={{
+              display: 'flex',
+              gap: '.75rem',
+              pb: '1rem',
+            }}
+          >
+            <img src={feature.icon.sourceUrl} alt="" />
+            <span>{feature.text}</span>
+          </div>
+        ))}
+      </div>
+      <a target="_blank" rel="noreferrer" href={item.button.linkUrl}>
+        <Button
+          sx={{
+            width: '100%',
+            mt: 'auto',
+          }}
+          variant={item.button.buttonVariant}
+        >
+          {item.button.buttonText}
+        </Button>
+      </a>
+    </div>
   )
 }
 
