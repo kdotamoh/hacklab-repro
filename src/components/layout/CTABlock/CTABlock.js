@@ -21,9 +21,12 @@ const CTABlock = ({ backgroundColor, text, items, button }) => {
       >
         <div
           sx={{
-            mb: '3.5rem',
             h2: { pb: '1.5rem' },
             h3: { pb: '1.5rem' },
+            h4: { pb: '1.5rem' },
+            width: '80%',
+            margin: '0 auto',
+            mb: '3.5rem',
           }}
           dangerouslySetInnerHTML={{ __html: text }}
         />

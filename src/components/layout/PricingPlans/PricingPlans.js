@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import * as React from 'react'
 import { Container, Button, Divider } from 'theme-ui'
-import { Link } from 'gatsby'
 
 const PricingPlans = ({ backgroundColor, text, plan }) => {
   return (
@@ -123,7 +122,11 @@ const Plan = ({ item }) => {
           my: '2rem',
         }}
       />
-      <div>
+      <div
+        sx={{
+          textAlign: 'left',
+        }}
+      >
         {item.planDetails.features.map((feature, index) => (
           <div
             key={index}
