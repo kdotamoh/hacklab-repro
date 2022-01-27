@@ -61,6 +61,9 @@ const {
 const {
   surveyLayout,
 } = require('../src/components/layout/SurveyBlock/SurveyBlock.data.js')
+const {
+  xhubBenefitsLayout,
+} = require('../src/components/layout/XHubBenefits/XHubBenefits.data.js')
 
 const GET_PAGES = `
   query GET_PAGES {
@@ -96,6 +99,7 @@ const GET_PAGES = `
             ${xhubFeaturesLayout}
             ${reportsBlockLayout}
             ${surveyLayout}
+            ${xhubBenefitsLayout}
           }
         }
       }
