@@ -15,13 +15,13 @@ module.exports = {
         schema: {
           timeout: 30000,
           perPage: 500,
-          requestConcurrency: 50,
+          requestConcurrency: 5,
         },
       },
       develop: { hardCacheMediaFiles: true },
       type: {
         MediaItem: {
-          ...(process.env.NODE_ENV !== 'development' && {
+          ...(process.env.NODE_ENV === 'development' && {
             localFile: {
               maxFileSizeBytes: 0,
               excludeByMimeTypes: [
