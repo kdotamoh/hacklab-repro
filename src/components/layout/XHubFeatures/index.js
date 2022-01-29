@@ -17,7 +17,7 @@ const XHubFeatures = ({ features, image }) => {
       <div
         sx={{
           display: 'grid',
-          gridTemplateColumns: '45% 1fr',
+          gridTemplateColumns: ['100%', '100%', '45% 1fr'],
           gap: '4rem',
           alignItems: 'center',
         }}
