@@ -23,7 +23,16 @@ const headerLayout = `
         position
       } 
       backgroundImage {
-        sourceUrl
+        localFile {
+          childImageSharp {
+            gatsbyImageData(
+              formats: WEBP
+              placeholder: BLURRED
+              transformOptions: {fit: COVER}
+              webpOptions: {quality: 100}
+            )
+          }
+        }
       }
       buttons {
         buttonText
