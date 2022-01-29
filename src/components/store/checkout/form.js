@@ -6,7 +6,7 @@ import * as yup from 'yup'
 import { graphql, useStaticQuery, navigate } from 'gatsby'
 
 import { StoreContext } from '../../../context/Store'
-import { createOrder } from '../../../api/orders/create-order'
+import { createOrder } from '../../../store-api/orders/create-order'
 
 /**
  * @param {Object} props

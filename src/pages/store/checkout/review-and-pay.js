@@ -8,7 +8,7 @@ import { isEmpty } from 'lodash'
 import { StoreLayout } from '../../../components/Layout'
 import Menu from '../../../components/store/layout/menu'
 import ReviewDetails from '../../../components/store/checkout/review-details'
-import { updateOrderStatus } from '../../../api/orders/update-order'
+import { updateOrderStatus } from '../../../store-api/orders/update-order'
 
 const ReviewAndPay = () => {
   const { checkout, completeOrder } = React.useContext(StoreContext)
