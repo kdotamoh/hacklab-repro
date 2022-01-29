@@ -126,6 +126,7 @@ const Rating = ({ rating }) => {
         >
           <img
             src={rating.avatar?.sourceUrl}
+            alt=""
             sx={{
               borderRadius: 'rounded',
               width: '3.5rem',

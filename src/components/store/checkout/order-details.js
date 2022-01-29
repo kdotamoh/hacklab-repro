@@ -73,6 +73,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                 objectFit: 'cover',
                 borderRadius: 'sm',
               }}
+              alt=""
               src={singleItemPurchase.product?.featuredImage?.node?.sourceUrl}
             />
 
@@ -449,6 +450,7 @@ const OrderDetails = ({ reviewing, isSingleProduct, deliveryMethod }) => {
                 borderRadius: 'sm',
               }}
               src={item.product.featuredImage?.node?.sourceUrl}
+              alt=""
             />
             <Trash onClick={() => removeLineItem(item.product.databaseId)} />
             <div

@@ -92,6 +92,7 @@ const Product = ({ pageContext: { product } }) => {
           <div sx={{ width: '100%' }}>
             <img
               src={product.featuredImage?.node?.sourceUrl}
+              alt=""
               sx={{
                 width: '100%',
                 objectPosition: 'center center',
@@ -113,6 +114,7 @@ const Product = ({ pageContext: { product } }) => {
               {product.galleryImages?.nodes?.map((image, index) => (
                 <img
                   key={index}
+                  alt=""
                   sx={{
                     aspectRatio: '5/4',
                     width: '100%',

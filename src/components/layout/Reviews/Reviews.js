@@ -81,6 +81,7 @@ const Review = ({ item }) => {
             width: '2.5rem',
             height: '2.5rem',
           }}
+          alt=""
           src={item.avatar?.sourceUrl}
         ></img>
         <div

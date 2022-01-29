@@ -107,6 +107,7 @@ const Navigation = (props) => {
             {props.logoUrl ? (
               <img
                 src={props.logoUrl}
+                alt=""
                 sx={{
                   mr: '.5rem',
                   height: '1.875rem',

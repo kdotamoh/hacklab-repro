@@ -264,6 +264,7 @@ const WardRegistration = ({ text, image }) => {
             height: '100%',
             objectFit: 'cover',
           }}
+          alt=""
           src={image.sourceUrl}
         />
       </div>
