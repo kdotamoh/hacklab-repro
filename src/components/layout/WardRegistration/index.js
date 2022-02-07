@@ -4,13 +4,13 @@ import { Formik } from 'formik'
 import { Button, Field, Label, Textarea } from '@theme-ui/components'
 import * as yup from 'yup'
 
-const WardRegistration = ({ text, image }) => {
-  const initialValues = {
-    name: '',
-    email: '',
-    phoneNumber: '',
-    message: '',
-  }
+const WardRegistration = ({ text, image, formLink }) => {
+  // const initialValues = {
+  //   name: '',
+  //   email: '',
+  //   phoneNumber: '',
+  //   message: '',
+  // }
   return (
     <div sx={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
       <div sx={{ p: '6rem' }}>
@@ -22,10 +22,21 @@ const WardRegistration = ({ text, image }) => {
             h3: { mb: '1.5rem' },
             h2: { mb: '1.5rem' },
             h1: { mb: '1.5rem' },
+            p: { mb: '1rem' },
             a: { color: 'primary', textDecoration: 'none' },
           }}
         />
-        <Formik
+        <a href={formLink} rel="noreferrer" target="_blank">
+          <Button
+            sx={{
+              mt: '1rem',
+              width: '100%',
+            }}
+          >
+            Get started
+          </Button>
+        </a>
+        {/* <Formik
           initialValues={initialValues}
           validationSchema={yup.object().shape({
             name: yup.string().required('Name is required'),
@@ -247,15 +258,10 @@ const WardRegistration = ({ text, image }) => {
                 // }}
               >
                 Get started
-                {/* {isSubmitting ? (
-                  <Spinner variant="forms.spinner" />
-                ) : (
-                  'Proceed to payment'
-                )} */}
               </Button>
             </form>
           )}
-        </Formik>
+        </Formik> */}
       </div>
       <div>
         <img

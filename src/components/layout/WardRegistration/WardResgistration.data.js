@@ -5,6 +5,7 @@ const wardRegistrationLayout = `
     image {
       sourceUrl
     }
+    formLink
   }
 `
 
