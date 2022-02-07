@@ -4,6 +4,8 @@ const newsletterLayout = `
     buttonText
     placeholder
     text
+    submissionSuccessText
+    mailchimpUrl
   }
 `
 
