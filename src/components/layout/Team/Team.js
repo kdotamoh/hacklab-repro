@@ -93,7 +93,7 @@ const Item = ({ item }) => {
       <div
         sx={{
           display: 'flex',
-          gap: '.625rem',
+          gap: ['1.5rem', '1.5rem', '1rem'],
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -102,8 +102,8 @@ const Item = ({ item }) => {
           <a key={index} href={social.linkUrl} target="_blank" rel="noreferrer">
             <img
               sx={{
-                height: '1rem',
-                width: '1rem',
+                height: ['1.5rem', '1.5rem', '1rem'],
+                width: ['1.5rem', '1.5rem', '1rem'],
               }}
               src={social.icon?.sourceUrl}
               alt=""
