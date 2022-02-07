@@ -50,10 +50,8 @@ const Header = ({
               style={{
                 gridArea: '1/1',
               }}
-              // layout="fullWidth"
               image={bgImage}
-
-              // formats={['auto', 'webp', 'avif']}
+              alt=""
             />
           )}
           <div
