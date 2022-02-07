@@ -2,30 +2,29 @@
 import * as React from 'react'
 import Loadable from '@loadable/component'
 
-import Impact from './layout/Impact'
-import Header from './layout/Header'
-import Partners from './layout/Partners'
-import Initiatives from './layout/Initiatives'
-import Reviews from './layout/Reviews'
-import DownloadApp from './layout/DownloadApp'
-import Team from './layout/Team'
-import TextBlock from './layout/TextBlock'
-import RatingsBlock from './layout/RatingsBlock'
-import CTABlock from './layout/CTABlock'
-import PricingPlans from './layout/PricingPlans'
-import Cards from './layout/Cards'
-import StepBlock from './layout/Stepblock'
-import Testimonials from './layout/Testimonials'
-import Newsletter from './layout/Newsletter'
-import Donationblock from './layout/Donationblock'
-import WardRegistration from './layout/WardRegistration'
-import Linkblock from './layout/Linkblock'
-import XHubFeatures from './layout/XHubFeatures'
-import Reportsblock from './layout/Reportsblock'
-import Surveyblock from './layout/SurveyBlock'
-import XHubBenefits from './layout/XHubBenefits'
-
-const LoadableContentBlock = Loadable(() => import('./layout/ContentBlock'))
+const Impact = Loadable(() => import('./layout/Impact'))
+const Header = Loadable(() => import('./layout/Header'))
+const Partners = Loadable(() => import('./layout/Partners'))
+const Initiatives = Loadable(() => import('./layout/Initiatives'))
+const Reviews = Loadable(() => import('./layout/Reviews'))
+const DownloadApp = Loadable(() => import('./layout/DownloadApp'))
+const Team = Loadable(() => import('./layout/Team'))
+const TextBlock = Loadable(() => import('./layout/TextBlock'))
+const RatingsBlock = Loadable(() => import('./layout/RatingsBlock'))
+const CTABlock = Loadable(() => import('./layout/CTABlock'))
+const PricingPlans = Loadable(() => import('./layout/PricingPlans'))
+const Cards = Loadable(() => import('./layout/Cards'))
+const StepBlock = Loadable(() => import('./layout/StepBlock'))
+const Testimonials = Loadable(() => import('./layout/Testimonials'))
+const Newsletter = Loadable(() => import('./layout/Newsletter'))
+const Donationblock = Loadable(() => import('./layout/Donationblock'))
+const WardRegistration = Loadable(() => import('./layout/WardRegistration'))
+const Linkblock = Loadable(() => import('./layout/Linkblock'))
+const XHubFeatures = Loadable(() => import('./layout/XHubFeatures'))
+const Reportsblock = Loadable(() => import('./layout/Reportsblock'))
+const Surveyblock = Loadable(() => import('./layout/Surveyblock'))
+const XHubBenefits = Loadable(() => import('./layout/XHubBenefits'))
+const ContentBlock = Loadable(() => import('./layout/ContentBlock'))
 
 /**
  *
@@ -50,7 +49,7 @@ const RenderLayout = ({ componentData, componentType, pageContext }) => {
     Page_Pagebuilder_Layouts_DownloadApp: DownloadApp,
     Page_Pagebuilder_Layouts_Team: Team,
     Page_Pagebuilder_Layouts_Textblock: TextBlock,
-    Page_Pagebuilder_Layouts_Contentblock: LoadableContentBlock,
+    Page_Pagebuilder_Layouts_Contentblock: ContentBlock,
     Page_Pagebuilder_Layouts_Ratingsblock: RatingsBlock,
     Page_Pagebuilder_Layouts_Ctablock: CTABlock,
     Page_Pagebuilder_Layouts_PricingPlans: PricingPlans,
