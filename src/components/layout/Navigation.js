@@ -248,7 +248,7 @@ const Navigation = (props) => {
         </a>
         <div
           sx={{
-            display: ['block', 'none', 'none'],
+            display: ['block', 'block', 'none'],
           }}
           onClick={() => {
             setShowSidenav(true)

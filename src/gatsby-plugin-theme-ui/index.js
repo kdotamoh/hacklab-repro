@@ -76,14 +76,14 @@ const hacklabColors = {
 }
 
 // breakpoints
-export const breakpoints = ['30rem', '58rem', '56rem']
+export const breakpoints = ['30.0625rem', '58rem', '75rem']
 
 // theme
 const theme = {
   breakpoints,
   mediaQueries: {
-    sm: `@media screen and (min-width: ${breakpoints[0]})`,
-    md: `@media screen and (min-width: ${breakpoints[1]})`,
+    sm: `@media screen and (max-width: ${breakpoints[0]})`,
+    md: `@media screen and (max-width: ${breakpoints[1]})`,
     lg: `@media screen and (min-width: ${breakpoints[2]})`,
   },
   fonts: {

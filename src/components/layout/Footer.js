@@ -208,8 +208,8 @@ const Footer = (props) => {
         <div
           sx={{
             display: 'flex',
-            flexDirection: ['column', 'column', 'row'],
-            alignItems: ['flex-start', 'flex-start', 'center'],
+            flexDirection: ['column', 'row', 'row'],
+            alignItems: ['flex-start', 'center', 'center'],
             gap: '0 2.5rem',
           }}
         >
@@ -217,6 +217,7 @@ const Footer = (props) => {
           <p
             sx={{
               fontSize: 'paragraph2',
+              mt: ['1rem', '0', '0'],
             }}
           >
             © {currentYear} Hacklab. All rights reserved.
