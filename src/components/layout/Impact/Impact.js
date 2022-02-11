@@ -68,7 +68,7 @@ const ImpactItem = (props) => {
           maxWidth: '3rem',
           maxHeight: '3rem',
         }}
-        src={`${props.icon.sourceUrl}`}
+        src={`${props.icon?.sourceUrl}`}
         alt=""
       />
       <p
