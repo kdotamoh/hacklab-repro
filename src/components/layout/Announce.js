@@ -59,12 +59,31 @@ const Announce = (props) => {
         >
           {announce?.admin?.announce?.text}
         </p>
-        <Button
-          onClick={() => navigate(announce?.admin?.announce?.linkUrl)}
-          variant="rounded"
+        <a
+          sx={{
+            color: 'neutral.black',
+            borderRadius: 'xl',
+            bg: 'neutral.white',
+            fontSize: 'caption',
+            fontWeight: 'medium',
+            px: '1rem',
+            py: '.25rem',
+            cursor: 'pointer',
+            '&:hover': {
+              bg: 'neutral.backgroundHover',
+            },
+            '&:active': {
+              bg: 'neutral.backgroundPressed',
+            },
+            '&:disabled': {},
+            textDecoration: 'none',
+          }}
+          href={announce?.admin?.announce?.linkUrl}
+          target="_blank"
+          rel="noreferrer"
         >
           {announce?.admin?.announce?.buttonText}
-        </Button>
+        </a>
 
         {/* <span
           sx={{

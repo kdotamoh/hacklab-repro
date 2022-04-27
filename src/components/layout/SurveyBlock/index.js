@@ -48,7 +48,9 @@ const Surveyblock = ({ buttonText, buttonVariant, linkUrl, text, image }) => {
                   h3: { pb: '1rem' },
                   h4: { pb: '1rem' },
                 }}
-                dangerouslySetInnerHTML={{ __html: text }}
+                dangerouslySetInnerHTML={{
+                  __html: text.replace(/&nbsp;/g, ' '),
+                }}
               />
               <a
                 sx={{
